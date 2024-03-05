@@ -1,0 +1,9 @@
+version: '2'
+services:
+  sga-postgresql:
+    image: postgres:11.5
+    environment:
+      - POSTGRES_USER=sga
+      - POSTGRES_PASSWORD=sga
+    ports:
+      - 5432:5432
