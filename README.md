@@ -1,2 +1,2 @@
-# sgl
-Sistema Gerenciado de Alocação
+# sga
+Sistema Gerenciador de Alocação
