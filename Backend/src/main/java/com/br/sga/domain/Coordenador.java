@@ -25,7 +25,7 @@ public class Coordenador implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_coordenador")
-    @SequenceGenerator(name = "seq_coordenador", sequenceName = "seq_coordenador", initialValue = 8)
+    @SequenceGenerator(name = "seq_coordenador", sequenceName = "seq_coordenador", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Integer id;
 

@@ -25,7 +25,7 @@ public class Disciplina implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_disciplina")
-    @SequenceGenerator(name = "seq_disciplina", sequenceName = "seq_disciplina", initialValue = 8)
+    @SequenceGenerator(name = "seq_disciplina", sequenceName = "seq_disciplina", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Integer id;
 

@@ -25,7 +25,7 @@ public class Coordenadoria implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_coordenadoria")
-    @SequenceGenerator(name = "seq_coordenadoria", sequenceName = "seq_coordenadoria", initialValue = 8)
+    @SequenceGenerator(name = "seq_coordenadoria", sequenceName = "seq_coordenadoria", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Integer id;
 

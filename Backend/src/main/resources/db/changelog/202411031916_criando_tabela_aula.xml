@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+
+    <changeSet id="1710195404186-1" author="Matheus">
+        <createTable tableName="aula">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_aula"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hora_inicio" type="TIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hora_fim" type="TIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="turma" type="VARCHAR(255)"/>
+            <column name="id_local" type="INT"/>
+            <column name="id_periodo" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_professor" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_dia_semana" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_disciplina" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="id_dia_semana" baseTableName="aula" constraintName="FK_AULA_ON_ID_DIA_SEMANA" referencedColumnNames="id" referencedTableName="dia_semana"/>
+        <addForeignKeyConstraint baseColumnNames="id_disciplina" baseTableName="aula" constraintName="FK_AULA_ON_ID_DISCIPLINA" referencedColumnNames="id" referencedTableName="disciplina"/>
+        <addForeignKeyConstraint baseColumnNames="id_local" baseTableName="aula" constraintName="FK_AULA_ON_ID_LOCAL" referencedColumnNames="id" referencedTableName="local"/>
+        <addForeignKeyConstraint baseColumnNames="id_periodo" baseTableName="aula" constraintName="FK_AULA_ON_ID_PERIODO" referencedColumnNames="id" referencedTableName="periodo"/>
+        <addForeignKeyConstraint baseColumnNames="id_professor" baseTableName="aula" constraintName="FK_AULA_ON_ID_PROFESSOR" referencedColumnNames="id" referencedTableName="professor"/>
+        <createSequence sequenceName="seq_aula" startValue="1" incrementBy="1"/>
+    </changeSet>
+</databaseChangeLog>

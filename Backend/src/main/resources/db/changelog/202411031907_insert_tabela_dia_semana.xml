@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+
+    <changeSet id="1710196275913-1" author="Matheus">
+        <insert tableName="dia_semana">
+            <column name="id" valueNumeric="1"/>
+            <column name="nome" value="Domingo"/>
+        </insert>
+        <insert tableName="dia_semana">
+            <column name="id" valueNumeric="2"/>
+            <column name="nome" value="Segunda-Feira"/>
+        </insert>
+        <insert tableName="dia_semana">
+            <column name="id" valueNumeric="3"/>
+            <column name="nome" value="Terça-Feira"/>
+        </insert>
+        <insert tableName="dia_semana">
+            <column name="id" valueNumeric="4"/>
+            <column name="nome" value="Quarta-Feira"/>
+        </insert>
+        <insert tableName="dia_semana">
+            <column name="id" valueNumeric="5"/>
+            <column name="nome" value="Quinta-Feira"/>
+        </insert>
+        <insert tableName="dia_semana">
+            <column name="id" valueNumeric="6"/>
+            <column name="nome" value="Sexta-Feira"/>
+        </insert>
+        <insert tableName="dia_semana">
+            <column name="id" valueNumeric="7"/>
+            <column name="nome" value="Sábado"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -29,23 +29,23 @@ public class Evento implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_evento")
-    @SequenceGenerator(name = "seq_evento", sequenceName = "seq_evento", initialValue = 8)
+    @SequenceGenerator(name = "seq_evento", sequenceName = "seq_evento", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "descricao")
+    @Column(name = "descricao", nullable = false)
     private String descricao;
 
-    @Column(name = "hora_inicio")
+    @Column(name = "hora_inicio", nullable = false)
     private LocalTime horaInicio;
 
-    @Column(name = "hora_fim")
+    @Column(name = "hora_fim", nullable = false)
     private LocalTime horaFim;
 
-    @Column(name = "data")
+    @Column(name = "data", nullable = false)
     private LocalDate data;
 
     @ManyToOne
-    @JoinColumn(name = "id_local")
+    @JoinColumn(name = "id_local", nullable = false)
     private Local local;
 }

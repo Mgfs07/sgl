@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+
+    <changeSet id="1710195637563-1" author="Matheus">
+        <createTable tableName="evento">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_evento"/>
+            </column>
+            <column name="descricao" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hora_inicio" type="TIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hora_fim" type="TIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_local" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="id_local" baseTableName="evento" constraintName="FK_EVENTO_ON_ID_LOCAL" referencedColumnNames="id" referencedTableName="local"/>
+        <createSequence sequenceName="seq_evento" startValue="1" incrementBy="1"/>
+    </changeSet>
+</databaseChangeLog>

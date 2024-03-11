@@ -28,14 +28,14 @@ public class AuditoriaAlocacao implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_auditoria_alocacao")
-    @SequenceGenerator(name = "seq_auditoria_alocacao", sequenceName = "seq_auditoria_alocacao", initialValue = 8)
+    @SequenceGenerator(name = "seq_auditoria_alocacao", sequenceName = "seq_auditoria_alocacao", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "acao")
+    @Column(name = "acao", nullable = false)
     private String acao;
 
-    @Column(name = "data")
+    @Column(name = "data", nullable = false)
     private LocalDate data;
 
     @ManyToOne
@@ -47,6 +47,6 @@ public class AuditoriaAlocacao implements Serializable {
     private Professor professor;
 
     @ManyToOne
-    @JoinColumn(name = "id_aula")
+    @JoinColumn(name = "id_aula", nullable = false)
     private Aula aula;
 }

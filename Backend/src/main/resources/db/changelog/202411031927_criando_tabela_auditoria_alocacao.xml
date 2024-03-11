@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+
+    <changeSet id="1710195907019-1" author="Matheus">
+        <createTable tableName="auditoria_alocacao">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_auditoria_alocacao"/>
+            </column>
+            <column name="acao" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_coordenador" type="INT"/>
+            <column name="id_professor" type="INT"/>
+            <column name="id_aula" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="id_aula" baseTableName="auditoria_alocacao" constraintName="FK_AUDITORIA_ALOCACAO_ON_ID_AULA" referencedColumnNames="id" referencedTableName="aula"/>
+        <addForeignKeyConstraint baseColumnNames="id_coordenador" baseTableName="auditoria_alocacao" constraintName="FK_AUDITORIA_ALOCACAO_ON_ID_COORDENADOR" referencedColumnNames="id" referencedTableName="coordenador"/>
+        <addForeignKeyConstraint baseColumnNames="id_professor" baseTableName="auditoria_alocacao" constraintName="FK_AUDITORIA_ALOCACAO_ON_ID_PROFESSOR" referencedColumnNames="id" referencedTableName="professor"/>
+        <createSequence sequenceName="seq_auditoria_alocacao" startValue="1" incrementBy="1"/>
+    </changeSet>
+</databaseChangeLog>

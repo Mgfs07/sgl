@@ -25,7 +25,7 @@ public class Equipamento implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_equipamento")
-    @SequenceGenerator(name = "seq_equipamento", sequenceName = "seq_equipamento", initialValue = 8)
+    @SequenceGenerator(name = "seq_equipamento", sequenceName = "seq_equipamento", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Integer id;
 

@@ -28,17 +28,17 @@ public class Periodo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_periodo")
-    @SequenceGenerator(name = "seq_periodo", sequenceName = "seq_periodo", initialValue = 8)
+    @SequenceGenerator(name = "seq_periodo", sequenceName = "seq_periodo", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "descricao")
+    @Column(name = "descricao", nullable = false)
     private String descricao;
 
-    @Column(name = "data_inicio")
+    @Column(name = "data_inicio", nullable = false)
     private LocalDate dataInicio;
 
-    @Column(name = "data_fim")
+    @Column(name = "data_fim", nullable = false)
     private LocalDate dataFim;
 
 }

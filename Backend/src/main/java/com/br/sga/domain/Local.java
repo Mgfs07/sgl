@@ -25,13 +25,13 @@ public class Local implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_local")
-    @SequenceGenerator(name = "seq_local", sequenceName = "seq_local", initialValue = 8)
+    @SequenceGenerator(name = "seq_local", sequenceName = "seq_local", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "nome")
+    @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "quantidade")
+    @Column(name = "quantidade", nullable = false)
     private Integer quantidade;
 }
