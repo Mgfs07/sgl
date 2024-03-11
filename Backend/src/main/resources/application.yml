@@ -5,10 +5,10 @@ spring:
   main:
     allow-bean-definition-overriding: true
   application:
-    name: sgtservice
+    name: sgaservice
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/sga
+    url: jdbc:postgresql://localhost:5432/postgres
     username: sga
     password: sga
     hikari:
