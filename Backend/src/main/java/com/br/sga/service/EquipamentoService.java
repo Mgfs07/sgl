@@ -1,9 +1,9 @@
 package com.br.sga.service;
 
-import com.br.sga.domain.Aluno;
-import com.br.sga.repository.AlunoRepository;
-import com.br.sga.service.dto.AlunoDTO;
-import com.br.sga.service.mapper.AlunoMapper;
+import com.br.sga.domain.Equipamento;
+import com.br.sga.repository.EquipamentoRepository;
+import com.br.sga.service.dto.EquipamentoDTO;
+import com.br.sga.service.mapper.EquipamentoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -15,25 +15,25 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class AlunoService {
+public class EquipamentoService {
 
-    private final AlunoRepository repository;
-    private final AlunoMapper mapper;
+    private final EquipamentoRepository repository;
+    private final EquipamentoMapper mapper;
 
-    public List<AlunoDTO> buscarTodos() {
+    public List<EquipamentoDTO> buscarTodos() {
         return mapper.toDto(repository.findAll());
     }
 
-    public AlunoDTO buscar(Integer id) {
+    public EquipamentoDTO buscar(Integer id) {
         return mapper.toDto(buscarPorId(id));
     }
 
-    private Aluno buscarPorId(Integer id) {
+    private Equipamento buscarPorId(Integer id) {
         return repository.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Aluno não encontrado"));
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Equipamento não encontrado"));
     }
 
-    public AlunoDTO salvar(AlunoDTO dto) {
+    public EquipamentoDTO salvar(EquipamentoDTO dto) {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
