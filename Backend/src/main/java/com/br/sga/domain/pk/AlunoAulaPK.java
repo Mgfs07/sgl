@@ -17,9 +17,9 @@ import java.io.Serializable;
 public class AlunoAulaPK implements Serializable {
 
     @Column(name = "id_aluno")
-    private Integer idAluno;
+    private Long idAluno;
 
     @Column(name = "id_aula")
-    private Integer idAula;
+    private Long idAula;
 
 }

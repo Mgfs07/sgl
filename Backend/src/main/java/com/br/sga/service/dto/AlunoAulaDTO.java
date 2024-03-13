@@ -1,18 +1,6 @@
 package com.br.sga.service.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.io.Serializable;
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class AlunoAulaDTO implements Serializable {
-
-    private Integer idAluno;
-    private Integer idAula;
-}
+public record AlunoAulaDTO(
+    Long idAluno,
+    Long idAula
+) {}

@@ -1,18 +1,12 @@
 package com.br.sga.service.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-import java.io.Serializable;
+public record EquipamentoDTO (
+        Long id,
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class EquipamentoDTO implements Serializable {
-
-    private Integer id;
-    private String nome;
-}
+        @NotBlank(message = "Equipamento necessita ter um nome")
+        @Size(max = 255)
+        String nome
+) {}

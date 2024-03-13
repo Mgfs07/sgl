@@ -1,9 +1,9 @@
 package com.br.sga.service;
 
-import com.br.sga.domain.Equipamento;
-import com.br.sga.repository.EquipamentoRepository;
-import com.br.sga.service.dto.EquipamentoDTO;
-import com.br.sga.service.mapper.EquipamentoMapper;
+import com.br.sga.domain.Disciplina;
+import com.br.sga.repository.DisciplinaRepository;
+import com.br.sga.service.dto.DisciplinaDTO;
+import com.br.sga.service.mapper.DisciplinaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,13 +17,12 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class EquipamentoService {
+public class DisciplinaService {
+    private final DisciplinaRepository repository;
+    private final DisciplinaMapper mapper;
 
-    private final EquipamentoRepository repository;
-    private final EquipamentoMapper mapper;
-
-    public List<EquipamentoDTO> buscarTodos() {
-        List<Equipamento> resultList = repository.findAll();
+    public List<DisciplinaDTO> buscarTodos() {
+        List<Disciplina> resultList = repository.findAll();
 
         if(resultList.isEmpty()) {
             return new ArrayList<>();
@@ -31,16 +30,16 @@ public class EquipamentoService {
         return mapper.toDto(resultList);
     }
 
-    public EquipamentoDTO buscar(Long id) {
-        Optional<Equipamento> equipamento = repository.findById(id);
+    public DisciplinaDTO buscar(Long id) {
+        Optional<Disciplina> disciplina = repository.findById(id);
 
-        if(equipamento.isEmpty()) {
+        if(disciplina.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Equipamento não encontrado");
         }
-        return mapper.toDto(equipamento.get());
+        return mapper.toDto(disciplina.get());
     }
 
-    public EquipamentoDTO salvar(EquipamentoDTO dto) {
+    public DisciplinaDTO salvar(DisciplinaDTO dto) {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
