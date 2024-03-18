@@ -22,21 +22,16 @@ public class DisciplinaService {
     private final DisciplinaMapper mapper;
 
     public List<DisciplinaDTO> buscarTodos() {
-        List<Disciplina> resultList = repository.findAll();
-
-        if(resultList.isEmpty()) {
-            return new ArrayList<>();
-        }
-        return mapper.toDto(resultList);
+        return mapper.toDto(repository.findAll());
     }
 
     public DisciplinaDTO buscar(Long id) {
-        Optional<Disciplina> disciplina = repository.findById(id);
+        return mapper.toDto(buscarPorid(id));
+    }
 
-        if(disciplina.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Equipamento não encontrado");
-        }
-        return mapper.toDto(disciplina.get());
+    private Disciplina buscarPorid(Long id) {
+        return repository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Equipamento não encontrado"));
     }
 
     public DisciplinaDTO salvar(DisciplinaDTO dto) {

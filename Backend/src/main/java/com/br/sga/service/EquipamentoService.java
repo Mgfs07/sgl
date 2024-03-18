@@ -23,21 +23,16 @@ public class EquipamentoService {
     private final EquipamentoMapper mapper;
 
     public List<EquipamentoDTO> buscarTodos() {
-        List<Equipamento> resultList = repository.findAll();
-
-        if(resultList.isEmpty()) {
-            return new ArrayList<>();
-        }
-        return mapper.toDto(resultList);
+        return mapper.toDto(repository.findAll());
     }
 
     public EquipamentoDTO buscar(Long id) {
-        Optional<Equipamento> equipamento = repository.findById(id);
+        return mapper.toDto(buscarPorid(id));
+    }
 
-        if(equipamento.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Equipamento não encontrado");
-        }
-        return mapper.toDto(equipamento.get());
+    private Equipamento buscarPorid(Long id) {
+        return repository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Equipamento não encontrado"));
     }
 
     public EquipamentoDTO salvar(EquipamentoDTO dto) {

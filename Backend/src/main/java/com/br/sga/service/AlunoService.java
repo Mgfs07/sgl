@@ -1,7 +1,5 @@
 package com.br.sga.service;
 
-import com.br.sga.ApplicationException.EmptyListException;
-import com.br.sga.ApplicationException.RecordNotFoundException;
 import com.br.sga.domain.Aluno;
 import com.br.sga.repository.AlunoRepository;
 import com.br.sga.service.dto.AlunoDTO;
@@ -24,34 +22,22 @@ public class AlunoService {
     private final AlunoMapper mapper;
 
     public List<AlunoDTO> buscarTodos() {
-        List<Aluno> resultList = repository.findAll();
-
-        if(resultList.isEmpty()) {
-            throw new EmptyListException();
-        }
-        return mapper.toDto(resultList);
+        return mapper.toDto(repository.findAll());
     }
 
     public AlunoDTO buscar(Long id) {
-        Optional<Aluno> aluno = repository.findById(id);
-
-        if(aluno.isEmpty()) {
-            throw new RecordNotFoundException(id);
-        }
-
-        return mapper.toDto(aluno.get());
+        return mapper.toDto(buscarPorId(id));
     }
 
+    private Aluno buscarPorId(Long id) {
+        return repository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Aluno não encontrado"));
+    }
     public AlunoDTO salvar(AlunoDTO dto) {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
-    public boolean deletar(Long id) {
-        if(!repository.existsById(id)) {
-            return false;
-        }
-
+    public void deletar(Long id) {
         repository.deleteById(id);
-        return true;
     }
 }

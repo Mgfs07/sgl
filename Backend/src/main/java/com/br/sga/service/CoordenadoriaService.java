@@ -1,6 +1,5 @@
 package com.br.sga.service;
 
-import com.br.sga.ApplicationException.RecordNotFoundException;
 import com.br.sga.domain.Coordenadoria;
 import com.br.sga.repository.CoordenadoriaRepository;
 import com.br.sga.service.dto.CoordenadoriaDTO;
@@ -31,7 +30,7 @@ public class CoordenadoriaService {
 
     private Coordenadoria buscarPorId(Long id) {
         return repository.findById(id).orElseThrow(() ->
-                new RecordNotFoundException(id));
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Coordenadoria não encontrada"));
     }
 
     public CoordenadoriaDTO salvar(CoordenadoriaDTO dto) {

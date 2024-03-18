@@ -42,10 +42,7 @@ public class AlunoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleter(@PathVariable("id") Long id) {
-        if(service.deletar(id)) {
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        service.deletar(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
