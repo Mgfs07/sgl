@@ -13,6 +13,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CoordenadoriaDTO implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String nome;
 }

@@ -15,10 +15,10 @@ import java.time.LocalTime;
 @NoArgsConstructor
 public class EventoDTO implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String descricao;
     private LocalTime horaInicio;
     private LocalTime horaFim;
     private LocalDate data;
-    private Integer idLocal;
+    private Long idLocal;
 }

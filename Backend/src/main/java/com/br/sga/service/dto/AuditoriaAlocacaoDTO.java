@@ -14,10 +14,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class AuditoriaAlocacaoDTO implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String acao;
     private LocalDate data;
-    private Integer idCoordenador;
-    private Integer idProfessor;
-    private Integer idAula;
+    private Long idCoordenador;
+    private Long idProfessor;
+    private Long idAula;
 }

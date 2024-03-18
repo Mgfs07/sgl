@@ -17,9 +17,9 @@ import java.io.Serializable;
 public class LocalEquipamentoPK implements Serializable {
 
     @Column(name = "id_local")
-    private Integer idLocal;
+    private Long idLocal;
 
     @Column(name = "id_equipamento")
-    private Integer idEquipamento;
+    private Long idEquipamento;
 
 }

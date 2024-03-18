@@ -13,6 +13,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class AlunoAulaDTO implements Serializable {
 
-    private Integer idAluno;
-    private Integer idAula;
+    private Long idAluno;
+    private Long idAula;
 }

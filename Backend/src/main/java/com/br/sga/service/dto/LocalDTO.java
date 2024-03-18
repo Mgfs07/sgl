@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class LocalDTO implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String nome;
-    private Integer quantidade;
+    private Long quantidade;
 }

@@ -21,7 +21,7 @@ import java.io.Serializable;
 public class Aluno implements Serializable {
 
     @Id
-    @Column(name = "matricula", nullable = false)
+    @Column(name = "matricula")
     private String matricula;
 
     @Column(name = "nome")

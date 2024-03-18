@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class ProfessorDTO implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String nome;
-    private Integer idCoordenadoria;
+    private Long idCoordenadoria;
 }

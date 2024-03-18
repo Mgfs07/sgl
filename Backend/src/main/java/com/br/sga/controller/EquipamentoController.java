@@ -2,6 +2,7 @@ package com.br.sga.controller;
 
 import com.br.sga.service.EquipamentoService;
 import com.br.sga.service.dto.EquipamentoDTO;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,25 +24,25 @@ public class EquipamentoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EquipamentoDTO> buscarPorId(@PathVariable("id") Integer id) {
+    public ResponseEntity<EquipamentoDTO> buscarPorId(@PathVariable("id") Long id) {
         EquipamentoDTO listagem = service.buscar(id);
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<EquipamentoDTO> salvar(@RequestBody EquipamentoDTO dto){
-        EquipamentoDTO pagamentoDTO = service.salvar(dto);
-        return new ResponseEntity<>(pagamentoDTO, HttpStatus.CREATED);
+    public ResponseEntity<EquipamentoDTO> salvar(@Valid @RequestBody EquipamentoDTO dto){
+        EquipamentoDTO equipamentoDTO = service.salvar(dto);
+        return new ResponseEntity<>(equipamentoDTO, HttpStatus.CREATED);
     }
 
     @PutMapping
     public ResponseEntity<EquipamentoDTO> atualizar(@RequestBody EquipamentoDTO dto){
-        EquipamentoDTO pagamentoDTO = service.salvar(dto);
-        return new ResponseEntity<>(pagamentoDTO, HttpStatus.CREATED);
+        EquipamentoDTO equipamentoDTO = service.salvar(dto);
+        return new ResponseEntity<>(equipamentoDTO, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable("id") Integer id ){
+    public ResponseEntity<Void> deletar(@PathVariable("id") Long id ){
         service.deletar(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

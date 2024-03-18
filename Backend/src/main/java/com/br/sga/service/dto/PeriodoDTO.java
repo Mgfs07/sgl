@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class PeriodoDTO implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String descricao;
     private LocalDate dataInicio;
     private LocalDate dataFim;

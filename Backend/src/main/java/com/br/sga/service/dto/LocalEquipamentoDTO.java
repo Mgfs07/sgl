@@ -13,6 +13,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class LocalEquipamentoDTO implements Serializable {
 
-    private Integer idLocal;
-    private Integer idEquipamento;
+    private Long idLocal;
+    private Long idEquipamento;
 }

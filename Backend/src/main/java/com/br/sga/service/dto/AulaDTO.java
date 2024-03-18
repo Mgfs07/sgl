@@ -14,15 +14,15 @@ import java.time.LocalTime;
 @NoArgsConstructor
 public class AulaDTO implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String nome;
     private LocalTime horaInicio;
     private LocalTime horaFim;
     private String turma;
-    private Integer idPeriodo;
-    private Integer idProfessor;
-    private Integer idDiaSemana;
-    private Integer idDisciplina;
-    private Integer idLocal;
+    private Long idPeriodo;
+    private Long idProfessor;
+    private Long idDiaSemana;
+    private Long idDisciplina;
+    private Long idLocal;
 
 }

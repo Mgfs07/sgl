@@ -24,20 +24,20 @@ public class CoordenadoriaService {
         return mapper.toDto(repository.findAll());
     }
 
-    public CoordenadoriaDTO buscar(Integer id) {
+    public CoordenadoriaDTO buscar(Long id) {
         return mapper.toDto(buscarPorId(id));
     }
 
-    private Coordenadoria buscarPorId(Integer id) {
+    private Coordenadoria buscarPorId(Long id) {
         return repository.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Coordenadoria não encontrado"));
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Coordenadoria não encontrada"));
     }
 
     public CoordenadoriaDTO salvar(CoordenadoriaDTO dto) {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
-    public void deletar(Integer id) {
+    public void deletar(Long id) {
         repository.deleteById(id);
     }
 }

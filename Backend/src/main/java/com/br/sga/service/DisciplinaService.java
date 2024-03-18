@@ -1,9 +1,9 @@
 package com.br.sga.service;
 
-import com.br.sga.domain.Equipamento;
-import com.br.sga.repository.EquipamentoRepository;
-import com.br.sga.service.dto.EquipamentoDTO;
-import com.br.sga.service.mapper.EquipamentoMapper;
+import com.br.sga.domain.Disciplina;
+import com.br.sga.repository.DisciplinaRepository;
+import com.br.sga.service.dto.DisciplinaDTO;
+import com.br.sga.service.mapper.DisciplinaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,25 +17,24 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class EquipamentoService {
+public class DisciplinaService {
+    private final DisciplinaRepository repository;
+    private final DisciplinaMapper mapper;
 
-    private final EquipamentoRepository repository;
-    private final EquipamentoMapper mapper;
-
-    public List<EquipamentoDTO> buscarTodos() {
+    public List<DisciplinaDTO> buscarTodos() {
         return mapper.toDto(repository.findAll());
     }
 
-    public EquipamentoDTO buscar(Long id) {
+    public DisciplinaDTO buscar(Long id) {
         return mapper.toDto(buscarPorid(id));
     }
 
-    private Equipamento buscarPorid(Long id) {
+    private Disciplina buscarPorid(Long id) {
         return repository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Equipamento não encontrado"));
     }
 
-    public EquipamentoDTO salvar(EquipamentoDTO dto) {
+    public DisciplinaDTO salvar(DisciplinaDTO dto) {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
