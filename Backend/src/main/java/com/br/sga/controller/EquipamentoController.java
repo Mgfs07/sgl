@@ -43,10 +43,7 @@ public class EquipamentoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable("id") Long id ){
-        if(service.deletar(id)) {
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        service.deletar(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

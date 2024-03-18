@@ -39,12 +39,7 @@ public class EquipamentoService {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
-    public boolean deletar(Long id) {
-        if(!repository.existsById(id)) {
-            return false;
-        }
-
+    public void deletar(Long id) {
         repository.deleteById(id);
-        return true;
     }
 }
