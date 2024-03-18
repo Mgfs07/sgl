@@ -23,7 +23,7 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AlunoDTO> buscarPorId(@PathVariable("id") Long id) {
+    public ResponseEntity<AlunoDTO> buscarPorId(@PathVariable("id") String id) {
         AlunoDTO listagem = service.buscar(id);
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }
@@ -41,7 +41,7 @@ public class AlunoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleter(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleter(@PathVariable("id") String id) {
         service.deletar(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,11 +23,11 @@ public class AlunoService {
         return mapper.toDto(repository.findAll());
     }
 
-    public AlunoDTO buscar(Long id) {
+    public AlunoDTO buscar(String id) {
         return mapper.toDto(buscarPorId(id));
     }
 
-    private Aluno buscarPorId(Long id) {
+    private Aluno buscarPorId(String id) {
         return repository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Aluno não encontrado"));
     }
@@ -37,7 +35,7 @@ public class AlunoService {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
-    public void deletar(Long id) {
+    public void deletar(String id) {
         repository.deleteById(id);
     }
 }

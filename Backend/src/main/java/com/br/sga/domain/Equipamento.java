@@ -25,11 +25,9 @@ public class Equipamento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_equipamento")
     @SequenceGenerator(name = "seq_equipamento", sequenceName = "seq_equipamento", allocationSize = 1)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome", nullable = false)
-    @NotNull
-    @NotBlank
+    @Column(name = "nome")
     private String nome;
 }
