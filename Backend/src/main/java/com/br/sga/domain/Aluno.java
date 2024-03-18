@@ -22,7 +22,7 @@ public class Aluno implements Serializable {
 
     @Id
     @Column(name = "matricula", nullable = false)
-    private Integer matricula;
+    private String matricula;
 
     @Column(name = "nome")
     private String nome;
