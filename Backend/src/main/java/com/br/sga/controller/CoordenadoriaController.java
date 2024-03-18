@@ -23,7 +23,7 @@ public class CoordenadoriaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CoordenadoriaDTO> buscarPorId(@PathVariable("id") Integer id) {
+    public ResponseEntity<CoordenadoriaDTO> buscarPorId(@PathVariable("id") Long id) {
         CoordenadoriaDTO listagem = service.buscar(id);
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }
@@ -41,7 +41,7 @@ public class CoordenadoriaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable("id") Integer id ){
+    public ResponseEntity<Void> deletar(@PathVariable("id") Long id ){
         service.deletar(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

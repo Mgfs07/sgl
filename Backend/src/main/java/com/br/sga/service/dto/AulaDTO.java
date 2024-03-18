@@ -1,17 +1,28 @@
 package com.br.sga.service.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.io.Serializable;
 import java.time.LocalTime;
 
-public record AulaDTO(
-     Long id,
-     String nome,
-     LocalTime horaInicio,
-     LocalTime horaFim,
-     String turma,
-     Long idPeriodo,
-     Long idProfessor,
-     Long idDiaSemana,
-     Long idDisciplina,
-     Long idLocal
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class AulaDTO implements Serializable {
 
-){}
+    private Long id;
+    private String nome;
+    private LocalTime horaInicio;
+    private LocalTime horaFim;
+    private String turma;
+    private Long idPeriodo;
+    private Long idProfessor;
+    private Long idDiaSemana;
+    private Long idDisciplina;
+    private Long idLocal;
+
+}

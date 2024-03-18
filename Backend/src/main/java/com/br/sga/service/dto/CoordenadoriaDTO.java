@@ -1,7 +1,18 @@
 package com.br.sga.service.dto;
 
-public record CoordenadoriaDTO (
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    Long id,
-    String nome
-){}
+import java.io.Serializable;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class CoordenadoriaDTO implements Serializable {
+
+    private Long id;
+    private String nome;
+}

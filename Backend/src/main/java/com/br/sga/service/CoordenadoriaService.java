@@ -1,5 +1,6 @@
 package com.br.sga.service;
 
+import com.br.sga.ApplicationException.RecordNotFoundException;
 import com.br.sga.domain.Coordenadoria;
 import com.br.sga.repository.CoordenadoriaRepository;
 import com.br.sga.service.dto.CoordenadoriaDTO;
@@ -24,20 +25,20 @@ public class CoordenadoriaService {
         return mapper.toDto(repository.findAll());
     }
 
-    public CoordenadoriaDTO buscar(Integer id) {
+    public CoordenadoriaDTO buscar(Long id) {
         return mapper.toDto(buscarPorId(id));
     }
 
-    private Coordenadoria buscarPorId(Integer id) {
+    private Coordenadoria buscarPorId(Long id) {
         return repository.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Coordenadoria não encontrado"));
+                new RecordNotFoundException(id));
     }
 
     public CoordenadoriaDTO salvar(CoordenadoriaDTO dto) {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
-    public void deletar(Integer id) {
+    public void deletar(Long id) {
         repository.deleteById(id);
     }
 }

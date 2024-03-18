@@ -1,7 +1,18 @@
 package com.br.sga.service.dto;
 
-public record LocalEquipamentoDTO (
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    Long idLocal,
-    Long idEquipamento
-){}
+import java.io.Serializable;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class LocalEquipamentoDTO implements Serializable {
+
+    private Long idLocal;
+    private Long idEquipamento;
+}

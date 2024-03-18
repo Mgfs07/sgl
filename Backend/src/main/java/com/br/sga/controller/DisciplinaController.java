@@ -30,7 +30,6 @@ public class DisciplinaController {
 
     @PostMapping
     public ResponseEntity<DisciplinaDTO> salvar(@Valid @RequestBody DisciplinaDTO dto) {
-        System.out.println(dto.nome());
         DisciplinaDTO disciplinaDTO = service.salvar(dto);
         return new ResponseEntity<>(disciplinaDTO, HttpStatus.CREATED);
     }

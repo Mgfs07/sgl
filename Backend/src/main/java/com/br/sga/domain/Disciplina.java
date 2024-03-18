@@ -25,7 +25,5 @@ public class Disciplina implements Serializable {
     private Long id;
 
     @Column(name = "nome", nullable = false)
-    @NotNull
-    @NotBlank
     private String nome;
 }

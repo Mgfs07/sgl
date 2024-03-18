@@ -2,13 +2,19 @@ package com.br.sga.service.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public record DisciplinaDTO (
-        Long id,
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class DisciplinaDTO {
+        Long id;
 
         @NotNull
         @NotBlank
-        String nome
-)
-{
+        String nome;
 }
