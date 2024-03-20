@@ -22,5 +22,7 @@
     <include file="db/changelog/202411031925_criando_tabela_auditoria_evento.xml"/>
     <include file="db/changelog/202411031927_criando_tabela_auditoria_alocacao.xml"/>
     <include file="db/changelog/202411031927_criando_tabela_auditoria_alocacao.xml"/>
+    <include file="db/changelog/202418031314_alterando_dado_coluna_aluno.xml"/>
+
 
 </databaseChangeLog>
