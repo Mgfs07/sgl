@@ -32,6 +32,6 @@ public class Local implements Serializable {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "quantidade", nullable = false)
-    private Long quantidade;
+    @Column(name = "capacidade", nullable = false)
+    private Long capacidade;
 }

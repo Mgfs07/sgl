@@ -15,4 +15,5 @@ public class LocalEquipamentoDTO implements Serializable {
 
     private Long idLocal;
     private Long idEquipamento;
+    private Integer quantidade;
 }
