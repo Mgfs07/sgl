@@ -15,7 +15,7 @@
 	<description>Sistema Gerenciador de Alocação</description>
 	<properties>
 		<java.version>17</java.version>
-		<mapstruct.version>1.4.2.Final</mapstruct.version>
+		<mapstruct.version>1.5.5.Final</mapstruct.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -129,7 +129,7 @@
 						<path>
 							<groupId>org.mapstruct</groupId>
 							<artifactId>mapstruct-processor</artifactId>
-							<version>1.4.2.Final</version>
+							<version>1.5.5.Final</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>

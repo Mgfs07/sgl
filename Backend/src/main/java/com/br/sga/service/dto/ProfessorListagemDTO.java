@@ -1,5 +1,6 @@
 package com.br.sga.service.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,9 +8,10 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class ProfessorDTO implements Serializable {
+@AllArgsConstructor
+public class ProfessorListagemDTO implements Serializable {
 
     private Long id;
     private String nome;
-    private Long idCoordenadoria;
+    private String nomeCoordenadoria;
 }
