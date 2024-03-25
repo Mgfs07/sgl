@@ -63,10 +63,12 @@ export class PeriodoFormComponent implements OnInit {
     }
 
     private renderizarDadosPeriodo() {
-        const periodoEncontrado = this.dialogConfig.data.periodo;
+        const periodoEncontrado: PeriodoModel = this.dialogConfig.data.periodo;
         if (!periodoEncontrado) {
             return;
         }
+        periodoEncontrado.dataInicio = new Date(periodoEncontrado.dataInicio)
+        periodoEncontrado.dataFim = new Date(periodoEncontrado.dataFim)
         this.form.patchValue(periodoEncontrado);
     }
 

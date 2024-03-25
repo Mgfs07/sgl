@@ -70,7 +70,7 @@ export class PeriodoComponent implements OnInit {
             this.ref = this.dialogService.open(PeriodoFormComponent,
                 {
                     header: 'Formulário Período',
-                    width: '35%',
+                    width: '18%',
                     data: {periodo: value, acao: acao}
                 });
             this.ref.onClose.subscribe((periodo) => {
