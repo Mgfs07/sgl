@@ -14,7 +14,7 @@ export class EquipamentoService extends AbstractService<EquipamentoModel, Equipa
     }
 
     override getEntity(): string {
-        return "equipamento";
+        return "equipamentos";
     }
 
 }
