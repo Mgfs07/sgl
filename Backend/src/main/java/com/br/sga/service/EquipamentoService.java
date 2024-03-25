@@ -2,6 +2,7 @@ package com.br.sga.service;
 
 import com.br.sga.domain.Equipamento;
 import com.br.sga.repository.EquipamentoRepository;
+import com.br.sga.service.dto.DropdownDTO;
 import com.br.sga.service.dto.EquipamentoDTO;
 import com.br.sga.service.mapper.EquipamentoMapper;
 import lombok.RequiredArgsConstructor;
@@ -10,9 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -41,5 +40,9 @@ public class EquipamentoService {
 
     public void deletar(Long id) {
         repository.deleteById(id);
+    }
+
+    public List<DropdownDTO> buscarDropdown() {
+        return repository.buscarDropdown();
     }
 }

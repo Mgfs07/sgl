@@ -1,6 +1,7 @@
 package com.br.sga.domain;
 
 import com.br.sga.domain.pk.LocalEquipamentoPK;
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -19,4 +20,7 @@ public class LocalEquipamento {
 
     @EmbeddedId
     private LocalEquipamentoPK id;
+
+    @Column(name = "quantidade", nullable = false)
+    private Integer quantidade;
 }

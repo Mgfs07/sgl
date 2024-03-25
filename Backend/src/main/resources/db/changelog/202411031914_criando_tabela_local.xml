@@ -14,7 +14,7 @@
             <column name="nome" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="quantidade" type="INT">
+            <column name="capacidade" type="INT">
                 <constraints nullable="false"/>
             </column>
         </createTable>

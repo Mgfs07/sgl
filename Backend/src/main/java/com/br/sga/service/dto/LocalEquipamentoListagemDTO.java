@@ -11,9 +11,10 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LocalDTO implements Serializable {
+public class LocalEquipamentoListagemDTO implements Serializable {
 
-    private Long id;
-    private String nome;
-    private Long capacidade;
+    private Long idLocal;
+    private Long idEquipamento;
+    private Integer quantidade;
+    private String nomeEquipamento;
 }

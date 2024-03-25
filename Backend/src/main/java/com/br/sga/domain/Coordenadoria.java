@@ -2,7 +2,6 @@ package com.br.sga.domain;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +12,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Table(name = "coordenadoria")
-@AllArgsConstructor
 @NoArgsConstructor
 public class Coordenadoria implements Serializable {
 
@@ -25,4 +23,8 @@ public class Coordenadoria implements Serializable {
 
     @Column(name = "nome")
     private String nome;
+
+    public Coordenadoria(Long id) {
+        this.id = id;
+    }
 }

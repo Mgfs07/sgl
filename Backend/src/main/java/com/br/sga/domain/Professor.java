@@ -1,17 +1,7 @@
 package com.br.sga.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Column;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -20,8 +10,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Table(name = "professor")
-@AllArgsConstructor
-@NoArgsConstructor
 public class Professor implements Serializable {
 
     @Id
@@ -33,8 +21,8 @@ public class Professor implements Serializable {
     @Column(name = "nome")
     private String nome;
 
-    @ManyToOne
-    @JoinColumn(name = "id_coordenadoria")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_coordenadoria", referencedColumnName = "id")
     private Coordenadoria coordenadoria;
 
 }
