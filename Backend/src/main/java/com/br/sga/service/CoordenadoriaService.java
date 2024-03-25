@@ -3,6 +3,7 @@ package com.br.sga.service;
 import com.br.sga.domain.Coordenadoria;
 import com.br.sga.repository.CoordenadoriaRepository;
 import com.br.sga.service.dto.CoordenadoriaDTO;
+import com.br.sga.service.dto.DropdownDTO;
 import com.br.sga.service.mapper.CoordenadoriaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -39,5 +40,9 @@ public class CoordenadoriaService {
 
     public void deletar(Long id) {
         repository.deleteById(id);
+    }
+
+    public List<DropdownDTO> buscarDropdown() {
+        return repository.buscarDropdown();
     }
 }

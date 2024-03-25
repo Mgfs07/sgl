@@ -20,6 +20,8 @@ import { AlunoFormComponent } from './aluno/aluno-form/aluno-form.component';
 import { PeriodoComponent } from './periodo/periodo.component';
 import { PeriodoFormComponent } from './periodo/periodo-form/periodo-form.component';
 import {SharedModule} from "../../shared/shared.module";
+import {ProfessorComponent} from "./professor/professor.component";
+import {ProfessorFormComponent} from "./professor/professor-form/professor-form.component";
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import {SharedModule} from "../../shared/shared.module";
     AlunoComponent,
     AlunoFormComponent,
     PeriodoComponent,
-    PeriodoFormComponent
+    PeriodoFormComponent,
+      ProfessorComponent,
+      ProfessorFormComponent
   ],
     imports: [
         CommonModule,

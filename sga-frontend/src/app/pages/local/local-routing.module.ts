@@ -5,13 +5,15 @@ import {DisciplinaComponent} from "./disciplina/disciplina.component";
 import {CoordenadoriaComponent} from "./coordenadoria/coordenadoria.component";
 import {AlunoComponent} from "./aluno/aluno.component";
 import {PeriodoComponent} from "./periodo/periodo.component";
+import {ProfessorComponent} from "./professor/professor.component";
 
 const routes: Routes = [
     {path: 'equipamentos', component: EquipamentoComponent},
     {path: 'disciplinas', component: DisciplinaComponent},
     {path: 'coordenadorias', component: CoordenadoriaComponent},
     {path: 'alunos', component: AlunoComponent},
-    {path: 'periodos', component: PeriodoComponent}];
+    {path: 'periodos', component: PeriodoComponent},
+    {path: 'professores', component: ProfessorComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

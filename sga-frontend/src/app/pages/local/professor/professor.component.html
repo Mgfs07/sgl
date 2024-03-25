@@ -1,0 +1,54 @@
+<div class="flex justify-content-center">
+    <h1> Professores Cadastrados </h1>
+</div>
+
+<div class="col-12 flex justify-content-start">
+    <div class="col-6">
+        <p-button label="Novo Professor" icon="pi pi-plus" iconPos="right" styleClass="button-save-new mr-2"
+                  (onClick)="novoProfessor()"></p-button>
+    </div>
+</div>
+
+<div class="card">
+    <p-table [columns]="cols" [value]="professores" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{ col.header }}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns">
+                    <ng-template [ngIf]="col.text">
+                        {{rowData[col.field] || '-'}}
+                    </ng-template>
+                    <ng-template [ngIf]="col.field == 'acoes'">
+                        <div class="flex justify-content-center p-0">
+                            <button
+                                pButton
+                                icon="pi pi-eye"
+                                class="button-action botao-secundario button-view sem-fundo flex align-items-center justify-content-center m-1"
+                                iconPos="left"
+                                (click)="handleAcao(rowData, 'visualizar')">
+                            </button>
+                            <button pButton
+                                    icon="pi pi-pencil"
+                                    class="button-action botao-secundario button-view sem-fundo flex align-items-center justify-content-center m-1"
+                                    iconPos="left"
+                                    (click)="handleAcao(rowData, 'editar')">
+                            </button>
+                            <button
+                                pButton
+                                icon="pi pi-trash"
+                                class="button-action botao-secundario button-view sem-fundo flex align-items-center justify-content-center m-1"
+                                (click)="excluirProfessor(rowData.id)">
+                            </button>
+                        </div>
+                    </ng-template>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
