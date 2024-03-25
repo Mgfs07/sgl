@@ -1,0 +1,44 @@
+<div class="card">
+    <form [formGroup]="form">
+        <div class="formgrid grid">
+            <div class="field col-12">
+                <label for="nome" class="block">Descrição*</label>
+                <input id="nome" type="text" pInputText class="w-full" formControlName="descricao"/>
+            </div>
+            <div class="field col-12">
+                <span class="item">
+                    <label class="campo-form block" for="inputDataInicio">Data Início</label>
+                    <p-calendar
+                        class="calendario"
+                        placeholder="DD/MM/AAAA"
+                        id="inputDataInicio"
+                        formControlName="dataInicio"
+                        dateFormat="dd/mm/yy"
+                        appendTo="body"
+                        [showIcon]="true"
+                    ></p-calendar>
+                </span>
+            </div>
+            <div class="field col-12">
+                <span class="item">
+                    <label class="campo-form block" for="inputDataFim">Data Fim</label>
+                    <p-calendar
+                        class="calendario"
+                        placeholder="DD/MM/AAAA"
+                        id="inputDataFim"
+                        formControlName="dataFim"
+                        dateFormat="dd/mm/yy"
+                        appendTo="body"
+                        [showIcon]="true"
+                    ></p-calendar>
+                </span>
+            </div>
+            <div class="col-12 flex justify-content-end mt-3">
+                <p-button label="Cancelar" styleClass="p-button-secondary mr-3" [disabled]="isVisualizar"
+                          (onClick)="fecharDialog()"></p-button>
+                <p-button label="Salvar" styleClass="button-save-new" [disabled]="isVisualizar || !form.valid"
+                          (onClick)="salvarPeriodo()"></p-button>
+            </div>
+        </div>
+    </form>
+</div>
