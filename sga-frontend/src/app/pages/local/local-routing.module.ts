@@ -5,9 +5,11 @@ import {DisciplinaComponent} from "./disciplina/disciplina.component";
 import {CoordenadoriaComponent} from "./coordenadoria/coordenadoria.component";
 import {AlunoComponent} from "./aluno/aluno.component";
 import {PeriodoComponent} from "./periodo/periodo.component";
+import {LocalComponent} from "./local/local.component";
 import {ProfessorComponent} from "./professor/professor.component";
 
 const routes: Routes = [
+    {path: '', component: LocalComponent},
     {path: 'equipamentos', component: EquipamentoComponent},
     {path: 'disciplinas', component: DisciplinaComponent},
     {path: 'coordenadorias', component: CoordenadoriaComponent},

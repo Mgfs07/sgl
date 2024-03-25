@@ -15,6 +15,7 @@ import {InputTextareaModule} from "primeng/inputtextarea";
 import {TabViewModule} from "primeng/tabview";
 import {AccordionModule} from "primeng/accordion";
 import {InputNumberModule} from "primeng/inputnumber";
+import {StepsModule} from "primeng/steps";
 
 export const PRIMENG_IMPORTS = [
     InputTextModule,
@@ -33,5 +34,6 @@ export const PRIMENG_IMPORTS = [
     InputTextareaModule,
     TabViewModule,
     AccordionModule,
-    InputNumberModule
+    InputNumberModule,
+    StepsModule
 ];

@@ -16,4 +16,5 @@ public class LocalDTO implements Serializable {
     private Long id;
     private String nome;
     private Long capacidade;
+
 }

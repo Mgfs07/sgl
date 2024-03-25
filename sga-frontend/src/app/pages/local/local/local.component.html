@@ -1,16 +1,16 @@
 <div class="flex justify-content-center">
-    <h1> Períodos Cadastrados </h1>
+    <h1> Locais Cadastrados </h1>
 </div>
 
 <div class="col-12 flex justify-content-start">
     <div class="col-6">
-        <p-button label="Novo Período" icon="pi pi-plus" iconPos="right" styleClass="button-save-new mr-2"
-                  (onClick)="novoPeriodo()"></p-button>
+        <p-button label="Novo Local" icon="pi pi-plus" iconPos="right" styleClass="button-save-new mr-2"
+                  (onClick)="novoLocal()"></p-button>
     </div>
 </div>
 
 <div class="card">
-    <p-table [columns]="cols" [value]="periodos" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table [columns]="cols" [value]="locais" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header" let-columns>
             <tr>
                 <th *ngFor="let col of columns">
@@ -43,7 +43,7 @@
                                 pButton
                                 icon="pi pi-trash"
                                 class="button-action botao-secundario button-view sem-fundo flex align-items-center justify-content-center m-1"
-                                (click)="excluirPeriodo(rowData.id)">
+                                (click)="excluirLocal(rowData.id)">
                             </button>
                         </div>
                     </ng-template>

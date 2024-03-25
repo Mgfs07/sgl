@@ -1,0 +1,75 @@
+<div class="card">
+
+    <form [formGroup]="form">
+        <div class="formgrid grid">
+            <div class="field col-12">
+                <label for="nome" class="block">Nome*</label>
+                <input id="nome" type="text" pInputText class="w-full" formControlName="nome"/>
+            </div>
+            <div class="field col-12">
+                <label for="capacidade" class="block">Capacidade*</label>
+                <input id="capacidade" type="text" pInputText class="w-full" formControlName="capacidade"/>
+            </div>
+            <div class="field col-12 ">
+                <p-button [disabled]="isVisualizar" label="Salvar Local" styleClass="button-save-new" (onClick)="salvarLocal()"></p-button>
+            </div>
+
+        </div>
+    </form>
+
+    <form [formGroup]="formEquipamento" *ngIf="this.form.get('id').value ">
+        <div class="formgrid grid" *ngIf="!isVisualizar">
+            <div class="field col-12">
+                <label class="campo-form block">Equipamentos Disponíveis</label>
+                <p-dropdown formControlName="idEquipamento" [options]="equipamentoOptions" placeholder="Selecione"
+                            appendTo="body" styleClass="w-full">
+                </p-dropdown>
+            </div>
+            <div class="field col-12">
+                <label class="campo-form block">Quantidade</label>
+                <p-inputNumber inputId="integeronly" formControlName="quantidade" [showButtons]="true"></p-inputNumber>
+            </div>
+            <div class="field col-12 ">
+                <p-button [disabled]="isVisualizar" label="Adicionar" styleClass="button-save-new" (onClick)="adicionarEquipamento()"></p-button>
+            </div>
+
+        </div>
+        <p-table [columns]="colsEquipamento" [value]="equipamentosList" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{ col.header }}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">
+                        <ng-template [ngIf]="col.text">
+                            {{rowData[col.field]}}
+                        </ng-template>
+                        <ng-template [ngIf]="col.field == 'acoes'">
+                            <div class="flex justify-content-center p-0">
+                                <button
+                                    [disabled]="isVisualizar"
+                                    pButton
+                                    icon="pi pi-trash"
+                                    class="button-action botao-secundario button-view sem-fundo flex align-items-center justify-content-center m-1"
+                                    (click)="excluirEquipamento(rowData)">
+                                </button>
+                            </div>
+                        </ng-template>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </form>
+
+
+
+</div>
+
+<div class="col-12 flex justify-content-end mt-3">
+    <p-button label="Finalizar" styleClass="button-save-new" [disabled]="isVisualizar || !form.valid"
+              (onClick)="fecharDialog()"></p-button>
+</div>

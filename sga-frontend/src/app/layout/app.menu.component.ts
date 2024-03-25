@@ -125,6 +125,11 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/local/periodos']
                     },
                     {
+                        label: 'Locais',
+                        icon: 'pi pi-fw pi-caret-right',
+                        routerLink: ['/local']
+                    },
+                    {
                         label: 'Professores',
                         icon: 'pi pi-fw pi-caret-right',
                         routerLink: ['/local/professores']
