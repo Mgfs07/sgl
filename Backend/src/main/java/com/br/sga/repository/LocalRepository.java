@@ -1,6 +1,7 @@
 package com.br.sga.repository;
 
 import com.br.sga.domain.Local;
+import com.br.sga.service.dto.DropdownDTO;
 import com.br.sga.service.dto.LocalListagemProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -23,5 +24,12 @@ public interface LocalRepository extends JpaRepository<Local, Long> {
             "   L.nome," +
             "   L.capacidade", nativeQuery = true)
     List<LocalListagemProjection> buscarTodos();
+
+    @Query("SELECT NEW com.br.sga.service.dto.DropdownDTO(" +
+            "l.id, " +
+            "l.nome) " +
+            "FROM " +
+            "   Local l")
+    List<DropdownDTO> buscarDropdown();
 
 }

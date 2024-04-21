@@ -115,6 +115,11 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/local/coordenadorias']
                     },
                     {
+                        label: 'Coordenadores',
+                        icon: 'pi pi-fw pi-caret-right',
+                        routerLink: ['/local/coordenadores']
+                    },
+                    {
                         label: 'Alunos',
                         icon: 'pi pi-fw pi-caret-right',
                         routerLink: ['/local/alunos']
@@ -133,6 +138,11 @@ export class AppMenuComponent implements OnInit {
                         label: 'Professores',
                         icon: 'pi pi-fw pi-caret-right',
                         routerLink: ['/local/professores']
+                    },
+                    {
+                        label: 'Eventos',
+                        icon: 'pi pi-fw pi-caret-right',
+                        routerLink: ['/local/eventos']
                     }
                 ]
             }

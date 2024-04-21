@@ -24,6 +24,10 @@ import {ProfessorComponent} from "./professor/professor.component";
 import {ProfessorFormComponent} from "./professor/professor-form/professor-form.component";
 import {LocalComponent} from './local/local.component';
 import {LocalFormComponent} from './local/local-form/local-form.component';
+import {CoordenadorComponent} from "../coordenador/coordenador.component";
+import {CoordenadorFormComponent} from "../coordenador/coordenador-form/coordenador-form.component";
+import { EventoComponent } from './evento/evento.component';
+import { EventoFormComponent } from './evento/evento-form/evento-form.component';
 
 
 @NgModule({
@@ -42,7 +46,11 @@ import {LocalFormComponent} from './local/local-form/local-form.component';
         LocalFormComponent,
         PeriodoFormComponent,
         ProfessorComponent,
-        ProfessorFormComponent
+        ProfessorFormComponent,
+        CoordenadorComponent,
+        CoordenadorFormComponent,
+        EventoComponent,
+        EventoFormComponent
     ],
     imports: [
         CommonModule,
