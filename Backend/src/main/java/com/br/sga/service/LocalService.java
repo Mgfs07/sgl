@@ -2,6 +2,7 @@ package com.br.sga.service;
 
 import com.br.sga.domain.Local;
 import com.br.sga.repository.LocalRepository;
+import com.br.sga.service.dto.DropdownDTO;
 import com.br.sga.service.dto.LocalDTO;
 import com.br.sga.service.dto.LocalListagemProjection;
 import com.br.sga.service.mapper.LocalMapper;
@@ -39,5 +40,9 @@ public class LocalService {
 
     public void deletar(Long id) {
         repository.deleteById(id);
+    }
+
+    public List<DropdownDTO> buscarDropdown() {
+        return repository.buscarDropdown();
     }
 }
