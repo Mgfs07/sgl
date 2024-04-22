@@ -16,8 +16,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class AlunoAulaPK implements Serializable {
 
-    @Column(name = "id_aluno")
-    private Long idAluno;
+    @Column(name = "matricula_aluno")
+    private String matriculaAluno;
 
     @Column(name = "id_aula")
     private Long idAula;
