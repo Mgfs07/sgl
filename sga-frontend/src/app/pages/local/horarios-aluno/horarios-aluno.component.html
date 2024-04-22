@@ -1,0 +1,35 @@
+<div class="flex justify-content-center">
+    <h1> Horários </h1>
+</div>
+
+<div class="col-8 flex align-content-start align-items-center">
+    <div class="col-3 flex">
+        <input type="text" (window:keypress)="onKey($event)" pInputText placeholder="Matrícula" id="matricula" [(ngModel)]="matricula" />
+    </div>
+
+    <div class="col-3 flex">
+        <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2"
+        (onClick)="buscarHorarios()"></p-button>
+    </div>
+</div>
+
+<div class="card">
+    <p-table [columns]="cols" [value]="horarios" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{ col.header }}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns">
+                    <ng-template [ngIf]="col.text">
+                        {{rowData[col.field] || '-'}}
+                    </ng-template>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

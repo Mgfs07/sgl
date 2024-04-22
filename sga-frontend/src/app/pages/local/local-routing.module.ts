@@ -9,6 +9,7 @@ import {LocalComponent} from "./local/local.component";
 import {ProfessorComponent} from "./professor/professor.component";
 import {CoordenadorComponent} from "../coordenador/coordenador.component";
 import {EventoComponent} from "./evento/evento.component";
+import {HorariosAlunoComponent} from "./horarios-aluno/horarios-aluno.component";
 
 const routes: Routes = [
     {path: '', component: LocalComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
     {path: 'alunos', component: AlunoComponent},
     {path: 'periodos', component: PeriodoComponent},
     {path: 'professores', component: ProfessorComponent},
-    {path: 'eventos', component: EventoComponent}];
+    {path: 'eventos', component: EventoComponent},
+    {path: 'horarios-aluno', component: HorariosAlunoComponent}]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

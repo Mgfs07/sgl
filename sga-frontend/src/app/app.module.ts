@@ -7,15 +7,12 @@ import {TableModule} from "primeng/table";
 import {SharedModule} from "./shared/shared.module";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {ReactiveFormsModule} from "@angular/forms";
-import { CoordenadorComponent } from './pages/coordenador/coordenador.component';
-import { CoordenadorFormComponent } from './pages/coordenador/coordenador-form/coordenador-form.component';
 import {DialogService} from "primeng/dynamicdialog";
+import { BlockUIModule } from 'ng-block-ui';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        // CoordenadorComponent,
-        // CoordenadorFormComponent,
+        AppComponent
     ],
     imports: [
         AppRoutingModule,
@@ -23,7 +20,8 @@ import {DialogService} from "primeng/dynamicdialog";
         TableModule,
         SharedModule,
         ReactiveFormsModule,
-        NgForOf
+        NgForOf,
+        BlockUIModule.forRoot()
     ],
     providers: [
         MessageService, ConfirmationService, DialogService,

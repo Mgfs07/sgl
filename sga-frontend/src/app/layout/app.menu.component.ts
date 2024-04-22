@@ -143,6 +143,11 @@ export class AppMenuComponent implements OnInit {
                         label: 'Eventos',
                         icon: 'pi pi-fw pi-caret-right',
                         routerLink: ['/local/eventos']
+                    },
+                    {
+                        label: 'Horários Aluno',
+                        icon: 'pi pi-fw pi-caret-right',
+                        routerLink: ['/local/horarios-aluno']
                     }
                 ]
             }
