@@ -1,6 +1,7 @@
 package com.br.sga.service;
 
 import com.br.sga.repository.AulaRepository;
+import com.br.sga.service.dto.AulaDTO2;
 import com.br.sga.service.dto.DropdownDTO;
 import com.br.sga.service.dto.HorariosAula;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,14 @@ public class AulaService {
 
     public List<DropdownDTO> buscarDropdown() {
         return repository.buscarDropdown();
+    }
+
+    public void salvarLocalAula(Long idLocal, Long idAula) {
+        repository.salvarLocalAula(idLocal, idAula);
+    }
+
+    public AulaDTO2 buscarAulaParaAlocacao(Long idAula) {
+        return repository.buscarAulaParaAlocacao(idAula);
     }
 
 
