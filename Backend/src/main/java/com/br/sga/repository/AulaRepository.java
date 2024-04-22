@@ -19,7 +19,7 @@ public interface AulaRepository extends JpaRepository<Aula, Long> {
 
     @Query("Select new com.br.sga.service.dto.HorariosAula(" +
             "a.id, " +
-            "a.nome," +
+            "a.disciplina.nome," +
             "a.professor.nome," +
             "a.horaInicio," +
             "a.horaFim," +
