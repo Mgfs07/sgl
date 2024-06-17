@@ -8,7 +8,7 @@ spring:
     name: sgaservice
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/sga
     username: sga
     password: sga
     hikari:
@@ -30,9 +30,10 @@ spring:
       hibernate.generate_statistics: false
   liquibase:
     change-log: classpath:/db/master.xml
-#        drop-first: true
+    drop-first: false
 server:
   port: 8080
   error:
     include-message: always
+    include-stacktrace: never
 
