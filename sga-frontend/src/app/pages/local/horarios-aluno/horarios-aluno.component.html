@@ -14,22 +14,41 @@
 </div>
 
 <div class="card">
-    <p-table [columns]="cols" [value]="horarios" [tableStyle]="{ 'min-width': '50rem' }">
-        <ng-template pTemplate="header" let-columns>
+    <table *ngFor="let horario of horarios1" class="grid-horario" rules="all">
+        <thead>
             <tr>
-                <th *ngFor="let col of columns">
-                    {{ col.header }}
+                <th colspan="7">
+                    <img class="logo-ifes" src="assets/layout/images/logo_ifes.png" />
+                </th>
+                <th colspan="10">
+                    <span>{{horario.ator}}</span><br />
+                    <span>{{horario.curso}}</span><br />
+                    <span>{{horario.aulas.length}} aulas semanais / {{horario.periodo}}</span>
                 </th>
             </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-rowData let-columns="columns">
             <tr>
-                <td *ngFor="let col of columns">
-                    <ng-template [ngIf]="col.text">
-                        {{rowData[col.field] || '-'}}
-                    </ng-template>
-                </td>
+                <th></th>
+                <th *ngFor="let turno of turnos" [attr.colspan]="turno.vagasAula.length">{{turno.nome}}</th>
             </tr>
-        </ng-template>
-    </p-table>
+            <tr>
+                <th class="coluna-grid-horario"></th>
+                <ng-container *ngFor="let turno of turnos">
+                    <th *ngFor="let vaga of turno.vagasAula" class="coluna-grid-horario">
+                        <span>{{vaga.horaInicio | date:"HH:mm"}}</span><br />
+                        <span>{{vaga.horaFim | date:"HH:mm"}}</span><br />
+                    </th>
+                </ng-container>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let diaSemana of obterDiasSemana(horario.aulas)">
+                <td class="celula-centralizada">{{diaSemana.getAbreviatura()}}</td>
+                <ng-container *ngFor="let turno of turnos">
+                    <td *ngFor="let vaga of turno.vagasAula" class="celula-centralizada">
+                        <app-aula-no-grid [aula]="obterAula(vaga, diaSemana.getId(), horario.aulas)"></app-aula-no-grid>
+                    </td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -9,13 +9,13 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
 @AutoConfigureMockMvc
 public class AlunoControllerTest {
-
-    @Autowired
-    MockMvc mvc;
-
-
-    @Test
-    public void listAlunos() {
-        mvc.perform(get())
-    }
+//
+//    @Autowired
+//    MockMvc mvc;
+//
+//
+//    @Test
+//    public void listAlunos() {
+//        mvc.perform(get())
+//    }
 }

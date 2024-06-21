@@ -7,7 +7,7 @@ import {CurrencyPipe, DatePipe, NgForOf, NgIf} from "@angular/common";
 
 @NgModule({
     declarations: [
-        StatusPipe
+        StatusPipe,
     ],
     imports: [
         PRIMENG_IMPORTS,

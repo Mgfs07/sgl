@@ -1,0 +1,26 @@
+.grid-horario {
+    --padding-celula: 0.25rem;
+    border: 1px solid black;
+
+    td, th {
+        padding: var(--padding-celula);
+    }
+
+    td {
+        --tamanho-texto-celula: 0.8rem;
+        font-size: 0.8rem;
+        min-height: calc(calc(var(--padding-celula) * 2) + calc(var(--tamanho-texto-celula) * 3));
+    }
+
+    .coluna-grid-horario {
+        width: calc(100% / 17);
+    }
+
+    .celula-centralizada {
+        text-align: center;
+    }
+}
+
+.logo-ifes {
+    width: 75%;
+}
