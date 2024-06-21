@@ -33,8 +33,9 @@ public class Aula implements Serializable {
     @Column(name = "hora_fim", nullable = false)
     private LocalTime horaFim;
 
-    @Column(name = "turma")
-    private String turma;
+    @ManyToOne
+    @JoinColumn(name = "id_turma")
+    private Turma turma;
 
     @ManyToOne
     @JoinColumn(name = "id_local")
@@ -45,7 +46,7 @@ public class Aula implements Serializable {
     private Periodo periodo;
 
     @ManyToOne
-    @JoinColumn(name = "id_professor", nullable = false)
+    @JoinColumn(name = "matricula_professor", nullable = false)
     private Professor professor;
 
     @ManyToOne

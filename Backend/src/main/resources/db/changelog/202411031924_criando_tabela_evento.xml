@@ -6,9 +6,9 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
 
-    <changeSet id="1710195637563-1" author="Matheus">
+    <changeSet id="1718845587018-1" author="basis-colatina">
         <createTable tableName="evento">
-            <column name="id" type="INT">
+            <column name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_evento"/>
             </column>
             <column name="descricao" type="VARCHAR(255)">
@@ -23,11 +23,14 @@
             <column name="data" type="DATE">
                 <constraints nullable="false"/>
             </column>
-            <column name="id_local" type="INT">
+            <column name="id_local" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="matricula_usuario_solicitante" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
         <addForeignKeyConstraint baseColumnNames="id_local" baseTableName="evento" constraintName="FK_EVENTO_ON_ID_LOCAL" referencedColumnNames="id" referencedTableName="local"/>
-        <createSequence sequenceName="seq_evento" startValue="1" incrementBy="1"/>
+        <addForeignKeyConstraint baseColumnNames="matricula_usuario_solicitante" baseTableName="evento" constraintName="FK_EVENTO_ON_MATRICULA_USUARIO_SOLICITANTE" referencedColumnNames="matricula" referencedTableName="usuario"/>
     </changeSet>
 </databaseChangeLog>

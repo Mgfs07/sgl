@@ -6,13 +6,18 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
 
-    <changeSet id="1710194917647-1" author="matheus">
-        <createTable tableName="aluno">
-            <column name="matricula" type="INT">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_aluno"/>
+    <changeSet id="1718845381004-1" author="basis-colatina">
+        <createTable tableName="usuario">
+            <column name="matricula" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_usuario"/>
             </column>
             <column name="nome" type="VARCHAR(255)"/>
-            <column name="cod_barra" type="VARCHAR(255)"/>
         </createTable>
+        <createTable tableName="aluno">
+            <column name="matricula" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_aluno"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="matricula" baseTableName="aluno" constraintName="FK_ALUNO_ON_MATRICULA" referencedColumnNames="matricula" referencedTableName="usuario"/>
     </changeSet>
 </databaseChangeLog>

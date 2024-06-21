@@ -6,7 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
 
-    <changeSet id="1711031355107-1" author="Matheus">
+    <changeSet id="1718861930925-1" author="basis-colatina">
         <createTable tableName="local_equipamento">
             <column name="quantidade" type="INT">
                 <constraints nullable="false"/>
@@ -18,5 +18,7 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_local_equipamento"/>
             </column>
         </createTable>
+        <addForeignKeyConstraint baseColumnNames="id_equipamento" baseTableName="local_equipamento" constraintName="FK_LOCAL_EQUIPAMENTO_ON_ID_EQUIPAMENTO" referencedColumnNames="id" referencedTableName="equipamento"/>
+        <addForeignKeyConstraint baseColumnNames="id_local" baseTableName="local_equipamento" constraintName="FK_LOCAL_EQUIPAMENTO_ON_ID_LOCAL" referencedColumnNames="id" referencedTableName="local"/>
     </changeSet>
 </databaseChangeLog>

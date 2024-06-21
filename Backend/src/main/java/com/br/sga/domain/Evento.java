@@ -48,4 +48,8 @@ public class Evento implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_local", nullable = false)
     private Local local;
+
+    @ManyToOne
+    @JoinColumn(name = "matricula_usuario_solicitante", nullable = false)
+    private Usuario usuarioSolicitante;
 }

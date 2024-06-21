@@ -35,9 +35,9 @@ public class AulaController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/{idAula}")
-    public ResponseEntity<AulaDTO2> buscarAulaParaAlocacao(@PathVariable Long idAula){
-        AulaDTO2 aulaDTO2 = service.buscarAulaParaAlocacao(idAula);
-        return new ResponseEntity<>(aulaDTO2, HttpStatus.OK);
-    }
+//    @GetMapping("/{idAula}")
+//    public ResponseEntity<AulaDTO2> buscarAulaParaAlocacao(@PathVariable Long idAula){
+//        AulaDTO2 aulaDTO2 = service.buscarAulaParaAlocacao(idAula);
+//        return new ResponseEntity<>(aulaDTO2, HttpStatus.OK);
+//    }
 }

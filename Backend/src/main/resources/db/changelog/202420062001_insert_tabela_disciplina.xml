@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+    <changeSet id="1710196275913-2" author="Matheus">
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="1"/>
+            <column name="nome" value="Administração da Produção e Logística"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="2"/>
+            <column name="nome" value="Laboratório de Engenharia de Software"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="3"/>
+            <column name="nome" value="Comércio Eletrônico"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="4"/>
+            <column name="nome" value="Projeto de Diplomação I"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="5"/>
+            <column name="nome" value="Gestão de Sistemas de Informação"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="6"/>
+            <column name="nome" value="Organização e Arquitetura de Computadores"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="7"/>
+            <column name="nome" value="Metodologia de Pesquisa"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="8"/>
+            <column name="nome" value="Lógica"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="9"/>
+            <column name="nome" value="Comunicação Empresarial"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="10"/>
+            <column name="nome" value="Programação 1"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="11"/>
+            <column name="nome" value="Fundamentos de Sistemas de Informação"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="12"/>
+            <column name="nome" value="Conforto Ambiental V"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="13"/>
+            <column name="nome" value="Preservação e Patrimônio"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="14"/>
+            <column name="nome" value="Construção de Edifícios II"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="15"/>
+            <column name="nome" value="Urbanismo III"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="16"/>
+            <column name="nome" value="Projeto de Arquitetura VI"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="17"/>
+            <column name="nome" value="Gestão da Produção e Operações"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="18"/>
+            <column name="nome" value="Gestão de Processos"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="19"/>
+            <column name="nome" value="Estado, Governo e Mercado"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="20"/>
+            <column name="nome" value="Legislação Social e Trabalhista"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="21"/>
+            <column name="nome" value="Marketing"/>
+        </insert>
+        <insert tableName="disciplina">
+            <column name="id" valueNumeric="22"/>
+            <column name="nome" value="Inglês para Negócios"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

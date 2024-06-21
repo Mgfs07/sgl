@@ -5,7 +5,12 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
-    <changeSet id="1710778669776-1" author="Matheus">
-        <modifyDataType tableName="aluno" columnName="matricula" newDataType="VARCHAR(15)"/>
+    <changeSet id="1718930802594-1" author="basis-colatina">
+        <createTable tableName="turma">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_turma"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)"/>
+        </createTable>
     </changeSet>
 </databaseChangeLog>

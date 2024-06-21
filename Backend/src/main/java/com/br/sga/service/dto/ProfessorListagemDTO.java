@@ -11,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class ProfessorListagemDTO implements Serializable {
 
-    private Long id;
+    private String matricula;
     private String nome;
     private String nomeCoordenadoria;
 }

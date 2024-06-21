@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+    <changeSet id="1710196275913-4" author="Matheus">
+        <insert tableName="professor">
+            <column name="matricula" value="1"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="2"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="3"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="4"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="5"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="6"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="7"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="8"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="9"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="10"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="11"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="12"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="13"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="14"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="15"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="16"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="17"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="18"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="19"/>
+        </insert>
+        <insert tableName="professor">
+            <column name="matricula" value="20"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

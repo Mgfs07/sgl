@@ -21,8 +21,14 @@
     <include file="db/changelog/202411031924_criando_tabela_evento.xml"/>
     <include file="db/changelog/202411031925_criando_tabela_auditoria_evento.xml"/>
     <include file="db/changelog/202411031927_criando_tabela_auditoria_alocacao.xml"/>
-    <include file="db/changelog/202418031314_alterando_dado_coluna_aluno.xml"/>
-    <include file="db/changelog/202421042333_alterando_dado_coluna_aluno_aula.xml"/>
-
+<!--    <include file="db/changelog/202420062001_insert_tabela_disciplina.xml"/>-->
+<!--    <include file="db/changelog/202420062019_insert_usuario.xml"/>-->
+<!--    <include file="db/changelog/202420062021_insert_professor.xml"/>-->
+<!--    <include file="db/changelog/202420062022_insert_aluno.xml"/>-->
+<!--    <include file="db/changelog/202420062024_insert_periodo.xml"/>-->
+<!--    <include file="db/changelog/202420062034_insert_aulas.xml"/>-->
+<!--    <include file="db/changelog/202420062057_insert_aluno_aula.xml"/>-->
+    <include file="db/changelog/202420062145_criando_tabela_turma.xml"/>
+    <include file="db/changelog/202420062147_alterando_dado_tabela_aula.xml"/>
 
 </databaseChangeLog>

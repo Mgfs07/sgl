@@ -31,12 +31,12 @@ public class AuditoriaEvento implements Serializable {
     private LocalDate data = LocalDate.now();
 
     @ManyToOne
-    @JoinColumn(name = "id_coordenador")
-    private Coordenador coordenador;
+    @JoinColumn(name = "matricula_usuario_solicitante")
+    private Usuario usuarioSolicitante;
 
     @ManyToOne
-    @JoinColumn(name = "id_professor")
-    private Professor professor;
+    @JoinColumn(name = "matricula_usuario_logado")
+    private Usuario usuarioLogado;
 
     @ManyToOne
     @JoinColumn(name = "id_evento", nullable = false)

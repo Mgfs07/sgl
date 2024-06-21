@@ -6,13 +6,12 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
 
-    <changeSet id="1710194958287-1" author="Matheus">
+    <changeSet id="1718845283868-1" author="basis-colatina">
         <createTable tableName="coordenador">
-            <column name="id" type="INT">
+            <column name="matricula" type="VARCHAR(255)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_coordenador"/>
             </column>
-            <column name="nome" type="VARCHAR(255)"/>
         </createTable>
-        <createSequence sequenceName="seq_coordenador" startValue="1" incrementBy="1"/>
+        <addForeignKeyConstraint baseColumnNames="matricula" baseTableName="coordenador" constraintName="FK_COORDENADOR_ON_MATRICULA" referencedColumnNames="matricula" referencedTableName="usuario"/>
     </changeSet>
 </databaseChangeLog>
