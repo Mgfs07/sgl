@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+    <changeSet id="1710196275913-5" author="Matheus">
+        <insert tableName="aluno">
+            <column name="matricula" value="2020122760323"/>
+        </insert>
+        <insert tableName="aluno">
+            <column name="matricula" value="2022122760320"/>
+        </insert>
+        <insert tableName="aluno">
+            <column name="matricula" value="20201baru0112"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

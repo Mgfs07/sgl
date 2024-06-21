@@ -5,13 +5,13 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
-    <changeSet id="1710194777148-1" author="matheus">
+
+    <changeSet id="1718861862680-1" author="basis-colatina">
         <createTable tableName="equipamento">
-            <column name="id" type="INT">
+            <column name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_equipamento"/>
             </column>
             <column name="nome" type="VARCHAR(255)"/>
         </createTable>
-        <createSequence sequenceName="seq_equipamento" startValue="1" incrementBy="1"/>
     </changeSet>
 </databaseChangeLog>

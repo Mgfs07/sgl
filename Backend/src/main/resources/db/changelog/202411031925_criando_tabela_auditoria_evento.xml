@@ -6,24 +6,23 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
 
-    <changeSet id="1710195742662-1" author="Matheus">
+    <changeSet id="1718845651001-1" author="basis-colatina">
         <createTable tableName="auditoria_evento">
-            <column name="id" type="INT">
+            <column name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_auditoria_evento"/>
             </column>
             <column name="acao" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="data" type="DATE"/>
-            <column name="id_coordenador" type="INT"/>
-            <column name="id_professor" type="INT"/>
-            <column name="id_evento" type="INT">
+            <column name="matricula_usuario_solicitante" type="VARCHAR(255)"/>
+            <column name="matricula_usuario_logado" type="VARCHAR(255)"/>
+            <column name="id_evento" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addForeignKeyConstraint baseColumnNames="id_coordenador" baseTableName="auditoria_evento" constraintName="FK_AUDITORIA_EVENTO_ON_ID_COORDENADOR" referencedColumnNames="id" referencedTableName="coordenador"/>
         <addForeignKeyConstraint baseColumnNames="id_evento" baseTableName="auditoria_evento" constraintName="FK_AUDITORIA_EVENTO_ON_ID_EVENTO" referencedColumnNames="id" referencedTableName="evento"/>
-        <addForeignKeyConstraint baseColumnNames="id_professor" baseTableName="auditoria_evento" constraintName="FK_AUDITORIA_EVENTO_ON_ID_PROFESSOR" referencedColumnNames="id" referencedTableName="professor"/>
-        <createSequence sequenceName="seq_auditoria_evento" startValue="1" incrementBy="1"/>
+        <addForeignKeyConstraint baseColumnNames="matricula_usuario_logado" baseTableName="auditoria_evento" constraintName="FK_AUDITORIA_EVENTO_ON_MATRICULA_USUARIO_LOGADO" referencedColumnNames="matricula" referencedTableName="usuario"/>
+        <addForeignKeyConstraint baseColumnNames="matricula_usuario_solicitante" baseTableName="auditoria_evento" constraintName="FK_AUDITORIA_EVENTO_ON_MATRICULA_USUARIO_SOLICITANTE" referencedColumnNames="matricula" referencedTableName="usuario"/>
     </changeSet>
 </databaseChangeLog>

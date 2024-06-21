@@ -5,7 +5,12 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
-    <changeSet id="1710778669776-1" author="Matheus">
-        <modifyDataType tableName="aluno" columnName="matricula" newDataType="VARCHAR(15)"/>
+    <changeSet id="1710196275913-6" author="Matheus">
+        <insert tableName="periodo">
+            <column name="id" valueNumeric="1"/>
+            <column name="descricao" value="2024/1"/>
+            <column name="data_inicio" valueDate="2024-02-03"/>
+            <column name="data_fim" valueDate="2024-07-30"/>
+        </insert>
     </changeSet>
 </databaseChangeLog>

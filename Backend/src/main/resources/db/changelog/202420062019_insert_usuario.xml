@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+    <changeSet id="1710196275913-3" author="Matheus">
+        <insert tableName="usuario">
+            <column name="matricula" value="1"/>
+            <column name="nome" value="Agostinho VLC"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="2"/>
+            <column name="nome" value="Alexandre CA"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="3"/>
+            <column name="nome" value="Aline VS"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="4"/>
+            <column name="nome" value="Cláudia GB"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="5"/>
+            <column name="nome" value="Danielle BCC"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="6"/>
+            <column name="nome" value="David PD"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="7"/>
+            <column name="nome" value="Diego RM"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="8"/>
+            <column name="nome" value="Eduardo MAA"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="9"/>
+            <column name="nome" value="Igor CP"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="10"/>
+            <column name="nome" value="Jean EG"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="11"/>
+            <column name="nome" value="João RSM"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="12"/>
+            <column name="nome" value="Regina CV"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="13"/>
+            <column name="nome" value="Renilson LT"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="14"/>
+            <column name="nome" value="Ricardo TS"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="15"/>
+            <column name="nome" value="Sulyana CMSI"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="16"/>
+            <column name="nome" value="Thereza CFP"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="17"/>
+            <column name="nome" value="Thiago CS"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="18"/>
+            <column name="nome" value="Vanderson JIS"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="19"/>
+            <column name="nome" value="Vivian A"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="20"/>
+            <column name="nome" value="Viviane ZBG"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="2020122760323"/>
+            <column name="nome" value="Matheus G"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="2022122760320"/>
+            <column name="nome" value="Thais Ferreira Passos"/>
+        </insert>
+        <insert tableName="usuario">
+            <column name="matricula" value="20201baru0112"/>
+            <column name="nome" value="Victoria Queiroz Almeida Riani"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

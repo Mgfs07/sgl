@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+    <changeSet id="1710196275913-4" author="Você">
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2020122760323"/>
+            <column name="id_aula" valueNumeric="5"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2020122760323"/>
+            <column name="id_aula" valueNumeric="6"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2020122760323"/>
+            <column name="id_aula" valueNumeric="7"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2020122760323"/>
+            <column name="id_aula" valueNumeric="8"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2020122760323"/>
+            <column name="id_aula" valueNumeric="13"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2020122760323"/>
+            <column name="id_aula" valueNumeric="14"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2020122760323"/>
+            <column name="id_aula" valueNumeric="15"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2020122760323"/>
+            <column name="id_aula" valueNumeric="16"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2020122760323"/>
+            <column name="id_aula" valueNumeric="21"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2020122760323"/>
+            <column name="id_aula" valueNumeric="22"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2020122760323"/>
+            <column name="id_aula" valueNumeric="23"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2020122760323"/>
+            <column name="id_aula" valueNumeric="24"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="43"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="44"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="45"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="46"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="47"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="48"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="49"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="50"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="51"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="52"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="53"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="54"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="55"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="56"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="57"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="58"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="59"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="60"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="61"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="62"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="63"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="64"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="20201baru0112"/>
+            <column name="id_aula" valueNumeric="65"/>
+        </insert>
+
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="66"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="67"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="68"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="69"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="70"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="71"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="72"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="73"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="74"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="75"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="76"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="77"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="78"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="79"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="80"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="81"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="82"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="83"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="84"/>
+        </insert>
+        <insert tableName="aluno_aula">
+            <column name="matricula_aluno" value="2022122760320"/>
+            <column name="id_aula" valueNumeric="85"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

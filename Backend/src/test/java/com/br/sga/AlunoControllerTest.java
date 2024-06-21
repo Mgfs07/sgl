@@ -14,8 +14,8 @@ public class AlunoControllerTest {
     MockMvc mvc;
 
 
-    @Test
-    public void listAlunos() {
-        mvc.perform(get())
-    }
+//    @Test
+//    public void listAlunos() {
+//        mvc.perform(get())
+//    }
 }

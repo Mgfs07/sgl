@@ -31,12 +31,8 @@ public class AuditoriaAlocacao implements Serializable {
     private LocalDate data;
 
     @ManyToOne
-    @JoinColumn(name = "id_coordenador")
-    private Coordenador coordenador;
-
-    @ManyToOne
-    @JoinColumn(name = "id_professor")
-    private Professor professor;
+    @JoinColumn(name = "matricula_usuario_logado")
+    private Usuario usuarioLogado;
 
     @ManyToOne
     @JoinColumn(name = "id_aula", nullable = false)

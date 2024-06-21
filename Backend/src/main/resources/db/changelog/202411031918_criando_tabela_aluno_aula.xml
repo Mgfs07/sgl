@@ -6,14 +6,16 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
 
-    <changeSet id="1710195458011-1" author="Matheus">
+    <changeSet id="1718861967797-1" author="basis-colatina">
         <createTable tableName="aluno_aula">
-            <column name="id_aluno" type="INT">
+            <column name="matricula_aluno" type="VARCHAR(255)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_aluno_aula"/>
             </column>
-            <column name="id_aula" type="INT">
+            <column name="id_aula" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_aluno_aula"/>
             </column>
         </createTable>
+        <addForeignKeyConstraint baseColumnNames="id_aula" baseTableName="aluno_aula" constraintName="FK_ALUNO_AULA_ON_ID_AULA" referencedColumnNames="id" referencedTableName="aula"/>
+        <addForeignKeyConstraint baseColumnNames="matricula_aluno" baseTableName="aluno_aula" constraintName="FK_ALUNO_AULA_ON_MATRICULA_ALUNO" referencedColumnNames="matricula" referencedTableName="aluno"/>
     </changeSet>
 </databaseChangeLog>
