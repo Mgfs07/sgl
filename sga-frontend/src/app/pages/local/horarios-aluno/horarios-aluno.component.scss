@@ -1,15 +1,20 @@
 .grid-horario {
     --padding-celula: 0.25rem;
+    --tamanho-texto-celula: 0.8rem;
     border: 1px solid black;
+    margin-bottom: 1rem;
 
     td, th {
         padding: var(--padding-celula);
     }
 
     td {
-        --tamanho-texto-celula: 0.8rem;
-        font-size: 0.8rem;
-        min-height: calc(calc(var(--padding-celula) * 2) + calc(var(--tamanho-texto-celula) * 3));
+        font-size: var(--tamanho-texto-celula);
+    }
+
+    tr.linha-aulas {
+        height: calc(calc(calc(var(--padding-celula) * 2) + calc(var(--tamanho-texto-celula) * 3)) * 1.5);
+        min-height: calc(calc(calc(var(--padding-celula) * 2) + calc(var(--tamanho-texto-celula) * 3)) * 1.5);
     }
 
     .coluna-grid-horario {

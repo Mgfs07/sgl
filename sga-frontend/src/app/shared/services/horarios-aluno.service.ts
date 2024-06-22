@@ -23,7 +23,7 @@ export class HorariosAlunoService extends AbstractService<HorariosAlunoModel, Ho
     }
 
     buscarHorarios(): Observable<HorarioModel[]> {
-        return this.http.get<HorarioModel[]>(this.resourceUrl + '/horarios');
+        return this.http.get<HorarioModel[]>('/api/horarios');
     }
 
 }

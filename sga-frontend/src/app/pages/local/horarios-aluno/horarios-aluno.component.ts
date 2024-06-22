@@ -39,6 +39,16 @@ export class HorariosAlunoComponent {
 
     ngOnInit() {
         this.construirColunasListagem();
+        this.service.buscarHorarios().subscribe((horarios: HorarioModel[]) => {
+            horarios.forEach((horario: HorarioModel) => {
+                horario.aulas.forEach((aula: AulaModel) => {
+                    aula.horaInicio = new Date('1970-01-01T' + aula.horaInicio);
+                    aula.horaFim = new Date('1970-01-01T' + aula.horaFim);
+                    aula.local = 'LAB9'
+                });
+            });
+            this.horarios1 = horarios;
+        });
     }
 
     private construirColunasListagem() {
@@ -78,6 +88,14 @@ export class HorariosAlunoComponent {
 
     public obterAula(vaga: VagaAula, diaSemana: number, aulas: AulaModel[]): AulaModel | undefined {
         return aulas.find((aula: AulaModel) => aula.horaInicio.getTime() == vaga.horaInicio.getTime() && diaSemana == aula.diaSemana);
+    }
+
+    public obterLegenda(horario: HorarioModel): string[] {
+        let legenda: Map<string, string> = new Map();
+        let itensLegenda: string[] = [];
+        horario.aulas.forEach((aula: AulaModel) => legenda.set(aula.nomeAula, aula.nomeCompletoDisciplina));
+        legenda.forEach((disciplina: string, abreviatura: string) => itensLegenda.push(abreviatura + ': ' + disciplina));
+        return itensLegenda;
     }
 
     private aulaNoSabado(aulas: AulaModel[]): boolean {
