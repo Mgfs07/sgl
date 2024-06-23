@@ -12,17 +12,13 @@ import java.time.LocalTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AulaDTO implements Serializable {
+public class AulaListDTO implements Serializable {
 
     private Long id;
     private String nome;
     private LocalTime horaInicio;
     private LocalTime horaFim;
-    private String turma;
-    private Long idPeriodo;
-    private Long idProfessor;
-    private Long idDiaSemana;
-    private Long idDisciplina;
-    private Long idLocal;
+    private String professor;
+    private String local;
 
 }

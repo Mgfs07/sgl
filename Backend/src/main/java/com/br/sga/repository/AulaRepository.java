@@ -148,19 +148,16 @@ public interface AulaRepository extends JpaRepository<Aula, Long> {
     @Query("UPDATE Aula SET local.id = :idLocal WHERE id = :idAula")
     void salvarLocalAula(Long idLocal, Long idAula);
 
-//    @Query("select new com.br.sga.service.dto.AulaDTO2( " +
-//            "a.id, " +
-//            "a.horaInicio, " +
-//            "a.horaFim, " +
-//            "a.turma, " +
-//            "a.periodo.descricao, " +
-//            "a.diaSemana.nome, " +
-//            "a.local.id, " +
-//            "l.nome" +
-//            ") From " +
-//            "       Aula a " +
-//            "       left join a.local l" +
-//            " Where " +
-//            "       a.id = :idAula")
-//    AulaDTO2 buscarAulaParaAlocacao(Long idAula);
+    @Query("select new com.br.sga.service.dto.AulaListDTO( " +
+            "a.id, " +
+            "a.disciplina.nome, " +
+            "a.horaInicio, " +
+            "a.horaFim, " +
+            "a.professor.nome, " +
+            "l.nome " +
+            ") From " +
+            "       Aula a " +
+            "       left join a.local l" +
+            " Order by a.disciplina.id ")
+    List<AulaListDTO> buscarAulasParaAlocacao();
 }

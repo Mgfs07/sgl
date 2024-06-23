@@ -72,6 +72,10 @@ public class AulaService {
         repository.salvarLocalAula(idLocal, idAula);
     }
 
+    public List<AulaListDTO> buscarAulasParaAlocacao() {
+        return repository.buscarAulasParaAlocacao();
+    }
+
 
 
 }
