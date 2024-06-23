@@ -23,4 +23,8 @@ export class LocalService extends AbstractService<LocalModel, LocalListModel> {
         return this.http.get<SelectItem[]>(this.resourceUrl + '/dropdown')
     }
 
+    buscarDropdownLocalAlocacao(idAula: number): Observable<SelectItem[]> {
+        return this.http.get<SelectItem[]>(this.resourceUrl + '/dropdown/' + idAula)
+    }
+
 }

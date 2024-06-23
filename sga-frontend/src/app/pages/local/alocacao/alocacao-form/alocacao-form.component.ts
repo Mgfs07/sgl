@@ -6,7 +6,9 @@ import {EventoService} from "../../../../shared/services/evento.service";
 import {MessageService} from "primeng/api";
 import {DialogService, DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
 import {LocalService} from "../../../../shared/services/local.service";
-import {AulaAlocacaoListModel} from "../../../../shared/models/aula-alocacao-list.model";
+import {AulaAlocacaoModel} from "../../../../shared/models/aula-alocacao.model";
+import {AlocacaoLocalAulaModel} from "../../../../shared/models/alocacao-local-aula.model";
+import {AulaService} from "../../../../shared/services/aula.service";
 
 @Component({
   selector: 'app-alocacao-form',
@@ -30,17 +32,17 @@ export class AlocacaoFormComponent implements OnInit {
         public dialogService: DialogService,
         private dialogConfig: DynamicDialogConfig,
         private localService: LocalService,
-        public ref: DynamicDialogRef) {
+        public ref: DynamicDialogRef,
+        private aulaService: AulaService) {
         this.definirFormulario();
     }
 
     ngOnInit() {
         this.verificarAcao();
-        this.buscarLocais();
     }
 
-    fecharDialog(eventoSalvo?: EventoModel) {
-        this.ref.close(eventoSalvo);
+    fecharDialog(alocacaoSalva?: AlocacaoLocalAulaModel) {
+        this.ref.close(alocacaoSalva);
     }
 
     onKey(event: any) {
@@ -48,32 +50,38 @@ export class AlocacaoFormComponent implements OnInit {
     }
 
     alocarAula() {
-        const local = this.form.getRawValue();
+        const idLocal: number = this.form.get('idLocal').value;
+        const idAula: number = this.dialogConfig.data.idAula;
+        const alocacaoLocalAula: AlocacaoLocalAulaModel = new AlocacaoLocalAulaModel(idLocal, idAula);
+
+        this.aulaService.alocarAula(alocacaoLocalAula)
+            .subscribe(() => this.fecharDialog(alocacaoLocalAula) )
+
     }
 
     private verificarAcao() {
-        if (this.dialogConfig.data.acao == 'visualizar') {
-            this.form.disable();
-            this.isVisualizar = true;
-        }
-        if (this.dialogConfig.data.acao == 'editar') {
-            this.form.enable();
-            this.isEdit = true;
-        }
         this.renderizarDadosAula();
     }
 
     private definirFormulario() {
         this.form = this.fb.group({
+            id: [{value: null, disabled: true}],
+            disciplina: [{value: null, disabled: true}],
+            horaInicio: [{value: null, disabled: true}],
+            horaFim: [{value: null, disabled: true}],
+            idLocal: [null],
+            professor: [{value: null, disabled: true}],
+            diaSemana: [{value: null, disabled: true}]
         });
     }
 
-    private buscarLocais() {
-        this.localService.buscarDropdownLocais().subscribe(value => this.locaisOptions = value)
+    private buscarLocais(idLocal: number) {
+        this.localService.buscarDropdownLocalAlocacao(idLocal).subscribe(value => this.locaisOptions = value)
     }
 
     private renderizarDadosAula() {
-        const aulaEncontrada: AulaAlocacaoListModel = this.dialogConfig.data.aula;
+        this.buscarLocais(this.dialogConfig.data.idAula)
+        const aulaEncontrada: AulaAlocacaoModel = this.dialogConfig.data.aula;
         if (!aulaEncontrada) {
             return;
         }

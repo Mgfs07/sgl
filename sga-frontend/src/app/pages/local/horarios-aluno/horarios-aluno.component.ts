@@ -54,7 +54,6 @@ export class HorariosAlunoComponent {
                 horario.aulas.forEach((aula: AulaModel) => {
                     aula.horaInicio = new Date('1970-01-01T' + aula.horaInicio);
                     aula.horaFim = new Date('1970-01-01T' + aula.horaFim);
-                    aula.local = 'LAB9'
                 });
             });
             this.horarios1 = horarios;

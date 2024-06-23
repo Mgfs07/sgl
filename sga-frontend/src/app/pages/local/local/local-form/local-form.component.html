@@ -37,7 +37,7 @@
         <p-table [columns]="colsEquipamento" [value]="equipamentosList" [tableStyle]="{ 'min-width': '50rem' }">
             <ng-template pTemplate="header" let-columns>
                 <tr>
-                    <th *ngFor="let col of columns">
+                    <th *ngFor="let col of columns" class="centralizado">
                         {{ col.header }}
                     </th>
                 </tr>

@@ -4,15 +4,40 @@
 
             <div class="field col-12">
                 <label class="block">Locais Disponíveis</label>
-                <p-dropdown formControlName="idLocal" [options]="locaisOptions" placeholder="Selecione o local do evento"
+                <p-dropdown formControlName="idLocal" [options]="locaisOptions" placeholder="Selecione"
                             appendTo="body" styleClass="w-full">
                 </p-dropdown>
+            </div>
+
+            <div class="field col-12">
+                <label for="disciplina" class="block">Disciplina</label>
+                <input id="disciplina" type="text" pInputText class="w-full" formControlName="disciplina"/>
+            </div>
+
+            <div class="field col-12">
+                <label for="horaInicio" class="block">Hora Início</label>
+                <input id="horaInicio" type="text" pInputText class="w-full" formControlName="horaInicio"/>
+            </div>
+
+            <div class="field col-12">
+                <label for="horaFim" class="block">Hora Fim</label>
+                <input id="horaFim" type="text" pInputText class="w-full" formControlName="horaFim"/>
+            </div>
+
+            <div class="field col-12">
+                <label for="professor" class="block">Professor</label>
+                <input id="professor" type="text" pInputText class="w-full" formControlName="professor"/>
+            </div>
+
+            <div class="field col-12">
+                <label for="diaSemana" class="block">Dia da Semana</label>
+                <input id="diaSemana" type="text" pInputText class="w-full" formControlName="diaSemana"/>
             </div>
 
             <div class="col-12 flex justify-content-end mt-3">
                 <p-button label="Cancelar" styleClass="p-button-secondary mr-3" [disabled]="isVisualizar"
                           (onClick)="fecharDialog()"></p-button>
-                <p-button label="Salvar" styleClass="button-save-new"
+                <p-button label="Alocar" styleClass="button-save-new"
                           (onClick)="alocarAula()"></p-button>
             </div>
         </div>

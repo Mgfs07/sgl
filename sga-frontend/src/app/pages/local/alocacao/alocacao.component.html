@@ -2,8 +2,20 @@
     <h1> Aulas Disponíveis </h1>
 </div>
 
+<div class="col-8 flex align-content-start align-items-center">
+    <div class="field col-3">
+        <label class="block" for="dropProfessor">Disciplinas</label>
+        <p-dropdown formControlName="matricula" id="dropProfessor"  [filter]="true" optionValue="value" optionLabel="label" [options]="disciplinaOptions" placeholder="Selecione"
+                    appendTo="body" styleClass="w-full">
+        </p-dropdown>
+    </div>
+    <div class="field col-3">
+        <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4"></p-button>
+    </div>
+</div>
+
 <div class="card">
-    <p-table [columns]="cols" [value]="aulas" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [paginator]="true" rows="10" [rowsPerPageOptions]="[10, 25, 50]" [columns]="cols" [value]="aulas" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header" let-columns>
             <tr>
                 <th *ngFor="let col of columns" class="centralizado">
@@ -22,7 +34,7 @@
                             <button
                                 pButton
                                 icon="pi pi-link"
-                                label="Alocar"
+                                [label]="getLabelAlocar(rowData)"
                                 class="button-action botao-secundario button-view sem-fundo flex align-items-center justify-content-center m-1"
                                 iconPos="right"
                                 (click)="handleAcao(rowData, 'alocar')">

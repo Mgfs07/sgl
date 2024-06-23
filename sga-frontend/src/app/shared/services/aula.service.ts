@@ -8,11 +8,13 @@ import {SelectItem} from "../models/select-item";
 import {HorarioFiltroModel} from "../models/horario-filtro.model";
 import {AulaModel} from "../components/grid-horario/aula.model";
 import {AulaAlocacaoListModel} from "../models/aula-alocacao-list.model";
+import {AulaAlocacaoModel} from "../models/aula-alocacao.model";
+import {AlocacaoLocalAulaModel} from "../models/alocacao-local-aula.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AulaService extends AbstractService<AulaAlocacaoListModel, AulaAlocacaoListModel>{
+export class AulaService extends AbstractService<AulaAlocacaoModel, AulaAlocacaoListModel>{
 
     constructor(private httpClient: HttpClient) {
         super(httpClient);
@@ -24,5 +26,9 @@ export class AulaService extends AbstractService<AulaAlocacaoListModel, AulaAloc
 
     buscarAulasDisponiveis(): Observable<AulaAlocacaoListModel[]> {
         return this.http.get<AulaAlocacaoListModel[]>(this.resourceUrl + '/alocacao');
+    }
+
+    alocarAula(alocacaoLocalAula: AlocacaoLocalAulaModel): Observable<void> {
+        return this.http.post<void>('/api/aulas/alocar-local', alocacaoLocalAula);
     }
 }

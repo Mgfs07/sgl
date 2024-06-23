@@ -1,11 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Column} from "../../../shared/models/colum.model";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
-import {ConfirmationService, MessageService} from "primeng/api";
+import {ConfirmationService, MessageService, SelectItem} from "primeng/api";
 import {EventoFormComponent} from "../evento/evento-form/evento-form.component";
 import {AulaService} from "../../../shared/services/aula.service";
 import {AulaAlocacaoListModel} from "../../../shared/models/aula-alocacao-list.model";
 import {AlocacaoFormComponent} from "./alocacao-form/alocacao-form.component";
+import {AulaAlocacaoModel} from "../../../shared/models/aula-alocacao.model";
+import {AlocacaoLocalAulaModel} from "../../../shared/models/alocacao-local-aula.model";
+import {TipoAtorBuscaEnum} from "../../../shared/enums/tipo-ator-busca.enum";
 
 @Component({
   selector: 'app-alocacao',
@@ -18,11 +21,14 @@ export class AlocacaoComponent implements OnInit {
     aulas: AulaAlocacaoListModel[];
     ref: DynamicDialogRef | undefined;
     display: boolean = false;
+    disciplinaOptions: SelectItem[];
+
 
     constructor(public dialogService: DialogService,
                 private messageService: MessageService,
                 private service: AulaService,
-                private confirmationService: ConfirmationService) {
+                private confirmationService: ConfirmationService,
+                private aulaService: AulaService) {
     }
 
     ngOnInit() {
@@ -48,42 +54,51 @@ export class AlocacaoComponent implements OnInit {
     }
 
     handleAcao(rowData: any, acao: string) {
-        this.service.findById(rowData.id).subscribe((value) => {
-            this.ref = this.dialogService.open(AlocacaoFormComponent,
-                {
-                    header: 'Formulário Alocação',
-                    width: '35%',
-                    data: {alocacao: value, acao: acao}
+        if (!rowData.local){
+            this.service.findById(rowData.id).subscribe((value: AulaAlocacaoModel) => {
+                this.ref = this.dialogService.open(AlocacaoFormComponent,
+                    {
+                        header: 'Formulário Alocação',
+                        width: '35%',
+                        data: {aula: value, acao: acao, idAula: rowData.id}
+                    });
+                this.ref.onClose.subscribe((aula) => {
+                    if (aula) {
+                        this.messageService.add({
+                            severity: 'success',
+                            summary: 'Success',
+                            detail: 'O evento foi editado com sucesso!'
+                        })
+                        this.buscarAulas()
+                    }
                 });
-            this.ref.onClose.subscribe((alocacao) => {
-                if (alocacao) {
-                    this.messageService.add({
-                        severity: 'success',
-                        summary: 'Success',
-                        detail: 'O evento foi editado com sucesso!'
-                    })
-                    this.buscarAulas()
+            })
+        }else {
+            this.confirmationService.confirm({
+                message: 'Tem certeza que deseja remover a alocação?',
+                header: 'Confirmação de Exclusão',
+                icon: 'pi pi-info-circle',
+                acceptLabel: 'Sim',
+                rejectLabel: 'Cancelar',
+                accept: () => {
+                    const alocacaoLocalAula: AlocacaoLocalAulaModel = new AlocacaoLocalAulaModel(null, rowData.id)
+                    this.aulaService.alocarAula(alocacaoLocalAula)
+                        .subscribe(() => {
+                            this.buscarAulas()
+                            this.messageService.add({severity: 'info', summary: 'Confirmação', detail: 'Alocação removida!'});
+                        })
                 }
             });
-        })
+        }
+
     }
 
-    excluirEvento(id) {
-        this.confirmationService.confirm({
-            message: 'Tem certeza que deseja excluir o registro?',
-            header: 'Confirmação de Exclusão',
-            icon: 'pi pi-info-circle',
-            acceptLabel: 'Sim',
-            rejectLabel: 'Cancelar',
-            accept: () => {
-                this.service.delete(id).subscribe(() => {
-                    this.buscarAulas();
-                })
-                this.messageService.add({severity: 'info', summary: 'Confirmação', detail: 'Evento inativado!'});
-            }
-        });
+    getLabelAlocar(rowData: any) {
+        if (!rowData.local) {
+            return "Alocar"
+        }
+        return "Desalocar";
     }
 
-
-
+    protected readonly TipoAtorBuscaEnum = TipoAtorBuscaEnum;
 }
