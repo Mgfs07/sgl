@@ -13,6 +13,7 @@ import java.util.List;
 public class HorarioFiltroDTO implements Serializable {
 
     private TipoAtorBuscaEnum tipoAtorBusca;
+    private String rfId;
     private String matricula;
     private Long idTurma;
 
