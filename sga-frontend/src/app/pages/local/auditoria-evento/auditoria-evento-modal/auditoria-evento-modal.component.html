@@ -1,0 +1,18 @@
+<div class="card">
+    <form [formGroup]="form">
+        <div class="formgrid grid">
+            <div class="field col-12">
+                <label for="nomeUsuarioAlteracao" class="block">Usuário que realizou a alteração:</label>
+                <input id="nomeUsuarioAlteracao" type="text" pInputText class="w-full" formControlName="nomeUsuarioAlteracao"/>
+            </div>
+
+            <div class="field col-12">
+                <label for="acao" class="block">Ação:</label>
+                <div class="div-input">
+                    <textarea id="acao" readonly class="w-full" formControlName="acao">{{ auditoria.acao }}</textarea>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

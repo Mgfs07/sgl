@@ -13,5 +13,6 @@
             </column>
             <column name="nome" type="VARCHAR(255)"/>
         </createTable>
+        <createSequence sequenceName="seq_equipamento" startValue="1" incrementBy="1"/>
     </changeSet>
 </databaseChangeLog>

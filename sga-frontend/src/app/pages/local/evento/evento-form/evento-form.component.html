@@ -6,6 +6,12 @@
                 <input id="descricao" type="text" pInputText class="w-full" formControlName="descricao"/>
             </div>
             <div class="field col-12">
+                <label class="block">Solicitante:</label>
+                <p-dropdown formControlName="matriculaSolicitante" [options]="dropdownProfessoresCoordenadores" placeholder="Selecione o solicitante do evento"
+                            appendTo="body" styleClass="w-full">
+                </p-dropdown>
+            </div>
+            <div class="field col-12">
                 <label class="block">Local</label>
                 <p-dropdown formControlName="idLocal" [options]="locais" placeholder="Selecione o local do evento"
                             appendTo="body" styleClass="w-full">

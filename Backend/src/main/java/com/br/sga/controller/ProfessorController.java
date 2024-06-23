@@ -1,6 +1,7 @@
 package com.br.sga.controller;
 
 import com.br.sga.service.ProfessorService;
+import com.br.sga.service.dto.DropdownStringDTO;
 import com.br.sga.service.dto.DropdownDTO;
 import com.br.sga.service.dto.DropdownProfessorDTO;
 import com.br.sga.service.dto.ProfessorDTO;
@@ -54,5 +55,11 @@ public class ProfessorController {
     public ResponseEntity<List<DropdownProfessorDTO>> buscarDropdown() {
         List<DropdownProfessorDTO> dropdownDTOS = service.buscarDropdown();
         return new ResponseEntity<>(dropdownDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping("/dropdown")
+    public ResponseEntity<List<DropdownStringDTO>> buscarDropdownProfessorCoordenador() {
+        List<DropdownStringDTO> dropdown = service.buscarDropdownProfessoresCoordenadores();
+        return new ResponseEntity<>(dropdown, HttpStatus.OK);
     }
 }

@@ -11,7 +11,7 @@
             <column name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_auditoria_evento"/>
             </column>
-            <column name="acao" type="VARCHAR(255)">
+            <column name="acao" type="VARCHAR(500)">
                 <constraints nullable="false"/>
             </column>
             <column name="data" type="DATE"/>
@@ -21,6 +21,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <createSequence sequenceName="seq_auditoria_evento" startValue="1" incrementBy="1"/>
         <addForeignKeyConstraint baseColumnNames="id_evento" baseTableName="auditoria_evento" constraintName="FK_AUDITORIA_EVENTO_ON_ID_EVENTO" referencedColumnNames="id" referencedTableName="evento"/>
         <addForeignKeyConstraint baseColumnNames="matricula_usuario_logado" baseTableName="auditoria_evento" constraintName="FK_AUDITORIA_EVENTO_ON_MATRICULA_USUARIO_LOGADO" referencedColumnNames="matricula" referencedTableName="usuario"/>
         <addForeignKeyConstraint baseColumnNames="matricula_usuario_solicitante" baseTableName="auditoria_evento" constraintName="FK_AUDITORIA_EVENTO_ON_MATRICULA_USUARIO_SOLICITANTE" referencedColumnNames="matricula" referencedTableName="usuario"/>

@@ -39,4 +39,7 @@ public interface LocalRepository extends JpaRepository<Local, Long> {
             "where a.diaSemana.id = :#{#aulaDTO.idDiaSemana} and a.horaInicio < :#{#aulaDTO.horaFim} AND a.horaFim > :#{#aulaDTO.horaInicio})")
     List<DropdownDTO> buscarLocaisDisponiveis(AulaDTO aulaDTO);
 
+    @Query("SELECT l.nome FROM Local l WHERE l.id = :id")
+    String findNomeById(Long id);
+
 }

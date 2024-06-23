@@ -2,6 +2,7 @@ package com.br.sga.repository;
 
 import com.br.sga.domain.Professor;
 import com.br.sga.service.dto.DropdownProfessorDTO;
+import com.br.sga.service.dto.DropdownStringDTO;
 import com.br.sga.service.dto.ProfessorListagemDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -28,4 +29,15 @@ public interface ProfessorRepository extends JpaRepository<Professor, Long> {
     @Query("select p.matricula From Professor p where p.rfid = :rfid")
     String buscarMatriculaProfessorPorRFID(String rfid);
 
+
+    @Query("SELECT NEW com.br.sga.service.dto.DropdownStringDTO(" +
+            "p.matricula, " +
+            "p.nome) " +
+            "FROM Professor p " +
+            "UNION " +
+            "SELECT NEW com.br.sga.service.dto.DropdownStringDTO(" +
+            "c.matricula, " +
+            "c.nome) " +
+            "FROM Coordenador c")
+    List<DropdownStringDTO> buscarDropdownProfessoresECoordenadores();
 }

@@ -29,6 +29,8 @@ import {CoordenadorFormComponent} from "../coordenador/coordenador-form/coordena
 import { EventoComponent } from './evento/evento.component';
 import { EventoFormComponent } from './evento/evento-form/evento-form.component';
 import { HorariosAlunoComponent } from './horarios-aluno/horarios-aluno.component';
+import { AuditoriaEventoComponent } from './auditoria-evento/auditoria-evento.component';
+import { AuditoriaEventoModalComponent } from './auditoria-evento/auditoria-evento-modal/auditoria-evento-modal.component';
 import { AlocacaoComponent } from './alocacao/alocacao.component';
 import { AlocacaoFormComponent } from './alocacao/alocacao-form/alocacao-form.component';
 
@@ -56,7 +58,10 @@ import { AlocacaoFormComponent } from './alocacao/alocacao-form/alocacao-form.co
         EventoFormComponent,
         HorariosAlunoComponent,
         AlocacaoComponent,
-        AlocacaoFormComponent
+        AlocacaoFormComponent,
+        HorariosAlunoComponent,
+        AuditoriaEventoComponent,
+        AuditoriaEventoModalComponent
     ],
     imports: [
         CommonModule,

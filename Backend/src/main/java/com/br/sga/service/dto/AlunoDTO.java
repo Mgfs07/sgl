@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AlunoDTO implements Serializable {
+
     private String matricula;
     private String nome;
-    private String codigoBarra;
 }

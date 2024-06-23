@@ -6,6 +6,8 @@ import {MessageService} from "primeng/api";
 import {DialogService, DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
 import {LocalService} from "../../../../shared/services/local.service";
 import {EventoService} from "../../../../shared/services/evento.service";
+import {ProfessorService} from "../../../../shared/services/professor.service";
+import {DropdownString} from "../../../../shared/util/dropdownString-util";
 
 @Component({
   selector: 'app-evento-form',
@@ -19,8 +21,12 @@ export class EventoFormComponent implements OnInit{
     isEdit: boolean;
     isVisualizar: boolean;
     locais: SelectItem[] = [];
+    dropdownProfessoresCoordenadores: DropdownString[] = [];
     barcode: string='';
     values: string[] =[];
+
+    // TODO: ADICIONAR FORMA DE OBTER USUARIO LOGADO
+    matriculaUsuarioLogado: string = "999";
 
     constructor(
         private fb: FormBuilder,
@@ -29,6 +35,7 @@ export class EventoFormComponent implements OnInit{
         public dialogService: DialogService,
         private dialogConfig: DynamicDialogConfig,
         private localService: LocalService,
+        private professorService: ProfessorService,
         public ref: DynamicDialogRef) {
         this.definirFormulario();
     }
@@ -36,6 +43,7 @@ export class EventoFormComponent implements OnInit{
     ngOnInit() {
         this.verificarAcao();
         this.buscarCoordenadorias();
+        this.buscarDropdownProfessoresCoordenadores();
     }
 
     fecharDialog(eventoSalvo?: EventoModel) {
@@ -48,7 +56,6 @@ export class EventoFormComponent implements OnInit{
 
     salvarEvento() {
         const evento = this.form.getRawValue();
-        console.log(evento)
         this.service.insert(evento).subscribe(value => {
             this.fecharDialog(evento)
         })
@@ -70,6 +77,8 @@ export class EventoFormComponent implements OnInit{
     private definirFormulario() {
         this.form = this.fb.group({
             id: [null],
+            matriculaSolicitante: [null, [Validators.required]],
+            matriculaUsuarioLogado: [this.matriculaUsuarioLogado],
             idLocal: [null, [Validators.required]],
             descricao: [null, [Validators.required]],
             horaInicio: [null, [Validators.required]],
@@ -88,6 +97,11 @@ export class EventoFormComponent implements OnInit{
             return;
         }
         this.form.patchValue(eventoEncontrado);
+        this.form.get('matriculaUsuarioLogado').setValue(this.matriculaUsuarioLogado);
+    }
+
+    private buscarDropdownProfessoresCoordenadores() {
+        this.professorService.buscarDropdownProfessoresEcoordenadores().subscribe(value => this.dropdownProfessoresCoordenadores = value)
     }
 
 }

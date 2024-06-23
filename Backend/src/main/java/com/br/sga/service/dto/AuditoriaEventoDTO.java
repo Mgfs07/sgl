@@ -17,7 +17,8 @@ public class AuditoriaEventoDTO implements Serializable {
     private Long id;
     private String acao;
     private LocalDate data;
-    private Long idCoordenador;
-    private Long idProfessor;
+    private String matriculaSolicitante;
+    private String matriculaUsuarioLogado;
+    private String nomeUsuarioAlteracao;
     private Long idEvento;
 }

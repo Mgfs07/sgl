@@ -30,6 +30,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <createSequence sequenceName="seq_evento" startValue="1" incrementBy="1"/>
         <addForeignKeyConstraint baseColumnNames="id_local" baseTableName="evento" constraintName="FK_EVENTO_ON_ID_LOCAL" referencedColumnNames="id" referencedTableName="local"/>
         <addForeignKeyConstraint baseColumnNames="matricula_usuario_solicitante" baseTableName="evento" constraintName="FK_EVENTO_ON_MATRICULA_USUARIO_SOLICITANTE" referencedColumnNames="matricula" referencedTableName="usuario"/>
     </changeSet>

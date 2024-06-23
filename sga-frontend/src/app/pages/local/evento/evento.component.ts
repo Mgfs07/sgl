@@ -27,7 +27,7 @@ export class EventoComponent implements OnInit{
 
     ngOnInit() {
         this.construirColunasListagem();
-        this.buscarEventos()
+        this.buscarEventos();
     }
 
     private construirColunasListagem() {

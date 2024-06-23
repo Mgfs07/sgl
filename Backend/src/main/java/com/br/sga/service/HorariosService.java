@@ -3,6 +3,8 @@ package com.br.sga.service;
 import com.br.sga.domain.enums.TipoAtorBuscaEnum;
 import com.br.sga.service.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +28,10 @@ public class HorariosService {
 
     public List<HorarioDTO> buscarHorariosAula() {
         return aulaService.buscarHorariosAluno("123");
+    }
+
+    public void chamar() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     }
 
 
