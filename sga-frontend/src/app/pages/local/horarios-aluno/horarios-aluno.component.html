@@ -2,58 +2,55 @@
     <h1> Horários </h1>
 </div>
 
-<div class="col-8 flex align-content-start align-items-center">
-    <div class="col-3 flex">
-        <input type="text" (window:keypress)="onKey($event)" pInputText placeholder="Matrícula" id="matricula" [(ngModel)]="matricula" />
-    </div>
 
-    <div class="col-3 flex">
-        <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2"
-        (onClick)="buscarHorarios()"></p-button>
-    </div>
-</div>
 
-<div class="card">
-    <ng-container *ngFor="let horario of horarios1">
-        <table class="grid-horario" rules="all">
-            <thead>
-                <tr>
-                    <th colspan="7">
-                        <img class="logo-ifes" src="assets/layout/images/logo_ifes.png" />
-                    </th>
-                    <th colspan="10">
-                        <span>{{horario.ator}}</span><br />
-                        <span>{{horario.curso}}</span><br />
-                        <span>{{horario.aulas.length}} aulas semanais / {{horario.periodo}}</span>
-                    </th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th *ngFor="let turno of turnos" [attr.colspan]="turno.vagasAula.length">{{turno.nome}}</th>
-                </tr>
-                <tr>
-                    <th class="coluna-grid-horario"></th>
-                    <ng-container *ngFor="let turno of turnos">
-                        <th *ngFor="let vaga of turno.vagasAula" class="coluna-grid-horario">
-                            <span>{{vaga.horaInicio | date:"HH:mm"}}</span><br />
-                            <span>{{vaga.horaFim | date:"HH:mm"}}</span><br />
-                        </th>
-                    </ng-container>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let diaSemana of obterDiasSemana(horario.aulas)" class="linha-aulas">
-                    <td class="celula-centralizada">{{diaSemana.getAbreviatura()}}</td>
-                    <ng-container *ngFor="let turno of turnos">
-                        <td *ngFor="let vaga of turno.vagasAula" class="celula-centralizada">
-                            <app-aula-no-grid [aula]="obterAula(vaga, diaSemana.getId(), horario.aulas)"></app-aula-no-grid>
-                        </td>
-                    </ng-container>
-                </tr>
-            </tbody>
-        </table>
-        <div class="flex flex-wrap">
-            <div class="col-12 sm:col-12 md:col-6 pt-0" *ngFor="let itemLegenda of obterLegenda(horario)">{{itemLegenda}}</div>
+<p-tabView [formGroup]="form" [(activeIndex)]="indexAbas" (onChange)="limparAbas()">
+    <p-tabPanel header="Aluno">
+        <div class="col-8 flex align-content-start align-items-center">
+            <div class="field col-3">
+                <label class="block" for="matriculaAluno">Matrícula</label>
+                <input type="text" pInputText id="matriculaAluno" formControlName="matricula"/>
+            </div>
+
+            <div class="field col-3">
+                <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4"
+                          (onClick)="buscarHorarios(TipoAtorBuscaEnum.ALUNO)"></p-button>
+            </div>
         </div>
-    </ng-container>
-</div>
+        <app-grid-horario *ngIf="tipoAtorGrid == TipoAtorBuscaEnum.ALUNO" [horarios]="horarios1"> </app-grid-horario>
+    </p-tabPanel>
+    <p-tabPanel header="Professor">
+        <div class="col-8 flex align-content-start align-items-center">
+            <div class="field col-3">
+                <label class="block" for="rfId">RFID</label>
+                <input type="text" pInputText id="rfId" formControlName="rfId" />
+            </div>
+            <div class="field col-3">
+                <label class="block" for="dropProfessor">Professores</label>
+                <p-dropdown formControlName="matricula" id="dropProfessor" (onChange)="resetRfId()" [filter]="true" optionValue="value" optionLabel="label" [options]="professorOptions" placeholder="Selecione"
+                            appendTo="body" styleClass="w-full">
+                </p-dropdown>
+            </div>
+            <div class="field col-3">
+                <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4"
+                          (onClick)="buscarHorarios(TipoAtorBuscaEnum.PROFESSOR)"></p-button>
+            </div>
+        </div>
+        <app-grid-horario *ngIf="tipoAtorGrid == TipoAtorBuscaEnum.PROFESSOR" [horarios]="horarios1"> </app-grid-horario>
+    </p-tabPanel>
+    <p-tabPanel header="Turma">
+        <div class="col-8 flex align-content-start align-items-center">
+            <div class="field col-3">
+                <label class="block" for="dropProfessor">Turmas</label>
+                <p-dropdown formControlName="idTurma" id="turma" [filter]="true" optionValue="value" optionLabel="label" [options]="turmaOptions" placeholder="Selecione"
+                            appendTo="body" styleClass="w-full">
+                </p-dropdown>
+            </div>
+            <div class="field col-3">
+                <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4"
+                          (onClick)="buscarHorarios(TipoAtorBuscaEnum.TURMA)"></p-button>
+            </div>
+        </div>
+        <app-grid-horario *ngIf="tipoAtorGrid == TipoAtorBuscaEnum.TURMA" [horarios]="horarios1"> </app-grid-horario>
+    </p-tabPanel>
+</p-tabView>

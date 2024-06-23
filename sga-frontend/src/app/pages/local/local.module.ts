@@ -29,7 +29,6 @@ import {CoordenadorFormComponent} from "../coordenador/coordenador-form/coordena
 import { EventoComponent } from './evento/evento.component';
 import { EventoFormComponent } from './evento/evento-form/evento-form.component';
 import { HorariosAlunoComponent } from './horarios-aluno/horarios-aluno.component';
-import { AulaNoGridComponent } from './horarios-aluno/aula-no-grid.component';
 
 
 @NgModule({
@@ -53,8 +52,7 @@ import { AulaNoGridComponent } from './horarios-aluno/aula-no-grid.component';
         CoordenadorFormComponent,
         EventoComponent,
         EventoFormComponent,
-        HorariosAlunoComponent,
-        AulaNoGridComponent,
+        HorariosAlunoComponent
     ],
     imports: [
         CommonModule,

@@ -1,0 +1,44 @@
+<div class="card">
+    <ng-container *ngFor="let horario of horarios">
+        <table class="grid-horario" rules="all">
+            <thead>
+            <tr>
+                <th colspan="7">
+                    <img class="logo-ifes" src="assets/layout/images/logo_ifes.png" />
+                </th>
+                <th colspan="10">
+                    <span>{{horario.ator}}</span><br />
+                    <span>{{horario.curso}}</span><br />
+                    <span>{{horario.aulas.length}} aulas semanais / {{horario.periodo}}</span>
+                </th>
+            </tr>
+            <tr>
+                <th></th>
+                <th *ngFor="let turno of turnos" [attr.colspan]="turno.vagasAula.length">{{turno.nome}}</th>
+            </tr>
+            <tr>
+                <th class="coluna-grid-horario"></th>
+                <ng-container *ngFor="let turno of turnos">
+                    <th *ngFor="let vaga of turno.vagasAula" class="coluna-grid-horario">
+                        <span>{{vaga.horaInicio | date:"HH:mm"}}</span><br />
+                        <span>{{vaga.horaFim | date:"HH:mm"}}</span><br />
+                    </th>
+                </ng-container>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let diaSemana of obterDiasSemana(horario.aulas)" class="linha-aulas">
+                <td class="celula-centralizada">{{diaSemana.getAbreviatura()}}</td>
+                <ng-container *ngFor="let turno of turnos">
+                    <td *ngFor="let vaga of turno.vagasAula" class="celula-centralizada">
+                        <app-aula-no-grid [aula]="obterAula(vaga, diaSemana.getId(), horario.aulas)"></app-aula-no-grid>
+                    </td>
+                </ng-container>
+            </tr>
+            </tbody>
+        </table>
+        <div class="flex flex-wrap">
+            <div class="col-12 sm:col-12 md:col-6 pt-0" *ngFor="let itemLegenda of obterLegenda(horario)">{{itemLegenda}}</div>
+        </div>
+    </ng-container>
+</div>

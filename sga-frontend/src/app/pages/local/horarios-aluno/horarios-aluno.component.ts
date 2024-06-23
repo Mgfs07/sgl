@@ -1,16 +1,15 @@
 import {Component} from '@angular/core';
 import {Column} from "../../../shared/models/colum.model";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
-import {ConfirmationService, MessageService} from "primeng/api";
+import {MessageService, SelectItem} from "primeng/api";
 import {HorariosAlunoService} from "../../../shared/services/horarios-aluno.service";
-import {HorariosAlunoModel} from "../../../shared/models/horarios-aluno.model";
-import { BlockUI, NgBlockUI } from 'ng-block-ui';
-import {finalize} from "rxjs";
-import { HorarioModel } from './horario.model';
-import { DiaSemanaEnum } from './dia-semana.enum';
-import { AulaModel } from './aula.model';
-import { TurnoModel } from './turno.model';
-import { VagaAula } from './vaga-aula.model';
+import {BlockUI, NgBlockUI} from 'ng-block-ui';
+import {HorarioModel} from '../../../shared/components/grid-horario/horario.model';
+import {AulaModel} from '../../../shared/components/grid-horario/aula.model';
+import {ProfessorService} from "../../../shared/services/professor.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {HorarioFiltroModel} from "../../../shared/models/horario-filtro.model";
+import {TipoAtorBuscaEnum} from "../../../shared/enums/tipo-ator-busca.enum";
 
 @Component({
   selector: 'app-horarios-aluno',
@@ -21,25 +20,36 @@ export class HorariosAlunoComponent {
 
     @BlockUI() blockUI: NgBlockUI;
     cols!: Column[];
-    horarios: HorariosAlunoModel[];
+    horario: HorarioModel[];
     ref: DynamicDialogRef | undefined;
     display: boolean = false;
     matricula: string;
-
-    horarios1: HorarioModel[] = this.inicializarHorario();
-    diasDaSemana: DiaSemanaEnum[] = DiaSemanaEnum.TODOS;
-    turnos: TurnoModel[] = this.inicializarTurnos();
+    horarios1: HorarioModel[];
+    protected readonly TipoAtorBuscaEnum = TipoAtorBuscaEnum;
+    tipoAtorGrid: TipoAtorBuscaEnum;
+    professorOptions: SelectItem[];
+    form: FormGroup;
+    indexAbas: number = 0;
+    turmaOptions: SelectItem[];
+    horarioFiltroModel: HorarioFiltroModel = new HorarioFiltroModel();
 
 
     constructor(public dialogService: DialogService,
                 private messageService: MessageService,
                 private service: HorariosAlunoService,
-                private confirmationService: ConfirmationService) {
+                private professorService: ProfessorService,
+                private fb: FormBuilder) {
+        this.definirFormulario();
     }
 
     ngOnInit() {
-        this.construirColunasListagem();
-        this.service.buscarHorarios().subscribe((horarios: HorarioModel[]) => {
+        this.professorService.buscarDropdown().subscribe(value => this.professorOptions = value);
+        this.service.buscarDropdownTurmas().subscribe(value => this.turmaOptions = value);
+    }
+
+    buscarHorarios(tipoAtorBusca: TipoAtorBuscaEnum) {
+        this.construirFiltro(tipoAtorBusca);
+        this.service.buscarHorariosTeste(this.horarioFiltroModel).subscribe((horarios: HorarioModel[]) => {
             horarios.forEach((horario: HorarioModel) => {
                 horario.aulas.forEach((aula: AulaModel) => {
                     aula.horaInicio = new Date('1970-01-01T' + aula.horaInicio);
@@ -48,103 +58,39 @@ export class HorariosAlunoComponent {
                 });
             });
             this.horarios1 = horarios;
+            this.tipoAtorGrid = tipoAtorBusca;
         });
     }
 
-    private construirColunasListagem() {
-        this.cols = [
-            {field: 'nomeAula', header: 'Disciplina', text: true},
-            {field: 'professor', header: 'Professor', text: true},
-            {field: 'local', header: 'Local'},
-            {field: 'horaInicio', header: 'Hora Início', text: true},
-            {field: 'horaFim', header: 'Hora Fim', text: true},
-            {field: 'diaSemana', header: 'Dia da semana', text: true}
-
-        ];
-    }
-
-    buscarHorarios() {
-        this.blockUI.start("Carregando...");
-        this.service.buscarHorariosPorMatricula(this.matricula)
-            .pipe(finalize(() => this.blockUI.stop()))
-            .subscribe((value) => {
-            this.horarios = value;
-        })
+    private construirFiltro(tipoAtorBusca: TipoAtorBuscaEnum) {
+        this.horarioFiltroModel.tipoAtorBusca = tipoAtorBusca;
+        this.horarioFiltroModel.matricula = this.form.get('matricula').value;
+        this.horarioFiltroModel.rfId = this.form.get('rfId').value;
+        if (tipoAtorBusca == TipoAtorBuscaEnum.ALUNO || tipoAtorBusca == TipoAtorBuscaEnum.PROFESSOR){
+            this.horarioFiltroModel.idTurma = 0;
+        }else {
+            this.horarioFiltroModel.idTurma = this.form.get('idTurma').value;
+        }
     }
 
     onKey(event: any) {
         this.matricula = event.target.value;
     }
 
-    public obterDiasSemana(aulas: AulaModel[]): DiaSemanaEnum[] {
-        return [
-            DiaSemanaEnum.SEGUNDA,
-            DiaSemanaEnum.TERCA,
-            DiaSemanaEnum.QUARTA,
-            DiaSemanaEnum.QUINTA,
-            DiaSemanaEnum.SEXTA
-        ].concat(this.aulaNoSabado(aulas) ? [DiaSemanaEnum.SABADO] : []);
+    private definirFormulario() {
+        this.form = this.fb.group({
+            matricula: [''],
+            rfId: [null],
+            idTurma: [0],
+        });
     }
 
-    public obterAula(vaga: VagaAula, diaSemana: number, aulas: AulaModel[]): AulaModel | undefined {
-        return aulas.find((aula: AulaModel) => aula.horaInicio.getTime() == vaga.horaInicio.getTime() && diaSemana == aula.diaSemana);
+    limparAbas() {
+        this.tipoAtorGrid = null;
+        this.form.reset();
     }
 
-    public obterLegenda(horario: HorarioModel): string[] {
-        let legenda: Map<string, string> = new Map();
-        let itensLegenda: string[] = [];
-        horario.aulas.forEach((aula: AulaModel) => legenda.set(aula.nomeAula, aula.nomeCompletoDisciplina));
-        legenda.forEach((disciplina: string, abreviatura: string) => itensLegenda.push(abreviatura + ': ' + disciplina));
-        return itensLegenda;
+    resetRfId() {
+        this.form.get('rfId').reset();
     }
-
-    private aulaNoSabado(aulas: AulaModel[]): boolean {
-        return aulas.some((aula: AulaModel) => aula.diaSemana == DiaSemanaEnum.SABADO.getId());
-    }
-
-    private inicializarHorario(): HorarioModel[] {
-        return [
-            new HorarioModel('Victor Barcelos Lacerda', 'COORD. DE SISTEMAS DE INFORMAÇÃO', '2024/1', [
-                new AulaModel(1, 'SO', 'Sistemas Operacionais', 'Vanderson', horario('13:00'), horario('13:50'), 2, 'LAB5'),
-                new AulaModel(2, 'SO', 'Sistemas Operacionais', 'Vanderson', horario('13:50'), horario('14:40'), 2, 'LAB5'),
-                new AulaModel(3, 'SO', 'Sistemas Operacionais', 'Vanderson', horario('14:40'), horario('15:30'), 2, 'LAB5'),
-                new AulaModel(4, 'SO', 'Sistemas Operacionais', 'Vanderson', horario('15:50'), horario('16:40'), 2, 'LAB5'),
-                new AulaModel(5, 'SO', 'Sistemas Operacionais', 'Vanderson', horario('16:40'), horario('17:30'), 2, 'LAB5'),
-                new AulaModel(6, 'SO', 'Sistemas Operacionais', 'Vanderson', horario('17:30'), horario('17:20'), 2, 'LAB5'),
-                new AulaModel(6, 'SO', 'Sistemas Operacionais', 'Vanderson', horario('17:30'), horario('17:20'), 7, 'LAB5'),
-            ])
-        ];
-    }
-
-    private inicializarTurnos(): TurnoModel[] {
-        return [
-            new TurnoModel('MATUTINO', [
-                new VagaAula(horario('07:00'), horario('07:50')),
-                new VagaAula(horario('07:50'), horario('08:40')),
-                new VagaAula(horario('08:40'), horario('09:30')),
-                new VagaAula(horario('09:50'), horario('10:40')),
-                new VagaAula(horario('10:40'), horario('11:30')),
-                new VagaAula(horario('11:30'), horario('12:20'))
-            ]),
-            new TurnoModel('VESPERTINO', [
-                new VagaAula(horario('13:00'), horario('13:50')),
-                new VagaAula(horario('13:50'), horario('14:40')),
-                new VagaAula(horario('14:40'), horario('15:30')),
-                new VagaAula(horario('15:50'), horario('16:40')),
-                new VagaAula(horario('16:40'), horario('17:30')),
-                new VagaAula(horario('17:30'), horario('17:20'))
-            ]),
-            new TurnoModel('NOTURNO', [
-                new VagaAula(horario('18:50'), horario('19:35')),
-                new VagaAula(horario('19:35'), horario('20:20')),
-                new VagaAula(horario('20:30'), horario('21:15')),
-                new VagaAula(horario('21:15'), horario('22:00'))
-            ]),
-        ];
-    }
-
-}
-
-function horario(hora: string): Date {
-    return new Date('1970-01-01T' + hora);
 }

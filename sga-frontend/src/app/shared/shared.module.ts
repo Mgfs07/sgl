@@ -3,11 +3,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PRIMENG_IMPORTS} from "./primeng-imports";
 import { StatusPipe } from './pipes/status.pipe';
 import {CurrencyPipe, DatePipe, NgForOf, NgIf} from "@angular/common";
+import { GridHorarioComponent } from './components/grid-horario/grid-horario.component';
+import {AulaNoGridComponent} from "./components/grid-horario/aula-no-grid.component";
 
 
 @NgModule({
     declarations: [
         StatusPipe,
+        GridHorarioComponent,
+        AulaNoGridComponent,
     ],
     imports: [
         PRIMENG_IMPORTS,
@@ -16,13 +20,14 @@ import {CurrencyPipe, DatePipe, NgForOf, NgIf} from "@angular/common";
         DatePipe,
         CurrencyPipe,
         NgForOf,
-        NgIf,
+        NgIf
     ],
     exports: [
         PRIMENG_IMPORTS,
         FormsModule,
         StatusPipe,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        GridHorarioComponent
     ]
 })
 export class SharedModule { }
