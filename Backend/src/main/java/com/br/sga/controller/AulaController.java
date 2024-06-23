@@ -1,6 +1,7 @@
 package com.br.sga.controller;
 
 import com.br.sga.service.AulaService;
+import com.br.sga.service.dto.AulaDTO;
 import com.br.sga.service.dto.AulaListDTO;
 import com.br.sga.service.dto.DropdownDTO;
 import com.br.sga.service.dto.HorariosAula;
@@ -41,10 +42,9 @@ public class AulaController {
         return new ResponseEntity<>(aulaListDTO, HttpStatus.OK);
     }
 
-
-//    @GetMapping()
-//    public ResponseEntity<AulaDTO2> buscarAulasParaAlocacao(){
-//        AulaDTO2 aulaDTO2 = service.buscarAulaParaAlocacao(idAula);
-//        return new ResponseEntity<>(aulaDTO2, HttpStatus.OK);
-//    }
+    @GetMapping("{idAula}")
+    public ResponseEntity<AulaDTO> buscarAulaPorId(@PathVariable Long idAula){
+        AulaDTO aulaDTO2 = service.buscarAulaPorId(idAula);
+        return new ResponseEntity<>(aulaDTO2, HttpStatus.OK);
+    }
 }

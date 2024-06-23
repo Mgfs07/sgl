@@ -76,6 +76,11 @@ public class AulaService {
         return repository.buscarAulasParaAlocacao();
     }
 
+    public AulaDTO buscarAulaPorId(Long idAula){
+        return repository.buscarAulaPorId(idAula);
+    }
+
+
 
 
 }
