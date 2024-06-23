@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Column} from "../../../shared/models/colum.model";
-import {ProfessorListModel} from "../../../shared/models/professor-list.model";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {EventoService} from "../../../shared/services/evento.service";
 import {EventoListModel} from "../../../shared/models/evento-list.model";
-import {ProfessorFormComponent} from "../professor/professor-form/professor-form.component";
 import {EventoFormComponent} from "./evento-form/evento-form.component";
 
 @Component({
@@ -29,7 +27,7 @@ export class EventoComponent implements OnInit{
 
     ngOnInit() {
         this.construirColunasListagem();
-        this.buscarEventos()
+        this.buscarEventos();
     }
 
     private construirColunasListagem() {

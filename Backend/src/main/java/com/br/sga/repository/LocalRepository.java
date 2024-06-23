@@ -32,4 +32,7 @@ public interface LocalRepository extends JpaRepository<Local, Long> {
             "   Local l")
     List<DropdownDTO> buscarDropdown();
 
+    @Query("SELECT l.nome FROM Local l WHERE l.id = :id")
+    String findNomeById(Long id);
+
 }
