@@ -40,4 +40,8 @@ public class PeriodoService {
     public void deletar(Long id) {
         repository.deleteById(id);
     }
+
+    public Long periodoVigente() {
+        return repository.buscarPeriodoVigente();
+    }
 }

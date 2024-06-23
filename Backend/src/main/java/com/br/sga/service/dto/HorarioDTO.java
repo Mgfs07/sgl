@@ -15,7 +15,7 @@ public class HorarioDTO implements Serializable {
     private String periodo;
     List<HorariosAula2> aulas = new ArrayList<>();
 
-    public HorarioDTO(String ator, String curso, String periodo) {
+    public HorarioDTO(String ator, String periodo) {
         this.ator = ator;
         this.periodo = periodo;
     }

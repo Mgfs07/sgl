@@ -1,9 +1,10 @@
 package com.br.sga.controller;
 
-import com.br.sga.service.AlunoService;
 import com.br.sga.service.HorariosService;
-import com.br.sga.service.dto.*;
-import jakarta.validation.Valid;
+import com.br.sga.service.dto.DropdownDTO;
+import com.br.sga.service.dto.HorarioDTO;
+import com.br.sga.service.dto.HorarioFiltroDTO;
+import com.br.sga.service.dto.HorariosAula2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +44,7 @@ public class HorariosController {
     }
 
     @GetMapping("/horario")
-    public ResponseEntity<List<HorarioDTO>> buscarHorario(HorarioFiltroDTO horarioFiltroDTO) {
+    public ResponseEntity<List<HorarioDTO>> buscarHorario(@RequestBody HorarioFiltroDTO horarioFiltroDTO) {
         List<HorarioDTO> listagem = service.buscarHorarios(horarioFiltroDTO);
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }

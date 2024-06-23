@@ -25,19 +25,20 @@ public class HorariosService {
     }
 
     public List<HorarioDTO> buscarHorariosAula() {
-        return alunoService.buscarHorarios("123");
+        return alunoService.buscarHorariosAluno("123");
     }
 
 
     public List<HorarioDTO> buscarHorarios(HorarioFiltroDTO horarioFiltroDTO) {
         if (horarioFiltroDTO.getTipoAtorBusca().equals(TipoAtorBuscaEnum.ALUNO)){
-            return alunoService.buscarHorarios(horarioFiltroDTO.getMatricula());
+            return alunoService.buscarHorariosAluno(horarioFiltroDTO.getMatricula());
         }
         if (horarioFiltroDTO.getTipoAtorBusca().equals(TipoAtorBuscaEnum.PROFESSOR)) {
-
+            return alunoService.buscarHorariosProfessor(horarioFiltroDTO);
         }
-
-
+        if (horarioFiltroDTO.getTipoAtorBusca().equals(TipoAtorBuscaEnum.TURMA)) {
+            return alunoService.buscarHorariosTurma(horarioFiltroDTO.getIdTurma());
+        }
         return null;
     }
 }

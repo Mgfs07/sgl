@@ -47,4 +47,8 @@ public class ProfessorService {
     public List<DropdownProfessorDTO> buscarDropdown() {
         return repository.buscarDropdown();
     }
+
+    public String buscarMatriculaProfessorPorRFID(String rfid) {
+        return repository.buscarMatriculaProfessorPorRFID(rfid);
+    }
 }

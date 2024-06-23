@@ -45,4 +45,10 @@ public class PeriodoController {
         service.deletar(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/vigente")
+    public ResponseEntity<Long> periodoVigente() {
+        Long listagem = service.periodoVigente();
+        return new ResponseEntity<>(listagem, HttpStatus.OK);
+    }
 }

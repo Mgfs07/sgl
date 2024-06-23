@@ -3,10 +3,13 @@ package com.br.sga.service;
 import com.br.sga.repository.AulaRepository;
 import com.br.sga.service.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -14,6 +17,7 @@ import java.util.List;
 public class AulaService {
 
     private final AulaRepository repository;
+    private final ProfessorService professorService;
 
 
     public List<HorariosAula> buscarHorariosAulaAluno(String matricula) {
@@ -24,10 +28,34 @@ public class AulaService {
         return repository.buscarHorariosAulaAluno2(matricula);
     }
 
-    public List<HorarioDTO> buscarHorarios(String matricula) {
-        //TODO: refatorar parametro periodo
-        List<HorarioDTO> horario = repository.buscarHorarios(matricula, 1L);
+    public List<HorarioDTO> buscarHorariosAluno(String matricula) {
+        List<HorarioDTO> horario = repository.buscarInformacoesAluno(matricula);
         horario.forEach(item -> item.setAulas(repository.buscarHorariosAulaAluno2(matricula)));
+        return horario;
+    }
+
+    public List<HorarioDTO> buscarHorariosProfessor(HorarioFiltroDTO horarioFiltroDTO) {
+        String matricula;
+        if(Objects.nonNull(horarioFiltroDTO.getRfId()) && !horarioFiltroDTO.getRfId().isEmpty()){
+            matricula = professorService.buscarMatriculaProfessorPorRFID(horarioFiltroDTO.getRfId());
+            verificarMatriculaValida(matricula);
+        } else {
+            matricula = horarioFiltroDTO.getMatricula();
+        }
+        List<HorarioDTO> horario = repository.buscarInformacoesProfessor(matricula);
+        horario.forEach(item -> item.setAulas(repository.buscarHorariosAulaProfessor(matricula)));
+        return horario;
+    }
+
+    private void verificarMatriculaValida(String matricula) {
+        if(Objects.isNull(matricula)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "RFID inválido");
+        }
+    }
+
+    public List<HorarioDTO> buscarHorariosTurma(Long idTurma) {
+        List<HorarioDTO> horario = repository.buscarInformacoesTurma(idTurma);
+        horario.forEach(item -> item.setAulas(repository.buscarHorariosAulaTurma(idTurma)));
         return horario;
     }
 

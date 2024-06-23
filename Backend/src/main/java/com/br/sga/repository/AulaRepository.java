@@ -57,18 +57,80 @@ public interface AulaRepository extends JpaRepository<Aula, Long> {
             "       a.diaSemana.id")
     List<HorariosAula2> buscarHorariosAulaAluno2(String matricula);
 
+    @Query("Select new com.br.sga.service.dto.HorariosAula2(" +
+            "a.id," +
+            "a.nome, " +
+            "a.disciplina.nome," +
+            "a.professor.nome," +
+            "a.horaInicio," +
+            "a.horaFim," +
+            "a.diaSemana.id," +
+            "l.nome " +
+            ") " +
+            "   From " +
+            "       Aula a " +
+            "       Join a.professor p " +
+            "       left join a.local l " +
+            "   WHERE" +
+            "       p.matricula = :matricula and (local_date between a.periodo.dataInicio and a.periodo.dataFim)" +
+            "   order by " +
+            "       a.diaSemana.id ")
+    List<HorariosAula2> buscarHorariosAulaProfessor(String matricula);
 
-    @Query("Select DISTINCT new com.br.sga.service.dto.Teste(" +
+    @Query("Select new com.br.sga.service.dto.HorariosAula2(" +
+            "a.id," +
+            "a.nome, " +
+            "a.disciplina.nome," +
+            "a.professor.nome," +
+            "a.horaInicio," +
+            "a.horaFim," +
+            "a.diaSemana.id," +
+            "l.nome " +
+            ") " +
+            "   From " +
+            "       Aula a " +
+            "       left join a.local l " +
+            "   WHERE" +
+            "       a.turma.id = :idTurma and (local_date between a.periodo.dataInicio and a.periodo.dataFim)" +
+            "   order by " +
+            "       a.diaSemana.id ")
+    List<HorariosAula2> buscarHorariosAulaTurma(Long idTurma);
+
+
+    @Query("Select DISTINCT new com.br.sga.service.dto.HorarioDTO(" +
             "u.nome," +
-            "u.nome, " +
-            "a.periodo.descricao ) " +
+            "a.periodo.descricao " +
+            ") " +
             "   From " +
             "       Aula a " +
             "       Join AlunoAula aa on aa.id.idAula = a.id " +
             "       join Usuario u on u.matricula = aa.id.matriculaAluno" +
             "   WHERE" +
-            "       aa.id.matriculaAluno = :matricula and a.periodo.id = :periodo")
-    List<HorarioDTO> buscarHorarios(String matricula, Long periodo);
+            "       aa.id.matriculaAluno = :matricula and (local_date between a.periodo.dataInicio and a.periodo.dataFim)")
+    List<HorarioDTO> buscarInformacoesAluno(String matricula);
+
+
+    @Query("Select DISTINCT new com.br.sga.service.dto.HorarioDTO(" +
+            "p.nome," +
+            "a.periodo.descricao " +
+            ") " +
+            "   From " +
+            "       Aula a" +
+            "       Join a.professor p " +
+            "   WHERE" +
+            "       p.matricula = :matricula and (local_date between a.periodo.dataInicio and a.periodo.dataFim)")
+    List<HorarioDTO> buscarInformacoesProfessor(String matricula);
+
+
+    @Query("Select DISTINCT new com.br.sga.service.dto.HorarioDTO(" +
+            "a.turma.nome," +
+            "a.periodo.descricao " +
+            ") " +
+            "   From " +
+            "       Aula a " +
+            "   WHERE" +
+            "       a.turma.id = :idTurma and (local_date between a.periodo.dataInicio and a.periodo.dataFim)")
+    List<HorarioDTO> buscarInformacoesTurma(Long idTurma);
 
     @Modifying
     @Query("UPDATE Aula SET local.id = :idLocal WHERE id = :idAula")
