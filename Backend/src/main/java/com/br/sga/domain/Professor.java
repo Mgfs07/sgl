@@ -16,4 +16,7 @@ public class Professor extends Usuario implements Serializable {
     @JoinColumn(name = "id_coordenadoria", referencedColumnName = "id")
     private Coordenadoria coordenadoria;
 
+    @Column(name = "rfid")
+    private String rfid;
+
 }
