@@ -72,8 +72,8 @@ public class AulaService {
         repository.salvarLocalAula(idLocal, idAula);
     }
 
-    public List<AulaListDTO> buscarAulasParaAlocacao() {
-        return repository.buscarAulasParaAlocacao();
+    public List<AulaListDTO> buscarAulasParaAlocacao(Long idDisciplina) {
+        return repository.buscarAulasParaAlocacao(idDisciplina);
     }
 
     public AulaDTO buscarAulaPorId(Long idAula){

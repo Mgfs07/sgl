@@ -3,6 +3,7 @@ package com.br.sga.service;
 import com.br.sga.domain.Disciplina;
 import com.br.sga.repository.DisciplinaRepository;
 import com.br.sga.service.dto.DisciplinaDTO;
+import com.br.sga.service.dto.DropdownDTO;
 import com.br.sga.service.mapper.DisciplinaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,9 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -40,5 +39,9 @@ public class DisciplinaService {
 
     public void deletar(Long id) {
         repository.deleteById(id);
+    }
+
+    public List<DropdownDTO> buscarDropdown() {
+        return repository.buscarDropdown();
     }
 }

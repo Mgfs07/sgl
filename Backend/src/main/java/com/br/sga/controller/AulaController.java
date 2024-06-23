@@ -37,8 +37,8 @@ public class AulaController {
     }
 
     @GetMapping("/alocacao")
-    public ResponseEntity<List<AulaListDTO>> buscarAulasParaAlocacao(){
-        List<AulaListDTO> aulaListDTO = service.buscarAulasParaAlocacao();
+    public ResponseEntity<List<AulaListDTO>> buscarAulasParaAlocacao(@RequestParam(required = false) Long idDisciplina){
+        List<AulaListDTO> aulaListDTO = service.buscarAulasParaAlocacao(idDisciplina);
         return new ResponseEntity<>(aulaListDTO, HttpStatus.OK);
     }
 

@@ -157,9 +157,9 @@ public interface AulaRepository extends JpaRepository<Aula, Long> {
             "l.nome " +
             ") From " +
             "       Aula a " +
-            "       left join a.local l" +
+            "       left join a.local l where (:idDisciplina is null or a.disciplina.id = :idDisciplina) " +
             " Order by a.disciplina.id ")
-    List<AulaListDTO> buscarAulasParaAlocacao();
+    List<AulaListDTO> buscarAulasParaAlocacao(Long idDisciplina);
 
     @Query("select new com.br.sga.service.dto.AulaDTO( " +
             "a.id, " +

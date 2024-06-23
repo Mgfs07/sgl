@@ -2,6 +2,7 @@ package com.br.sga.controller;
 
 import com.br.sga.service.DisciplinaService;
 import com.br.sga.service.dto.DisciplinaDTO;
+import com.br.sga.service.dto.DropdownDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -44,5 +45,11 @@ public class DisciplinaController {
     public ResponseEntity<Void> deleter(@PathVariable("id") Long id) {
         service.deletar(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/dropdown")
+    public ResponseEntity<List<DropdownDTO>> buscarDropdown() {
+        List<DropdownDTO> dropdownDTOS = service.buscarDropdown();
+        return new ResponseEntity<>(dropdownDTOS, HttpStatus.OK);
     }
 }
