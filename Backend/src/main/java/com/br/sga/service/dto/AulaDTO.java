@@ -20,5 +20,6 @@ public class AulaDTO implements Serializable {
     private Long idLocal;
     private String professor;
     private String diaSemana;
+    private Long idDiaSemana;
     private String disciplina;
 }

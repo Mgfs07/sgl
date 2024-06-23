@@ -1,6 +1,7 @@
 package com.br.sga.repository;
 
 import com.br.sga.domain.Local;
+import com.br.sga.service.dto.AulaDTO;
 import com.br.sga.service.dto.DropdownDTO;
 import com.br.sga.service.dto.LocalListagemProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,5 +32,11 @@ public interface LocalRepository extends JpaRepository<Local, Long> {
             "FROM " +
             "   Local l")
     List<DropdownDTO> buscarDropdown();
+
+    @Query("Select new com.br.sga.service.dto.DropdownDTO(l.id, l.nome) " +
+            "From Local l " +
+            "where l.id not in (select a.local.id from Aula a right join a.local l " +
+            "where a.diaSemana.id = :#{#aulaDTO.idDiaSemana} and a.horaInicio < :#{#aulaDTO.horaFim} AND a.horaFim > :#{#aulaDTO.horaInicio})")
+    List<DropdownDTO> buscarLocaisDisponiveis(AulaDTO aulaDTO);
 
 }

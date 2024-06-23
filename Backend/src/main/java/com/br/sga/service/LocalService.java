@@ -21,6 +21,7 @@ public class LocalService {
     
     private final LocalRepository repository;
     private final LocalMapper mapper;
+    private final AulaService aulaService;
 
     public List<LocalListagemProjection> buscarTodos() {
         return repository.buscarTodos();
@@ -44,5 +45,10 @@ public class LocalService {
 
     public List<DropdownDTO> buscarDropdown() {
         return repository.buscarDropdown();
+    }
+
+    public List<DropdownDTO> buscarLocaisDisponiveis(Long idAula) {
+        var aula = aulaService.buscarAulaPorId(idAula);
+        return repository.buscarLocaisDisponiveis(aula);
     }
 }

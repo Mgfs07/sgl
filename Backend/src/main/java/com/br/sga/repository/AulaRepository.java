@@ -169,6 +169,7 @@ public interface AulaRepository extends JpaRepository<Aula, Long> {
             "a.local.id, " +
             "a.professor.nome, " +
             "a.diaSemana.nome, " +
+            "a.diaSemana.id, " +
             "a.disciplina.nome " +
             ") From " +
             "       Aula a " +
