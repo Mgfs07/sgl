@@ -9,9 +9,9 @@ import java.io.Serializable;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ProfessorListagemDTO implements Serializable {
+public class UsuarioDTO implements Serializable {
 
     private String matricula;
     private String nome;
-    private String nomeCoordenadoria;
+    private String senha;
 }

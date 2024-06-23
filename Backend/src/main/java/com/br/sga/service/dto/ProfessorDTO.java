@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Setter
 public class ProfessorDTO implements Serializable {
 
-    private Long id;
+    private Long matricula;
     private String nome;
     private Long idCoordenadoria;
 }
