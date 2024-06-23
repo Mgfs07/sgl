@@ -36,7 +36,7 @@ public class AulaService {
 
     public List<HorarioDTO> buscarHorariosProfessor(HorarioFiltroDTO horarioFiltroDTO) {
         String matricula;
-        if(Objects.nonNull(horarioFiltroDTO.getRfId()) && !horarioFiltroDTO.getRfId().isEmpty()){
+        if(Objects.nonNull(horarioFiltroDTO.getRfId())){
             matricula = professorService.buscarMatriculaProfessorPorRFID(horarioFiltroDTO.getRfId());
             verificarMatriculaValida(matricula);
         } else {
@@ -54,8 +54,13 @@ public class AulaService {
     }
 
     public List<HorarioDTO> buscarHorariosTurma(Long idTurma) {
-        List<HorarioDTO> horario = repository.buscarInformacoesTurma(idTurma);
-        horario.forEach(item -> item.setAulas(repository.buscarHorariosAulaTurma(idTurma)));
+        List<HorarioDTO> horario;
+        if (Objects.isNull(idTurma)){
+            horario  = repository.buscarInformacoesTurma();
+        } else {
+            horario = repository.buscarInformacoesTurma(idTurma);
+        }
+        horario.forEach(item -> item.setAulas(repository.buscarHorariosAulaTurma(item.getIdTurma())));
         return horario;
     }
 

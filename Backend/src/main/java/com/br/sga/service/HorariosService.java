@@ -14,30 +14,30 @@ import java.util.List;
 public class HorariosService {
     
     private final TurmaService turmaService;
-    private final AulaService alunoService;
+    private final AulaService aulaService;
 
     public List<DropdownDTO> buscarDropdownTurma() {
         return turmaService.buscarDropdown();
     }
 
     public List<HorariosAula2> buscarHorariosAulaAluno2(String matricula) {
-        return alunoService.buscarHorariosAulaAluno2(matricula);
+        return aulaService.buscarHorariosAulaAluno2(matricula);
     }
 
     public List<HorarioDTO> buscarHorariosAula() {
-        return alunoService.buscarHorariosAluno("123");
+        return aulaService.buscarHorariosAluno("123");
     }
 
 
     public List<HorarioDTO> buscarHorarios(HorarioFiltroDTO horarioFiltroDTO) {
         if (horarioFiltroDTO.getTipoAtorBusca().equals(TipoAtorBuscaEnum.ALUNO)){
-            return alunoService.buscarHorariosAluno(horarioFiltroDTO.getMatricula());
+            return aulaService.buscarHorariosAluno(horarioFiltroDTO.getMatricula());
         }
         if (horarioFiltroDTO.getTipoAtorBusca().equals(TipoAtorBuscaEnum.PROFESSOR)) {
-            return alunoService.buscarHorariosProfessor(horarioFiltroDTO);
+            return aulaService.buscarHorariosProfessor(horarioFiltroDTO);
         }
         if (horarioFiltroDTO.getTipoAtorBusca().equals(TipoAtorBuscaEnum.TURMA)) {
-            return alunoService.buscarHorariosTurma(horarioFiltroDTO.getIdTurma());
+            return aulaService.buscarHorariosTurma(horarioFiltroDTO.getIdTurma());
         }
         return null;
     }

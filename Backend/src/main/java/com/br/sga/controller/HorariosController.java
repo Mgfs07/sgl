@@ -1,5 +1,6 @@
 package com.br.sga.controller;
 
+import com.br.sga.domain.enums.TipoAtorBuscaEnum;
 import com.br.sga.service.HorariosService;
 import com.br.sga.service.dto.DropdownDTO;
 import com.br.sga.service.dto.HorarioDTO;
@@ -44,10 +45,14 @@ public class HorariosController {
     }
 
     @GetMapping("/horario")
-    public ResponseEntity<List<HorarioDTO>> buscarHorario(@RequestBody HorarioFiltroDTO horarioFiltroDTO) {
+    public ResponseEntity<List<HorarioDTO>> buscarHorario(
+            @RequestParam TipoAtorBuscaEnum tipoAtorBusca,
+            @RequestParam(required = false) String rfId,
+            @RequestParam(required = false) String matricula,
+            @RequestParam(required = false) Long idTurma) {
+        HorarioFiltroDTO horarioFiltroDTO = new HorarioFiltroDTO(tipoAtorBusca, rfId, matricula, idTurma);
         List<HorarioDTO> listagem = service.buscarHorarios(horarioFiltroDTO);
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }
-
 
 }

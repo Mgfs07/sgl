@@ -124,13 +124,25 @@ public interface AulaRepository extends JpaRepository<Aula, Long> {
 
     @Query("Select DISTINCT new com.br.sga.service.dto.HorarioDTO(" +
             "a.turma.nome," +
-            "a.periodo.descricao " +
+            "a.periodo.descricao," +
+            "a.turma.id" +
             ") " +
             "   From " +
             "       Aula a " +
             "   WHERE" +
             "       a.turma.id = :idTurma and (local_date between a.periodo.dataInicio and a.periodo.dataFim)")
     List<HorarioDTO> buscarInformacoesTurma(Long idTurma);
+
+    @Query("Select DISTINCT new com.br.sga.service.dto.HorarioDTO(" +
+            "a.turma.nome," +
+            "a.periodo.descricao," +
+            "a.turma.id " +
+            ") " +
+            "   From " +
+            "       Aula a " +
+            "   WHERE" +
+            "       local_date between a.periodo.dataInicio and a.periodo.dataFim")
+    List<HorarioDTO> buscarInformacoesTurma();
 
     @Modifying
     @Query("UPDATE Aula SET local.id = :idLocal WHERE id = :idAula")
