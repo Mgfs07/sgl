@@ -68,8 +68,8 @@ public class AulaService {
         return repository.buscarDropdown();
     }
 
-    public void salvarLocalAula(Long idLocal, Long idAula) {
-        repository.salvarLocalAula(idLocal, idAula);
+    public void salvarLocalAula(AlocacaoLocalAulaDTO alocacaoLocalAulaDTO) {
+        repository.salvarLocalAula(alocacaoLocalAulaDTO.getIdLocal(), alocacaoLocalAulaDTO.getIdAula());
     }
 
     public List<AulaListDTO> buscarAulasParaAlocacao(Long idDisciplina) {

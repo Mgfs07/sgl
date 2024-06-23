@@ -173,8 +173,8 @@ public interface AulaRepository extends JpaRepository<Aula, Long> {
             "a.disciplina.nome " +
             ") From " +
             "       Aula a " +
-            "       left join a.local l" +
-            " Order by a.disciplina.id ")
+            "       left join a.local l " +
+            "where a.id = :idAula Order by a.disciplina.id ")
     AulaDTO buscarAulaPorId(Long idAula);
 
 

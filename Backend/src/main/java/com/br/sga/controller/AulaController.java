@@ -1,10 +1,8 @@
 package com.br.sga.controller;
 
 import com.br.sga.service.AulaService;
-import com.br.sga.service.dto.AulaDTO;
-import com.br.sga.service.dto.AulaListDTO;
-import com.br.sga.service.dto.DropdownDTO;
-import com.br.sga.service.dto.HorariosAula;
+import com.br.sga.service.dto.*;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,9 +28,9 @@ public class AulaController {
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }
 
-    @PostMapping("/alocar/{idLocal}/{idAula}")
-    public ResponseEntity<Void> salvarLocalAula(@PathVariable Long idLocal, @PathVariable Long idAula){
-        service.salvarLocalAula(idLocal, idAula);
+    @PostMapping("/alocar-local")
+    public ResponseEntity<Void> salvarLocalAula(@RequestBody AlocacaoLocalAulaDTO alocacaoLocalAulaDTO){
+        service.salvarLocalAula(alocacaoLocalAulaDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -42,9 +40,9 @@ public class AulaController {
         return new ResponseEntity<>(aulaListDTO, HttpStatus.OK);
     }
 
-    @GetMapping("{idAula}")
-    public ResponseEntity<AulaDTO> buscarAulaPorId(@PathVariable Long idAula){
-        AulaDTO aulaDTO2 = service.buscarAulaPorId(idAula);
+    @GetMapping("/{id}")
+    public ResponseEntity<AulaDTO> buscarAulaPorId(@PathVariable Long id){
+        AulaDTO aulaDTO2 = service.buscarAulaPorId(id);
         return new ResponseEntity<>(aulaDTO2, HttpStatus.OK);
     }
 }

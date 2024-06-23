@@ -55,7 +55,7 @@ public class LocalController {
         return new ResponseEntity<>(dropdownDTOS, HttpStatus.OK);
     }
 
-    @GetMapping("/disponiveis/{idAula}")
+    @GetMapping("/dropdown/{idAula}")
     public ResponseEntity<List<DropdownDTO>> buscarLocaisDisponiveis(@PathVariable Long idAula) {
         List<DropdownDTO> dropdownDTOS = service.buscarLocaisDisponiveis(idAula);
         return new ResponseEntity<>(dropdownDTOS, HttpStatus.OK);
