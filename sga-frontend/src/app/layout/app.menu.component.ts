@@ -135,6 +135,11 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/local']
                     },
                     {
+                        label: 'Alocacao',
+                        icon: 'pi pi-fw pi-caret-right',
+                        routerLink: ['/local/alocacao']
+                    },
+                    {
                         label: 'Professores',
                         icon: 'pi pi-fw pi-caret-right',
                         routerLink: ['/local/professores']

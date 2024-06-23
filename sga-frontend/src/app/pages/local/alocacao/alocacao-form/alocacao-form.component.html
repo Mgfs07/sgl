@@ -1,0 +1,20 @@
+<div class="card">
+    <form [formGroup]="form">
+        <div class="formgrid grid">
+
+            <div class="field col-12">
+                <label class="block">Locais Disponíveis</label>
+                <p-dropdown formControlName="idLocal" [options]="locaisOptions" placeholder="Selecione o local do evento"
+                            appendTo="body" styleClass="w-full">
+                </p-dropdown>
+            </div>
+
+            <div class="col-12 flex justify-content-end mt-3">
+                <p-button label="Cancelar" styleClass="p-button-secondary mr-3" [disabled]="isVisualizar"
+                          (onClick)="fecharDialog()"></p-button>
+                <p-button label="Salvar" styleClass="button-save-new"
+                          (onClick)="alocarAula()"></p-button>
+            </div>
+        </div>
+    </form>
+</div>

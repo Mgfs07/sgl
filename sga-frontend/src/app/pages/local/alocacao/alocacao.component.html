@@ -1,0 +1,36 @@
+<div class="flex justify-content-center">
+    <h1> Aulas Disponíveis </h1>
+</div>
+
+<div class="card">
+    <p-table [columns]="cols" [value]="aulas" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" class="centralizado">
+                    {{ col.header }}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns">
+                    <ng-template [ngIf]="col.text">
+                        {{rowData[col.field] || '-'}}
+                    </ng-template>
+                    <ng-template [ngIf]="col.field == 'acoes'">
+                        <div class="flex justify-content-center p-0">
+                            <button
+                                pButton
+                                icon="pi pi-link"
+                                label="Alocar"
+                                class="button-action botao-secundario button-view sem-fundo flex align-items-center justify-content-center m-1"
+                                iconPos="right"
+                                (click)="handleAcao(rowData, 'alocar')">
+                            </button>
+                        </div>
+                    </ng-template>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
