@@ -2,20 +2,20 @@
     <h1> Aulas Disponíveis </h1>
 </div>
 
-<div class="col-8 flex align-content-start align-items-center">
-    <div class="field col-3">
-        <label class="block" for="dropProfessor">Disciplinas</label>
-        <p-dropdown formControlName="matricula" id="dropProfessor"  [filter]="true" optionValue="value" optionLabel="label" [options]="disciplinaOptions" placeholder="Selecione"
+<div [formGroup]="form" class="col-8 flex align-content-start align-items-center">
+    <div class="field col-5">
+        <label class="block" for="idDisciplina">Disciplinas</label>
+        <p-dropdown formControlName="idDisciplina" id="idDisciplina"  [filter]="true" optionValue="value" optionLabel="label" [options]="disciplinaOptions" placeholder="Selecione"
                     appendTo="body" styleClass="w-full">
         </p-dropdown>
     </div>
     <div class="field col-3">
-        <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4"></p-button>
+        <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4" (onClick)="buscarAulas()"></p-button>
     </div>
 </div>
 
 <div class="card">
-    <p-table currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [paginator]="true" rows="10" [rowsPerPageOptions]="[10, 25, 50]" [columns]="cols" [value]="aulas" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table sortField="nome" sortcurrentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [paginator]="true" rows="10" [rowsPerPageOptions]="[10, 25, 50]" [columns]="cols" [value]="aulas" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header" let-columns>
             <tr>
                 <th *ngFor="let col of columns" class="centralizado">
@@ -46,3 +46,5 @@
         </ng-template>
     </p-table>
 </div>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>

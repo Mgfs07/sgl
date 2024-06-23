@@ -32,7 +32,7 @@ export class HorariosAlunoService extends AbstractService<HorariosAlunoModel, Ho
         return this.http.get<SelectItem[]>(this.resourceUrl + '/dropdown/turma');
     }
 
-    buscarHorariosTeste(filtro: HorarioFiltroModel): Observable<HorarioModel[]>{
+    buscarHorario(filtro: HorarioFiltroModel): Observable<HorarioModel[]>{
         let params = new HttpParams();
         if (filtro.tipoAtorBusca) {
             params = params.set('tipoAtorBusca', filtro.tipoAtorBusca)

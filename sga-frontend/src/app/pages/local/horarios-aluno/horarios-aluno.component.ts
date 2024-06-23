@@ -49,7 +49,7 @@ export class HorariosAlunoComponent {
 
     buscarHorarios(tipoAtorBusca: TipoAtorBuscaEnum) {
         this.construirFiltro(tipoAtorBusca);
-        this.service.buscarHorariosTeste(this.horarioFiltroModel).subscribe((horarios: HorarioModel[]) => {
+        this.service.buscarHorario(this.horarioFiltroModel).subscribe((horarios: HorarioModel[]) => {
             horarios.forEach((horario: HorarioModel) => {
                 horario.aulas.forEach((aula: AulaModel) => {
                     aula.horaInicio = new Date('1970-01-01T' + aula.horaInicio);

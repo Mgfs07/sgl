@@ -24,11 +24,32 @@ export class AulaService extends AbstractService<AulaAlocacaoModel, AulaAlocacao
         return "aulas";
     }
 
-    buscarAulasDisponiveis(): Observable<AulaAlocacaoListModel[]> {
-        return this.http.get<AulaAlocacaoListModel[]>(this.resourceUrl + '/alocacao');
+    buscarAulasDisponiveis(idDisciplina: number): Observable<AulaAlocacaoListModel[]> {
+        let params: HttpParams = new HttpParams();
+        if (idDisciplina) {
+            params = params.set('idDisciplina', idDisciplina);
+        }
+        return this.http.get<AulaAlocacaoListModel[]>(this.resourceUrl + '/alocacao', {params});
     }
 
     alocarAula(alocacaoLocalAula: AlocacaoLocalAulaModel): Observable<void> {
         return this.http.post<void>('/api/aulas/alocar-local', alocacaoLocalAula);
+    }
+
+    buscarHorario(filtro: HorarioFiltroModel): Observable<HorarioModel[]>{
+        let params = new HttpParams();
+        if (filtro.tipoAtorBusca) {
+            params = params.set('tipoAtorBusca', filtro.tipoAtorBusca)
+        }
+        if (filtro.rfId) {
+            params = params.set('rfId', filtro.rfId)
+        }
+        if (filtro.matricula) {
+            params = params.set('matricula', filtro.matricula)
+        }
+        if (filtro.idTurma) {
+            params = params.set('idTurma', filtro.idTurma)
+        }
+        return this.http.get<HorarioModel[]>('/api/horarios/horario', {params});
     }
 }

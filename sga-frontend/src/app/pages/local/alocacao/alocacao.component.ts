@@ -9,6 +9,8 @@ import {AlocacaoFormComponent} from "./alocacao-form/alocacao-form.component";
 import {AulaAlocacaoModel} from "../../../shared/models/aula-alocacao.model";
 import {AlocacaoLocalAulaModel} from "../../../shared/models/alocacao-local-aula.model";
 import {TipoAtorBuscaEnum} from "../../../shared/enums/tipo-ator-busca.enum";
+import {DisciplinaService} from "../../../shared/services/disciplina.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-alocacao',
@@ -22,18 +24,23 @@ export class AlocacaoComponent implements OnInit {
     ref: DynamicDialogRef | undefined;
     display: boolean = false;
     disciplinaOptions: SelectItem[];
+    form: FormGroup;
 
 
     constructor(public dialogService: DialogService,
                 private messageService: MessageService,
                 private service: AulaService,
                 private confirmationService: ConfirmationService,
-                private aulaService: AulaService) {
+                private aulaService: AulaService,
+                private disciplinaService: DisciplinaService,
+                private fb: FormBuilder) {
+        this.definirFormulario();
     }
 
     ngOnInit() {
         this.construirColunasListagem();
-        this.buscarAulas()
+        this.buscarAulas();
+        this.buscarDisciplinas();
     }
 
     private construirColunasListagem() {
@@ -47,8 +54,8 @@ export class AlocacaoComponent implements OnInit {
         ];
     }
 
-    private buscarAulas() {
-        this.service.buscarAulasDisponiveis().subscribe((value: AulaAlocacaoListModel[]) => {
+    public buscarAulas() {
+        this.service.buscarAulasDisponiveis(this.form.get('idDisciplina').value).subscribe((value: AulaAlocacaoListModel[]) => {
             this.aulas = value;
         })
     }
@@ -67,7 +74,7 @@ export class AlocacaoComponent implements OnInit {
                         this.messageService.add({
                             severity: 'success',
                             summary: 'Success',
-                            detail: 'O evento foi editado com sucesso!'
+                            detail: 'Alocação realizada com sucesso!'
                         })
                         this.buscarAulas()
                     }
@@ -76,7 +83,7 @@ export class AlocacaoComponent implements OnInit {
         }else {
             this.confirmationService.confirm({
                 message: 'Tem certeza que deseja remover a alocação?',
-                header: 'Confirmação de Exclusão',
+                header: 'Confirmação',
                 icon: 'pi pi-info-circle',
                 acceptLabel: 'Sim',
                 rejectLabel: 'Cancelar',
@@ -101,4 +108,14 @@ export class AlocacaoComponent implements OnInit {
     }
 
     protected readonly TipoAtorBuscaEnum = TipoAtorBuscaEnum;
+
+    private buscarDisciplinas() {
+        this.disciplinaService.buscarDisciplinasDropdown().subscribe(value => this.disciplinaOptions = value)
+    }
+
+    private definirFormulario() {
+        this.form = this.fb.group({
+            idDisciplina: [null]
+        });
+    }
 }
