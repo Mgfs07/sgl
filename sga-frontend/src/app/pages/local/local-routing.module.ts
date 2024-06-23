@@ -11,9 +11,10 @@ import {CoordenadorComponent} from "../coordenador/coordenador.component";
 import {EventoComponent} from "./evento/evento.component";
 import {HorariosAlunoComponent} from "./horarios-aluno/horarios-aluno.component";
 import {AuditoriaEventoComponent} from "./auditoria-evento/auditoria-evento.component";
+import {LoginComponent} from "../login/login/login.component";
 
 const routes: Routes = [
-    {path: '', component: LocalComponent},
+    {path: '', component: LoginComponent},
     {path: 'equipamentos', component: EquipamentoComponent},
     {path: 'disciplinas', component: DisciplinaComponent},
     {path: 'coordenadorias', component: CoordenadoriaComponent},
