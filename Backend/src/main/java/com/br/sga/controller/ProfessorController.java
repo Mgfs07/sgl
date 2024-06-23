@@ -1,6 +1,8 @@
 package com.br.sga.controller;
 
 import com.br.sga.service.ProfessorService;
+import com.br.sga.service.dto.DropdownDTO;
+import com.br.sga.service.dto.DropdownProfessorDTO;
 import com.br.sga.service.dto.ProfessorDTO;
 import com.br.sga.service.dto.ProfessorListagemDTO;
 import jakarta.validation.Valid;
@@ -46,5 +48,11 @@ public class ProfessorController {
     public ResponseEntity<Void> deleter(@PathVariable("id") Long id) {
         service.deletar(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/dropdown")
+    public ResponseEntity<List<DropdownProfessorDTO>> buscarDropdown() {
+        List<DropdownProfessorDTO> dropdownDTOS = service.buscarDropdown();
+        return new ResponseEntity<>(dropdownDTOS, HttpStatus.OK);
     }
 }

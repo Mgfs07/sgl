@@ -24,10 +24,11 @@ public class AulaService {
         return repository.buscarHorariosAulaAluno2(matricula);
     }
 
-    public List<Teste> buscarHorarios() {
-        var teste = repository.buscarHorarios("2020122760323", 1L);
-        teste.forEach(item -> item.setAulas(repository.buscarHorariosAulaAluno2("2020122760323")));
-        return teste;
+    public List<HorarioDTO> buscarHorarios(String matricula) {
+        //TODO: refatorar parametro periodo
+        List<HorarioDTO> horario = repository.buscarHorarios(matricula, 1L);
+        horario.forEach(item -> item.setAulas(repository.buscarHorariosAulaAluno2(matricula)));
+        return horario;
     }
 
     public List<DropdownDTO> buscarDropdown() {
@@ -38,9 +39,6 @@ public class AulaService {
         repository.salvarLocalAula(idLocal, idAula);
     }
 
-//    public AulaDTO2 buscarAulaParaAlocacao(Long idAula) {
-//        return repository.buscarAulaParaAlocacao(idAula);
-//    }
 
 
 }

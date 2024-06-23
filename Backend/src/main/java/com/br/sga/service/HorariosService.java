@@ -1,9 +1,7 @@
 package com.br.sga.service;
 
-import com.br.sga.service.dto.DropdownDTO;
-import com.br.sga.service.dto.FIltroDTO;
-import com.br.sga.service.dto.HorariosAula2;
-import com.br.sga.service.dto.Teste;
+import com.br.sga.domain.enums.TipoAtorBuscaEnum;
+import com.br.sga.service.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,9 +24,20 @@ public class HorariosService {
         return alunoService.buscarHorariosAulaAluno2(matricula);
     }
 
-    public List<Teste> buscarHorariosAula() {
-        return alunoService.buscarHorarios();
+    public List<HorarioDTO> buscarHorariosAula() {
+        return alunoService.buscarHorarios("123");
     }
 
 
+    public List<HorarioDTO> buscarHorarios(HorarioFiltroDTO horarioFiltroDTO) {
+        if (horarioFiltroDTO.getTipoAtorBusca().equals(TipoAtorBuscaEnum.ALUNO)){
+            return alunoService.buscarHorarios(horarioFiltroDTO.getMatricula());
+        }
+        if (horarioFiltroDTO.getTipoAtorBusca().equals(TipoAtorBuscaEnum.PROFESSOR)) {
+
+        }
+
+
+        return null;
+    }
 }

@@ -2,6 +2,7 @@ package com.br.sga.service;
 
 import com.br.sga.domain.Professor;
 import com.br.sga.repository.ProfessorRepository;
+import com.br.sga.service.dto.DropdownProfessorDTO;
 import com.br.sga.service.dto.ProfessorDTO;
 import com.br.sga.service.dto.ProfessorListagemDTO;
 import com.br.sga.service.mapper.ProfessorMapper;
@@ -41,5 +42,9 @@ public class ProfessorService {
 
     public void deletar(Long id) {
         repository.deleteById(id);
+    }
+
+    public List<DropdownProfessorDTO> buscarDropdown() {
+        return repository.buscarDropdown();
     }
 }

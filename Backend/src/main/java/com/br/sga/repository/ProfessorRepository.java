@@ -1,6 +1,8 @@
 package com.br.sga.repository;
 
 import com.br.sga.domain.Professor;
+import com.br.sga.service.dto.DropdownDTO;
+import com.br.sga.service.dto.DropdownProfessorDTO;
 import com.br.sga.service.dto.ProfessorListagemDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,4 +17,11 @@ public interface ProfessorRepository extends JpaRepository<Professor, Long> {
             " C.nome) " +
             "From Professor P LEFT JOIN P.coordenadoria C")
     List<ProfessorListagemDTO> buscarTodos();
+
+    @Query("SELECT NEW com.br.sga.service.dto.DropdownProfessorDTO(" +
+            "p.matricula, " +
+            "p.nome) " +
+            "FROM " +
+            "   Professor p")
+    List<DropdownProfessorDTO> buscarDropdown();
 }

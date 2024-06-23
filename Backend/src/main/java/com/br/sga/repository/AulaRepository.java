@@ -68,7 +68,7 @@ public interface AulaRepository extends JpaRepository<Aula, Long> {
             "       join Usuario u on u.matricula = aa.id.matriculaAluno" +
             "   WHERE" +
             "       aa.id.matriculaAluno = :matricula and a.periodo.id = :periodo")
-    List<Teste> buscarHorarios(String matricula, Long periodo);
+    List<HorarioDTO> buscarHorarios(String matricula, Long periodo);
 
     @Modifying
     @Query("UPDATE Aula SET local.id = :idLocal WHERE id = :idAula")
