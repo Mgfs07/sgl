@@ -13,6 +13,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CoordenadorDTO implements Serializable {
 
-    private Long id;
+    private Long matricula;
     private String nome;
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+    <changeSet id="1718988158021-1" author="basis-colatina">
+        <createTable tableName="usuario_role">
+            <column name="id_role" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="matricula" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="id_role" baseTableName="usuario_role" constraintName="fk_usurol_on_roles" referencedColumnNames="id" referencedTableName="role"/>
+        <addForeignKeyConstraint baseColumnNames="matricula" baseTableName="usuario_role" constraintName="fk_usurol_on_usuario" referencedColumnNames="matricula" referencedTableName="usuario"/>
+    </changeSet>
+</databaseChangeLog>

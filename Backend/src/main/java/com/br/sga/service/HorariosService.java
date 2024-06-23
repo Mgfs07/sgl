@@ -5,6 +5,8 @@ import com.br.sga.service.dto.FIltroDTO;
 import com.br.sga.service.dto.HorariosAula2;
 import com.br.sga.service.dto.Teste;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +30,10 @@ public class HorariosService {
 
     public List<Teste> buscarHorariosAula() {
         return alunoService.buscarHorarios();
+    }
+
+    public void chamar() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     }
 
 

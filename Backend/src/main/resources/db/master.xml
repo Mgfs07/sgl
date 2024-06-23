@@ -30,5 +30,8 @@
 <!--    <include file="db/changelog/202420062057_insert_aluno_aula.xml"/>-->
     <include file="db/changelog/202420062145_criando_tabela_turma.xml"/>
     <include file="db/changelog/202420062147_alterando_dado_tabela_aula.xml"/>
+    <include file="db/changelog/202421061327_adicionando_coluna_usuario.xml"/>
+    <include file="db/changelog/202421061341_criando_tabela_role.xml"/>
+    <include file="db/changelog/202421061342_criando_tabela_usuario_role.xml"/>
 
 </databaseChangeLog>

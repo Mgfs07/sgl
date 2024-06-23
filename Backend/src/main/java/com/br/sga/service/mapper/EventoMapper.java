@@ -11,6 +11,7 @@ public interface EventoMapper extends EntityMapper<EventoDTO, Evento> {
 
     @Override
     @Mapping(source = "idLocal", target = "local.id")
+    @Mapping(source = "usuarioSolicitante", target = "usuarioSolicitante.matricula")
     Evento toEntity(EventoDTO dto);
 
     @Override

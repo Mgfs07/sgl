@@ -21,4 +21,5 @@ public class EventoDTO implements Serializable {
     private LocalTime horaFim;
     private LocalDate data;
     private Long idLocal;
+    private String usuarioSolicitante;
 }

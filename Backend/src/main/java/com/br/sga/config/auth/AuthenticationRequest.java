@@ -1,18 +1,15 @@
-package com.br.sga.service.dto;
+package com.br.sga.config.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AlunoDTO implements Serializable {
-
-    private String matricula;
-    private String nome;
+public class AuthenticationRequest {
+    private String username;
+    private String password;
 }
