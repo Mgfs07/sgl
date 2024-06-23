@@ -28,7 +28,7 @@ public class Usuario implements UserDetails, Serializable {
     @Column(name = "senha", nullable = false)
     private String senha;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_role",
             joinColumns = @JoinColumn(name = "matricula"),
             inverseJoinColumns = @JoinColumn(name = "id_role"))
@@ -47,12 +47,12 @@ public class Usuario implements UserDetails, Serializable {
 
     @Override
     public String getPassword() {
-        return null;
+        return senha;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return matricula;
     }
 
     @Override

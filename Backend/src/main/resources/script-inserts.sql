@@ -77,6 +77,7 @@ INSERT INTO periodo (id, descricao, data_inicio, data_fim) values (1, '2024/1', 
 INSERT INTO turma (id, nome) values (1, 'V01');
 INSERT INTO turma (id, nome) values (2, 'V02');
 INSERT INTO turma (id, nome) values (3, 'V05');
+INSERT INTO turma (id, nome) values (4, 'N05');
 
 INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (1,'APL','18:50:00','19:35:00',2,1, '15',5,1);
 INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (2,'APL','19:35:00','20:20:00',2,1, '15',5,1);
@@ -148,26 +149,26 @@ INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matric
 INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (65,'PA6','14:40:00','15:30:00',3,1, '1',3,16);
 
 
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (66,'GPO','18:50:00','19:35:00',3,1, '17',4,17);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (67,'GPO','19:35:00','20:20:00',3,1, '17',4,17);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (68,'GPO','20:30:00','21:15:00',3,1, '17',4,17);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (69,'GPO','21:15:00','22:00:00',3,1, '17',4,17);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (70,'GP','20:30:00','21:15:00',3,1, '16',2,18);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (71,'GP','21:15:00','22:00:00',3,1, '16',2,18);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (72,'EGM','18:50:00','19:35:00',3,1, '4',2,19);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (73,'EGM','19:35:00','20:20:00',3,1, '4',2,19);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (74,'LST','18:50:00','19:35:00',3,1, '5',3,20);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (75,'LST','19:35:00','20:20:00',3,1, '5',3,20);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (76,'LST','20:30:00','21:15:00',3,1, '5',3,20);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (77,'LST','21:15:00','22:00:00',3,1, '5',3,20);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (78,'MARK','18:50:00','19:35:00',3,1, '20',5,21);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (79,'MARK','19:35:00','20:20:00',3,1, '20',5,21);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (80,'MARK','20:30:00','21:15:00',3,1, '20',5,21);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (81,'MARK','21:15:00','22:00:00',3,1, '20',5,21);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (82,'INGN','18:50:00','19:35:00',3,1, '11',6,22);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (83,'INGN','19:35:00','20:20:00',3,1, '11',6,22);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (84,'INGN','20:30:00','21:15:00',3,1, '11',6,22);
-INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (85,'INGN','21:15:00','22:00:00',3,1, '11',6,22);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (66,'GPO','18:50:00','19:35:00',4,1, '17',4,17);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (67,'GPO','19:35:00','20:20:00',4,1, '17',4,17);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (68,'GPO','20:30:00','21:15:00',4,1, '17',4,17);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (69,'GPO','21:15:00','22:00:00',4,1, '17',4,17);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (70,'GP','20:30:00','21:15:00',4,1, '16',2,18);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (71,'GP','21:15:00','22:00:00',4,1, '16',2,18);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (72,'EGM','18:50:00','19:35:00',4,1, '4',2,19);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (73,'EGM','19:35:00','20:20:00',4,1, '4',2,19);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (74,'LST','18:50:00','19:35:00',4,1, '5',3,20);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (75,'LST','19:35:00','20:20:00',4,1, '5',3,20);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (76,'LST','20:30:00','21:15:00',4,1, '5',3,20);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (77,'LST','21:15:00','22:00:00',4,1, '5',3,20);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (78,'MARK','18:50:00','19:35:00',4,1, '20',5,21);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (79,'MARK','19:35:00','20:20:00',4,1, '20',5,21);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (80,'MARK','20:30:00','21:15:00',4,1, '20',5,21);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (81,'MARK','21:15:00','22:00:00',4,1, '20',5,21);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (82,'INGN','18:50:00','19:35:00',4,1, '11',6,22);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (83,'INGN','19:35:00','20:20:00',4,1, '11',6,22);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (84,'INGN','20:30:00','21:15:00',4,1, '11',6,22);
+INSERT INTO aula ( id, nome, hora_inicio, hora_fim, id_turma, id_periodo, matricula_professor, id_dia_semana, id_disciplina ) VALUES (85,'INGN','21:15:00','22:00:00',4,1, '11',6,22);
 
 INSERT INTO aluno_aula (matricula_aluno, id_aula) VALUES ('2020122760323', 5);
 INSERT INTO aluno_aula (matricula_aluno, id_aula) VALUES ('2020122760323', 6);
