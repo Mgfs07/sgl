@@ -1,0 +1,39 @@
+<div id="content-relatorio" class="content-relatorio display-none">
+    <div *ngFor="let h of horarios1">
+        <p> <strong> {{ h.ator }} - {{ h.periodo }}</strong> </p>
+        <div *ngIf="aulasPorDia[2]">
+            <p>Segunda-Feira</p>
+            <div *ngFor="let aula of aulasPorDia[2]">
+                <p>{{ aula.nomeAula }} - {{ aula.horaInicio  | formatarHora}} - {{ aula.horaFim  | formatarHora}}</p>
+            </div>
+        </div>
+        <hr>
+        <div *ngIf="aulasPorDia[3]">
+            <p>Terça-Feira</p>
+            <div *ngFor="let aula of aulasPorDia[3]">
+                <p>{{ aula.nomeAula }} - {{ aula.horaInicio | formatarHora }} - {{ aula.horaFim  | formatarHora}}</p>
+            </div>
+        </div>
+        <hr>
+        <div *ngIf="aulasPorDia[4]">
+            <p>Quarta-Feira</p>
+            <div *ngFor="let aula of aulasPorDia[4]">
+                <p>{{ aula.nomeAula }} - {{ aula.horaInicio | formatarHora }} - {{ aula.horaFim  | formatarHora}}</p>
+            </div>
+        </div>
+        <hr>
+        <div *ngIf="aulasPorDia[5]">
+            <p>Quinta-Feira</p>
+            <div *ngFor="let aula of aulasPorDia[5]">
+                <p>{{ aula.nomeAula }} - {{ aula.horaInicio | formatarHora }} - {{ aula.horaFim  | formatarHora }}</p>
+            </div>
+        </div>
+        <hr>
+        <div *ngIf="aulasPorDia[6]">
+            <p>Sexta-Feira</p>
+            <div *ngFor="let aula of aulasPorDia[6]">
+                <p>{{ aula.nomeAula }} - {{ aula.horaInicio | formatarHora}} - {{ aula.horaFim | formatarHora}}</p>
+            </div>
+        </div>
+    </div>
+</div>
