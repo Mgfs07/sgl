@@ -25,7 +25,7 @@ export class ProfessorService extends AbstractService<ProfessorModel, ProfessorL
     }
 
     buscarDropdownProfessoresEcoordenadores(): Observable<DropdownString[]> {
-        return this.http.get<DropdownString[]>(this.resourceUrl + '/dropdown')
+        return this.http.get<DropdownString[]>(this.resourceUrl + '/dropdown-prof-cord')
     }
 
 }
