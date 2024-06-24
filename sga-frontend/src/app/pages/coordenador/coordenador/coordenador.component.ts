@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Column} from "../../shared/models/colum.model";
+import {Column} from "../../../shared/models/colum.model";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {ConfirmationService, MessageService} from "primeng/api";
-import {CoordenadorService} from "../../shared/services/coordenador.service";
+import {CoordenadorService} from "../../../shared/services/coordenador.service";
 import {CoordenadorFormComponent} from "./coordenador-form/coordenador-form.component";
 
 @Component({

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {CoordenadoriaComponent} from "./coordenadoria/coordenadoria.component";
+import {CoordenadorComponent} from "./coordenador/coordenador.component";
 
 const routes: Routes =[
-    {path: 'coordenadorias', component: CoordenadoriaComponent}
+    {path: 'coordenadores', component: CoordenadorComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CoordenadoriaRoutingModule { }
+export class CoordenadorRoutingModule { }

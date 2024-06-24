@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AlunoComponent} from "./aluno/aluno.component";
+import {PeriodoComponent} from "./periodo/periodo.component";
 
 const routes: Routes = [
-    {path: 'alunos', component: AlunoComponent}
+    {path: 'periodos', component: PeriodoComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AlunoRoutingModule { }
+export class PeriodoRoutingModule { }

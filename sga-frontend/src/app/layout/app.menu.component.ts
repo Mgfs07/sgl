@@ -28,12 +28,12 @@ export class AppMenuComponent implements OnInit {
                     {
                         label: 'Equipamentos',
                         icon: 'pi pi-fw pi-caret-right',
-                        routerLink: ['/local/equipamentos']
+                        routerLink: ['/equipamentos']
                     },
                     {
                         label: 'Disciplinas',
                         icon: 'pi pi-fw pi-caret-right',
-                        routerLink: ['/local/disciplinas']
+                        routerLink: ['/disciplinas']
                     },
                     {
                         label: 'Coordenadorias',
@@ -53,7 +53,7 @@ export class AppMenuComponent implements OnInit {
                     {
                         label: 'Períodos',
                         icon: 'pi pi-fw pi-caret-right',
-                        routerLink: ['/local/periodos']
+                        routerLink: ['/periodos']
                     },
                     {
                         label: 'Locais',
@@ -68,22 +68,22 @@ export class AppMenuComponent implements OnInit {
                     {
                         label: 'Professores',
                         icon: 'pi pi-fw pi-caret-right',
-                        routerLink: ['/local/professores']
+                        routerLink: ['/professores']
                     },
                     {
                         label: 'Eventos',
                         icon: 'pi pi-fw pi-caret-right',
-                        routerLink: ['/local/eventos']
+                        routerLink: ['/eventos']
                     },
                     {
                         label: 'Horários Aluno',
                         icon: 'pi pi-fw pi-caret-right',
-                        routerLink: ['/local/horarios-aluno']
+                        routerLink: ['/horarios-aluno']
                     },
                     {
                         label: 'Auditoria de Eventos',
                         icon: 'pi pi-fw pi-caret-right',
-                        routerLink: ['/local/auditoria-evento']
+                        routerLink: ['/auditoria-evento']
                     }
                 ]
             }

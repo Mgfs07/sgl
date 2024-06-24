@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CoordenadoriaModel} from "../../../shared/models/coordenadoria.model";
+import {CoordenadoriaModel} from "../../../../shared/models/coordenadoria.model";
 import {MessageService} from "primeng/api";
 import {DialogService, DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
-import {CoordenadorService} from "../../../shared/services/coordenador.service";
+import {CoordenadorService} from "../../../../shared/services/coordenador.service";
 
 @Component({
   selector: 'app-coordenador-form',
