@@ -17,6 +17,7 @@ export class AlunoFormComponent implements OnInit{
     aluno: AlunoModel;
     isEdit: boolean;
     isVisualizar: boolean;
+    motrarBotaoPesquisar: boolean = true;
 
     constructor(
         private fb: FormBuilder,
@@ -49,10 +50,12 @@ export class AlunoFormComponent implements OnInit{
         if (this.dialogConfig.data.acao == 'visualizar') {
             this.form.disable();
             this.isVisualizar = true;
+            this.motrarBotaoPesquisar = false;
         }
         if (this.dialogConfig.data.acao == 'editar') {
             this.form.enable();
             this.isEdit = true;
+            this.motrarBotaoPesquisar = false;
         }
         this.renderizarDadosAluno();
     }
@@ -72,6 +75,14 @@ export class AlunoFormComponent implements OnInit{
             return;
         }
         this.form.patchValue(alunoEncontrado);
+    }
+
+    public buscarAlunoPorMatricula() {
+        const matricula = this.form.get("matricula").value;
+        this.service.findByMatricula(matricula).subscribe((value) => {
+            this.form.patchValue(value);
+        })
+
     }
 
 }

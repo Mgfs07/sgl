@@ -1,10 +1,8 @@
 package com.br.sga.config.auth;
 
-import com.br.sga.config.JwtService;
-import com.br.sga.domain.Roles;
 import com.br.sga.domain.Usuario;
 import com.br.sga.repository.UsuarioRepository;
-import com.br.sga.service.dto.UsuarioDTO;
+import com.br.sga.service.dto.UsuarioAutenticationDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,7 +18,7 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
-    public Usuario register(UsuarioDTO usuario) {
+    public Usuario register(UsuarioAutenticationDTO usuario) {
         Usuario user = new Usuario(
                 usuario.getMatricula(),
                 usuario.getNome(),

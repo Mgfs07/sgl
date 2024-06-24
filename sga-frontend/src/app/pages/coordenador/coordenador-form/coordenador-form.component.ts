@@ -16,6 +16,7 @@ export class CoordenadorFormComponent {
     coordenadoria: CoordenadoriaModel;
     isEdit: boolean;
     isVisualizar: boolean;
+    motrarBotaoPesquisar: boolean = true;
 
     constructor(
         private fb: FormBuilder,
@@ -58,7 +59,7 @@ export class CoordenadorFormComponent {
 
     private definirFormulario() {
         this.form = this.fb.group({
-            id: [null],
+            matricula: [null],
             nome: [null, [Validators.required]]
         });
     }
@@ -71,4 +72,11 @@ export class CoordenadorFormComponent {
         this.form.patchValue(coordenadorEncontrado);
     }
 
+    public buscarCoordenadorPorMatricula() {
+        const matricula = this.form.get("matricula").value;
+        this.service.findByMatricula(matricula).subscribe((value) => {
+            this.form.patchValue(value);
+        })
+
+    }
 }

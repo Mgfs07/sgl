@@ -28,7 +28,8 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("api/public/horarios").permitAll())
+//                .authorizeHttpRequests(auth -> auth.requestMatchers("api/public/horarios").permitAll())
+                .authorizeHttpRequests(auth -> auth.requestMatchers("api/**").authenticated())
                 .authorizeHttpRequests(auth -> auth.requestMatchers("api/auth/**").permitAll())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)

@@ -17,4 +17,5 @@ public interface ProfessorMapper extends EntityMapper<ProfessorDTO, Professor>{
     @Mapping(target = "roles", ignore = true)
     @Mapping(target = "authorities", ignore = true)
     Professor toEntity(ProfessorDTO dto);
+
 }

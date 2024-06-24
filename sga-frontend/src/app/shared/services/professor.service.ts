@@ -28,4 +28,8 @@ export class ProfessorService extends AbstractService<ProfessorModel, ProfessorL
         return this.http.get<DropdownString[]>(this.resourceUrl + '/dropdown')
     }
 
+    findByMatriculaProfessor(matricula: string): Observable<ProfessorModel> {
+        return this.http.get<ProfessorModel>(this.resourceUrl + '/buscar/' + matricula);
+    }
+
 }

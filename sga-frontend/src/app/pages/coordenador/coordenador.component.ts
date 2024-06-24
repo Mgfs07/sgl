@@ -81,7 +81,7 @@ export class CoordenadorComponent implements OnInit {
         })
     }
 
-    excluirCoordenadoria(id) {
+    excluirCoordenadoria(matricula) {
         this.confirmationService.confirm({
             message: 'Tem certeza que deseja excluir o registro?',
             header: 'Confirmação de Exclusão',
@@ -89,7 +89,7 @@ export class CoordenadorComponent implements OnInit {
             acceptLabel: 'Sim',
             rejectLabel: 'Cancelar',
             accept: () => {
-                this.coordenadorService.delete(id).subscribe(() => {
+                this.coordenadorService.deletePorMatricula(matricula).subscribe(() => {
                     this.buscarCoordenadores();
                 })
                 this.messageService.add({severity: 'info', summary: 'Confirmação', detail: 'Coordenador inativado!'});

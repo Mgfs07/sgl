@@ -2,6 +2,7 @@ package com.br.sga.controller;
 
 import com.br.sga.service.CoordenadorService;
 import com.br.sga.service.dto.CoordenadorDTO;
+import com.br.sga.service.dto.UsuarioDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +23,9 @@ public class CoordenadorController {
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<CoordenadorDTO> buscarPorId(@PathVariable("id") Long id) {
-        CoordenadorDTO listagem = service.buscar(id);
+    @GetMapping("/{matricula}")
+    public ResponseEntity<UsuarioDTO> buscarPorId(@PathVariable("matricula") String matricula) {
+        UsuarioDTO listagem = service.buscar(matricula);
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }
 
@@ -40,9 +41,9 @@ public class CoordenadorController {
         return new ResponseEntity<>(coordenadoriaDTO, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable("id") Long id ){
-        service.deletar(id);
+    @DeleteMapping("/{matricula}")
+    public ResponseEntity<Void> deletar(@PathVariable("matricula") String matricula ){
+        service.deletar(matricula);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

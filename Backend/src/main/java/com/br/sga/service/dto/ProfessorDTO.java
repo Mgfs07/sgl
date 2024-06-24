@@ -9,7 +9,8 @@ import java.io.Serializable;
 @Setter
 public class ProfessorDTO implements Serializable {
 
-    private Long matricula;
+    private String matricula;
     private String nome;
     private Long idCoordenadoria;
+    private String rfid;
 }

@@ -2,6 +2,7 @@ package com.br.sga.controller;
 
 import com.br.sga.service.AlunoService;
 import com.br.sga.service.dto.AlunoDTO;
+import com.br.sga.service.dto.UsuarioDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,9 +23,9 @@ public class AlunoController {
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<AlunoDTO> buscarPorId(@PathVariable("id") String id) {
-        AlunoDTO listagem = service.buscar(id);
+    @GetMapping("/{matricula}")
+    public ResponseEntity<UsuarioDTO> buscarPorId(@PathVariable("matricula") String matricula) {
+        UsuarioDTO listagem = service.buscar(matricula);
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }
 
@@ -40,9 +41,9 @@ public class AlunoController {
         return new ResponseEntity<>(alunoDTO, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleter(@PathVariable("id") String id) {
-        service.deletar(id);
+    @DeleteMapping("/{matricula}")
+    public ResponseEntity<Void> deleter(@PathVariable("matricula") String matricula) {
+        service.deletar(matricula);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

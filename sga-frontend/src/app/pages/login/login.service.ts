@@ -33,6 +33,10 @@ export class LoginService {
                     next: (response) => {
                         console.log(response)
                         this.usuarioAutenticado = true;
+                        localStorage.setItem('token', response.token);
+                        localStorage.setItem('matricula', JSON.stringify(response.matricula));
+                        localStorage.setItem('nome', JSON.stringify(response.nome));
+                        localStorage.setItem('roles', JSON.stringify(response.roles));
                         this.mostrarMenuEmitter.emit(true);
                         this.router.navigate(['/local'])
                     },
@@ -44,5 +48,17 @@ export class LoginService {
                     }
                 }
             )
+    }
+
+    logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('nome');
+        localStorage.removeItem('matricula');
+        localStorage.removeItem('roles');
+        this.router.navigate(['/login']);
+    }
+
+    getToken() {
+        return localStorage.getItem('token');
     }
 }

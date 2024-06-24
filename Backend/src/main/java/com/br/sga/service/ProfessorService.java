@@ -2,10 +2,7 @@ package com.br.sga.service;
 
 import com.br.sga.domain.Professor;
 import com.br.sga.repository.ProfessorRepository;
-import com.br.sga.service.dto.DropdownProfessorDTO;
-import com.br.sga.service.dto.DropdownStringDTO;
-import com.br.sga.service.dto.ProfessorDTO;
-import com.br.sga.service.dto.ProfessorListagemDTO;
+import com.br.sga.service.dto.*;
 import com.br.sga.service.mapper.ProfessorMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,27 +19,47 @@ public class ProfessorService {
 
     private final ProfessorRepository repository;
     private final ProfessorMapper mapper;
+    private final UsuarioService usuarioService;
 
     public List<ProfessorListagemDTO> buscarTodos() {
         return repository.buscarTodos();
     }
 
-    public ProfessorDTO buscar(Long id) {
-        return mapper.toDto(buscarPorId(id));
+    public UsuarioDTO buscar(String matricula) {
+        usuarioService.validarMatriculaUsuario(matricula);
+        return usuarioService.buscarUsuarioPorMatricula(matricula);
     }
 
-    private Professor buscarPorId(Long id) {
-        return repository.findById(id).orElseThrow(() ->
+    public ProfessorDTO buscarProfessor(String matricula) {
+        return mapper.toDto(buscarPorId(matricula));
+    }
+
+    private Professor buscarPorId(String matricula) {
+        return repository.findById(matricula).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Professor não encontrado"));
     }
     public ProfessorDTO salvar(ProfessorDTO dto) {
-        Professor professor = mapper.toEntity(dto);
-        repository.save(professor);
-        return mapper.toDto(professor);
+        usuarioService.validarMatriculaUsuario(dto.getMatricula());
+        validarProfessorPossuiCadastro(dto.getMatricula());
+        repository.criarProfessor(dto);
+        repository.adicionarRoleProfessor(dto.getMatricula());
+        return dto;
     }
 
-    public void deletar(Long id) {
-        repository.deleteById(id);
+    public ProfessorDTO atualizar(ProfessorDTO dto) {
+        repository.atualizarProfessor(dto);
+        return dto;
+    }
+
+    public void deletar(String matricula) {
+        repository.deletarProfessor(matricula);
+        repository.deletarRoleProfessor(matricula);
+    }
+
+    private void validarProfessorPossuiCadastro(String matricula) {
+        if(repository.existsProfessorByMatricula(matricula)){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Professor já possui cadastro");
+        }
     }
 
     public List<DropdownStringDTO> buscarDropdownProfessoresCoordenadores() {

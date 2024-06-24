@@ -17,6 +17,7 @@ export class ProfessorFormComponent implements OnInit {
     professor: ProfessorModel;
     isEdit: boolean;
     isVisualizar: boolean;
+    motrarBotaoPesquisar: boolean = true;
     coordenadorias: SelectItem[] = [];
 
     constructor(
@@ -41,6 +42,12 @@ export class ProfessorFormComponent implements OnInit {
 
     salvarProfessor() {
         const professor = this.form.getRawValue();
+        if(this.isEdit) {
+            this.service.update(professor).subscribe(value => {
+                this.fecharDialog(professor)
+            })
+            return;
+        }
         this.service.insert(professor).subscribe(value => {
             this.fecharDialog(professor)
         })
@@ -50,10 +57,12 @@ export class ProfessorFormComponent implements OnInit {
         if (this.dialogConfig.data.acao == 'visualizar') {
             this.form.disable();
             this.isVisualizar = true;
+            this.motrarBotaoPesquisar = false
         }
         if (this.dialogConfig.data.acao == 'editar') {
             this.form.enable();
             this.isEdit = true;
+            this.motrarBotaoPesquisar = false
         }
         this.renderizarDadosProfessor();
 
@@ -61,9 +70,10 @@ export class ProfessorFormComponent implements OnInit {
 
     private definirFormulario() {
         this.form = this.fb.group({
-            id: [null],
+            matricula: [null],
             nome: [null, [Validators.required]],
             idCoordenadoria: [null],
+            rfid: [null],
         });
     }
 
@@ -77,5 +87,12 @@ export class ProfessorFormComponent implements OnInit {
             return;
         }
         this.form.patchValue(professorEncontrado);
+    }
+
+    public buscarProfessorPorMatricula() {
+        const matricula = this.form.get("matricula").value;
+        this.service.findByMatricula(matricula).subscribe((value) => {
+            this.form.patchValue(value);
+        })
     }
 }

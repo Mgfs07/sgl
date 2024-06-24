@@ -85,7 +85,7 @@ export class AlunoComponent implements OnInit{
         })
     }
 
-    excluirAluno(id) {
+    excluirAluno(matricula) {
         this.confirmationService.confirm({
             message: 'Tem certeza que deseja excluir o registro?',
             header: 'Confirmação de Exclusão',
@@ -93,7 +93,7 @@ export class AlunoComponent implements OnInit{
             acceptLabel: 'Sim',
             rejectLabel: 'Cancelar',
             accept: () => {
-                this.alunoService.delete(id).subscribe(() => {
+                this.alunoService.deleteByMatricula(matricula).subscribe(() => {
                     this.buscarAlunos();
                 })
                 this.messageService.add({severity: 'info', summary: 'Confirmação', detail: 'Aluno inativado!'});

@@ -2,7 +2,7 @@ package com.br.sga.config.auth;
 
 import com.br.sga.config.JwtService;
 import com.br.sga.domain.Usuario;
-import com.br.sga.service.dto.UsuarioDTO;
+import com.br.sga.service.dto.UsuarioAutenticationDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +19,7 @@ public class AuthenticationController {
     private final JwtService jwtService;
 
     @PostMapping("/register")
-    public ResponseEntity<Usuario> register(@RequestBody UsuarioDTO usuario){
+    public ResponseEntity<Usuario> register(@RequestBody UsuarioAutenticationDTO usuario){
         return ResponseEntity.ok(authenticationService.register(usuario));
     }
 
@@ -27,7 +27,12 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequest authenticationRequest){
         Usuario usuario  = authenticationService.authenticate(authenticationRequest);
         String jwtToken = jwtService.generateToken(usuario);
-        AuthenticationResponse loginReponse = new AuthenticationResponse(jwtToken, jwtService.getExpirationTime());
+        AuthenticationResponse loginReponse = AuthenticationResponse.builder()
+                .matricula(usuario.getMatricula())
+                .nome(usuario.getNome())
+                .token(jwtToken)
+                .expiresIn(jwtService.getExpirationTime())
+                .roles(usuario.getRoles()).build();
         return ResponseEntity.ok(loginReponse);
     }
 }

@@ -11,6 +11,8 @@ import com.br.sga.service.dto.EventoDTO;
 import com.br.sga.service.mapper.AuditoriaEventoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
@@ -30,6 +32,8 @@ public class AuditoriaService {
     private final LocalRepository localRepository;
 
     public AuditoriaEventoDTO auditarCriarEvento(EventoDTO eventoDTO) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        eventoDTO.setMatriculaUsuarioLogado(authentication.getName());
         AuditoriaEventoDTO auditoriaEvento = preencherAuditoriaNovoEvento(eventoDTO);
         return mapper.toDto(auditoriaEventoRepository.save(mapper.toEntity(auditoriaEvento)));
     }

@@ -228,7 +228,10 @@ INSERT INTO aluno_aula (matricula_aluno, id_aula) VALUES ('2022122760320', 83);
 INSERT INTO aluno_aula (matricula_aluno, id_aula) VALUES ('2022122760320', 84);
 INSERT INTO aluno_aula (matricula_aluno, id_aula) VALUES ('2022122760320', 85);
 
-
+INSERT INTO role(id, nome) values (1, 'ADMIN');
+INSERT INTO role(id, nome) values (2, 'PROFESSOR');
+INSERT INTO role(id, nome) values (3, 'COORDENADOR');
+INSERT INTO role(id, nome) values (4, 'ALUNO');
 
 
 

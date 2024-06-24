@@ -49,8 +49,8 @@ export class ProfessorComponent implements OnInit {
         this.ref = this.dialogService.open(ProfessorFormComponent,
             {
                 header: 'Novo Período',
-                width: '18%',
-                data: {acao: ''}
+                width: '30%',
+                data: {acao: 'novo'}
             });
         this.ref.onClose.subscribe((professor) => {
             if (professor) {
@@ -65,11 +65,11 @@ export class ProfessorComponent implements OnInit {
     }
 
     handleAcao(rowData: any, acao: string) {
-        this.service.findById(rowData.id).subscribe((value) => {
+        this.service.findByMatriculaProfessor(rowData.matricula).subscribe((value) => {
             this.ref = this.dialogService.open(ProfessorFormComponent,
                 {
                     header: 'Formulário Professor',
-                    width: '18%',
+                    width: '30%',
                     data: {professor: value, acao: acao}
                 });
             this.ref.onClose.subscribe((professor) => {
@@ -85,7 +85,7 @@ export class ProfessorComponent implements OnInit {
         })
     }
 
-    excluirProfessor(id) {
+    excluirProfessor(matricula) {
         this.confirmationService.confirm({
             message: 'Tem certeza que deseja excluir o registro?',
             header: 'Confirmação de Exclusão',
@@ -93,7 +93,7 @@ export class ProfessorComponent implements OnInit {
             acceptLabel: 'Sim',
             rejectLabel: 'Cancelar',
             accept: () => {
-                this.service.delete(id).subscribe(() => {
+                this.service.deleteByMatricula(matricula).subscribe(() => {
                     this.buscarProfessores();
                 })
                 this.messageService.add({severity: 'info', summary: 'Confirmação', detail: 'Professor inativado!'});

@@ -1,11 +1,7 @@
 package com.br.sga.controller;
 
 import com.br.sga.service.ProfessorService;
-import com.br.sga.service.dto.DropdownStringDTO;
-import com.br.sga.service.dto.DropdownDTO;
-import com.br.sga.service.dto.DropdownProfessorDTO;
-import com.br.sga.service.dto.ProfessorDTO;
-import com.br.sga.service.dto.ProfessorListagemDTO;
+import com.br.sga.service.dto.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -27,9 +23,15 @@ public class ProfessorController {
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ProfessorDTO> buscarPorId(@PathVariable("id") Long id) {
-        ProfessorDTO listagem = service.buscar(id);
+    @GetMapping("/{matricula}")
+    public ResponseEntity<UsuarioDTO> buscarPorId(@PathVariable("matricula") String matricula) {
+        UsuarioDTO listagem = service.buscar(matricula);
+        return new ResponseEntity<>(listagem, HttpStatus.OK);
+    }
+
+    @GetMapping("/buscar/{matricula}")
+    public ResponseEntity<ProfessorDTO> buscarProfessor(@PathVariable("matricula") String matricula) {
+        ProfessorDTO listagem = service.buscarProfessor(matricula);
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }
 
@@ -41,13 +43,13 @@ public class ProfessorController {
 
     @PutMapping
     public ResponseEntity<ProfessorDTO> atualizar(@Valid @RequestBody ProfessorDTO dto) {
-        ProfessorDTO ProfessorDTO = service.salvar(dto);
+        ProfessorDTO ProfessorDTO = service.atualizar(dto);
         return new ResponseEntity<>(ProfessorDTO, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleter(@PathVariable("id") Long id) {
-        service.deletar(id);
+    @DeleteMapping("/{matricula}")
+    public ResponseEntity<Void> deleter(@PathVariable("matricula") String matricula) {
+        service.deletar(matricula);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

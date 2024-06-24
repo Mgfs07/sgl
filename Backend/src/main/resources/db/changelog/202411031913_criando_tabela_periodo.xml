@@ -21,6 +21,6 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <createSequence sequenceName="seq_periodo" startValue="1" incrementBy="1"/>
+        <createSequence sequenceName="seq_periodo" startValue="2" incrementBy="1"/>
     </changeSet>
 </databaseChangeLog>

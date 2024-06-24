@@ -17,6 +17,10 @@ export abstract class AbstractService<T, Y> {
         return this.http.get<T>(this.resourceUrl + '/' + id);
     }
 
+    findByMatricula(matricula: string): Observable<T> {
+        return this.http.get<T>(this.resourceUrl + '/' + matricula);
+    }
+
     findAll(): Observable<Y[]> {
         return this.http.get<Y[]>(this.resourceUrl);
     }
@@ -27,6 +31,10 @@ export abstract class AbstractService<T, Y> {
 
     delete(id: number): Observable<void> {
         return this.http.delete<void>(this.resourceUrl + '/' + id);
+    }
+
+    deleteByMatricula(matricula: string): Observable<void> {
+        return this.http.delete<void>(this.resourceUrl + '/' + matricula);
     }
 
 }
