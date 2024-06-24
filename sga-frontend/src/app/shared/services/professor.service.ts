@@ -6,8 +6,6 @@ import {ProfessorListModel} from "../models/professor-list.model";
 import {Observable} from "rxjs";
 import {SelectItem} from "primeng/api";
 import {DropdownString} from "../util/dropdownString-util";
-import {Observable} from "rxjs";
-import {SelectItem} from "../models/select-item";
 
 @Injectable({
     providedIn: 'root'

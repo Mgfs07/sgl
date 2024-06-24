@@ -57,7 +57,7 @@ public class ProfessorController {
         return new ResponseEntity<>(dropdownDTOS, HttpStatus.OK);
     }
 
-    @GetMapping("/dropdown")
+    @GetMapping("/dropdown-prof-cord")
     public ResponseEntity<List<DropdownStringDTO>> buscarDropdownProfessorCoordenador() {
         List<DropdownStringDTO> dropdown = service.buscarDropdownProfessoresCoordenadores();
         return new ResponseEntity<>(dropdown, HttpStatus.OK);
