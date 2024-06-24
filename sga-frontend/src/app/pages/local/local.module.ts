@@ -13,8 +13,8 @@ import {PaginatorModule} from "primeng/paginator";
 import {ReactiveFormsModule} from "@angular/forms";
 import {DisciplinaComponent} from './disciplina/disciplina.component';
 import {DisciplinaFormComponent} from './disciplina/disciplina-form/disciplina-form.component';
-import {CoordenadoriaComponent} from './coordenadoria/coordenadoria.component';
-import {CoordenadoriaFormComponent} from './coordenadoria/coordenadoria-form/coordenadoria-form.component';
+import {CoordenadoriaComponent} from '../coordenadoria/coordenadoria/coordenadoria.component';
+import {CoordenadoriaFormComponent} from '../coordenadoria/coordenadoria/coordenadoria-form/coordenadoria-form.component';
 import {AlunoComponent} from '../aluno/aluno/aluno.component';
 import {AlunoFormComponent} from '../aluno/aluno/aluno-form/aluno-form.component';
 import {PeriodoComponent} from './periodo/periodo.component';
@@ -39,8 +39,6 @@ import { AuditoriaEventoModalComponent } from './auditoria-evento/auditoria-even
         EquipamentoFormComponent,
         DisciplinaComponent,
         DisciplinaFormComponent,
-        CoordenadoriaComponent,
-        CoordenadoriaFormComponent,
         PeriodoComponent,
         PeriodoFormComponent,
         LocalComponent,

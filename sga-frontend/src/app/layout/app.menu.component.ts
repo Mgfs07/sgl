@@ -38,12 +38,12 @@ export class AppMenuComponent implements OnInit {
                     {
                         label: 'Coordenadorias',
                         icon: 'pi pi-fw pi-caret-right',
-                        routerLink: ['/local/coordenadorias']
+                        routerLink: ['/coordenadorias']
                     },
                     {
                         label: 'Coordenadores',
                         icon: 'pi pi-fw pi-caret-right',
-                        routerLink: ['/local/coordenadores']
+                        routerLink: ['/coordenadores']
                     },
                     {
                         label: 'Alunos',

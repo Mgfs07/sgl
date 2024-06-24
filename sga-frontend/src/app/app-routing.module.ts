@@ -30,6 +30,13 @@ import {AlunoComponent} from "./pages/aluno/aluno/aluno.component";
                 ]
             },
             {
+                path: 'coordenadorias',
+                component: AlunoComponent,
+                children: [
+                    {path: '', loadChildren: () => import('./pages/coordenadoria/coordenadoria.module').then(m => m.CoordenadoriaModule)},
+                ]
+            },
+            {
                 path: '',
                 component: LoginComponent,
                 children: [
