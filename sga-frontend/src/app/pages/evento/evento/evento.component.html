@@ -24,6 +24,9 @@
                     <ng-template [ngIf]="col.text">
                         {{rowData[col.field] || '-'}}
                     </ng-template>
+                    <ng-template [ngIf]="col.field == 'data'">
+                        {{rowData[col.field] | formatarData}}
+                    </ng-template>
                     <ng-template [ngIf]="col.field == 'acoes'">
                         <div class="flex justify-content-center p-0">
                             <button

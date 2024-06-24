@@ -34,8 +34,8 @@ export class PeriodoComponent implements OnInit {
     private construirColunasListagem() {
         this.cols = [
             {field: 'descricao', header: 'Descrição', text: true},
-            {field: 'dataInicio', header: 'Início', text: true},
-            {field: 'dataFim', header: 'Fim', text: true},
+            {field: 'dataInicio', header: 'Início'},
+            {field: 'dataFim', header: 'Fim'},
             {field: 'acoes', header: 'Ações'}
         ];
     }
@@ -50,7 +50,7 @@ export class PeriodoComponent implements OnInit {
         this.ref = this.dialogService.open(PeriodoFormComponent,
             {
                 header: 'Novo Período',
-                width: '18%',
+                width: '35%',
                 data: {acao: ''}
             });
         this.ref.onClose.subscribe((periodo) => {
@@ -70,7 +70,7 @@ export class PeriodoComponent implements OnInit {
             this.ref = this.dialogService.open(PeriodoFormComponent,
                 {
                     header: 'Formulário Período',
-                    width: '18%',
+                    width: '35%',
                     data: {periodo: value, acao: acao}
                 });
             this.ref.onClose.subscribe((periodo) => {

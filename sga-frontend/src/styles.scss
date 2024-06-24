@@ -50,3 +50,18 @@ td {
     line-height: 1.5;
 }
 
+.user-info-popup {
+    position: absolute;
+    top: 50px; /* Ajuste conforme necessário */
+    left: 0; /* Ajuste conforme necessário */
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1000;
+}
+
+.user-name, .user-id {
+    font-size: 0.875rem; /* Tamanho da fonte menor */
+    line-height: 1.2; /* Espaçamento entre as linhas */
+}
