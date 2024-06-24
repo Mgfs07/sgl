@@ -57,6 +57,32 @@ public interface AulaRepository extends JpaRepository<Aula, Long> {
             "       a.diaSemana.id")
     List<HorariosAula2> buscarHorariosAulaAluno2(String matricula);
 
+    @Query("""
+            SELECT new com.br.sga.service.dto.HorariosAula2(
+                        a.id,
+                        a.nome as nomeAula,
+                        d.nome as nomeCompletoDisciplina,
+                        a.professor.nome,
+                        a.horaInicio,
+                        a.horaFim,
+                        a.diaSemana.id,
+                        l.nome
+                    )
+            FROM
+                Aula a
+                JOIN AlunoAula aa ON aa.id.idAula = a.id
+                LEFT JOIN a.local l
+                JOIN a.disciplina d
+            WHERE
+                aa.id.matriculaAluno = :matricula
+                AND localtime BETWEEN a.horaInicio AND a.horaFim
+                AND a.diaSemana.id = :dia_semana
+            ORDER BY
+                a.diaSemana.id
+            """)
+    HorariosAula2 buscarProximaAula(String matricula, Long dia_semana);
+
+
     @Query("Select new com.br.sga.service.dto.HorariosAula2(" +
             "a.id," +
             "a.nome, " +

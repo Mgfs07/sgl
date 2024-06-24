@@ -25,8 +25,8 @@ public class TerminalIntegration {
     @PostConstruct
     public void initialize() {
         try {
-            InetAddress inetAddress = InetAddress.getByName("172.254.56.156"); // IP Address server
-            int port = 3322;
+            InetAddress inetAddress = InetAddress.getByName("172.16.42.242"); // IP Address server
+            int port = 3332;
             serverSocket = new ServerSocket(port, 50, inetAddress);
             this.serverIp = inetAddress.getHostAddress();
             System.out.println("Server started on port " + serverSocket.getLocalPort() + "...");
@@ -65,8 +65,11 @@ public class TerminalIntegration {
                             dos.writeByte(inputChar);
                         }
 
+                        System.out.println("Chegando onde eu quero.");
+                        System.out.println(userInput.toString());
                         String studentId = userInput.toString();
                         String response = getEvent(studentId);
+                        System.out.println("Response: " + response);
                         showEvent(response, dos, studentId);
 
                         while (in.read() != 13) {
@@ -86,7 +89,8 @@ public class TerminalIntegration {
     }
 
     private String getEvent(String matricula) throws IOException {
-        String apiUrl = "http://" + this.serverIp + ":3000/aulas/horarios-aluno/" + matricula;
+        String apiUrl = "http://" + this.serverIp + ":8080/api/aulas/proxima-aula/" + matricula;
+        System.out.println(apiUrl);
         URL url = new URL(apiUrl);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
@@ -108,33 +112,29 @@ public class TerminalIntegration {
     }
 
     private void showEvent(String response, DataOutputStream dos, String matricula) {
+        System.out.println("Entrando show event");
         try {
             JsonReader reader = Json.createReader(new StringReader(response));
+            System.out.println("Reader created");
             JsonStructure jsonStructure = reader.read();
+            System.out.println("jsonStruct created");
 
             if (jsonStructure.getValueType() == JsonValue.ValueType.OBJECT) {
                 JsonObject aulaInfo = jsonStructure.asJsonObject();
                 String disciplina = aulaInfo.getString("nomeAula", "N/A");
                 String professor = aulaInfo.getString("professor", "N/A");
-                String horaInicio = aulaInfo.getString("horaInicio", "N/A").split("T")[0];
-                String horaFim = aulaInfo.getString("horaFim", "N/A").split("T")[0];
-                String diaSemana = aulaInfo.getString("diaSemana", "N/A");
-                String local = aulaInfo.getString("local", "N/A");
 
                 LocalDateTime localDateTime = LocalDateTime.now();
                 String turno = "Ola, ";
                 System.out.println("Matricula: " + matricula);
                 System.out.println("Aula: " + disciplina);
-                System.out.println("Local: " + local);
 
                 clearScreen(dos);
 //                dos.writeBytes(aluno + "!" + "\r\n");
 //                dos.writeBytes("Matricula: " + matricula + "\r\n");
 //                dos.writeBytes("Aula: " + disciplina + "\r\n");
                 dos.writeBytes(disciplina + "\r\n");
-                dos.writeBytes(horaInicio + "\r\n");
-                dos.writeBytes(horaFim + "\r\n");
-                dos.writeBytes(local + "\r\n");
+                dos.writeBytes(professor + "\r\n");
             } else {
                 clearScreen(dos);
                 dos.writeBytes("Matricula nao foi\r\n" + "encontrada\r\n");

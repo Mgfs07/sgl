@@ -22,6 +22,11 @@ public class AulaController {
         return new ResponseEntity<>(listagem, HttpStatus.OK);
     }
 
+    @GetMapping("/proxima-aula/{matricula}")
+    public ResponseEntity<HorariosAula2> buscarProximaAulaAluno(@PathVariable String matricula) {
+        return new ResponseEntity<>(service.buscarProximaAulaAluno(matricula), HttpStatus.OK);
+    }
+
     @GetMapping("/dropdown")
     public ResponseEntity<List<DropdownDTO>> buscarTodos() {
         List<DropdownDTO> listagem = service.buscarDropdown();

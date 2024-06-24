@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-import java.util.Objects;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +27,13 @@ public class AulaService {
 
     public List<HorariosAula2> buscarHorariosAulaAluno2(String matricula) {
         return repository.buscarHorariosAulaAluno2(matricula);
+    }
+
+    public HorariosAula2 buscarProximaAulaAluno(String matricula) {
+        DayOfWeek day = LocalDateTime.now().getDayOfWeek();
+
+        HorariosAula2 proximaAula = repository.buscarProximaAula(matricula, getDiaDaSemanaInt(day));
+        return proximaAula;
     }
 
     public List<HorarioDTO> buscarHorariosAluno(String matricula) {
@@ -80,7 +88,26 @@ public class AulaService {
         return repository.buscarAulaPorId(idAula);
     }
 
-
+    public Long getDiaDaSemanaInt(DayOfWeek day) {
+        switch (day) {
+            case SUNDAY:
+                return 1L;
+            case MONDAY:
+                return 2L;
+            case TUESDAY:
+                return 3L;
+            case WEDNESDAY:
+                return 4L;
+            case THURSDAY:
+                return 5L;
+            case FRIDAY:
+                return 6L;
+            case SATURDAY:
+                return 7L;
+            default:
+                throw new IllegalArgumentException("Dia da semana inválido: " + day);
+        }
+    }
 
 
 }
