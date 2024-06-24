@@ -13,6 +13,8 @@ import {TipoAtorBuscaEnum} from "../../../shared/enums/tipo-ator-busca.enum";
 import {
     ImpressaoRelatorioHorariosComponent
 } from "../../../shared/components/impressao-relatorio-horarios/impressao-relatorio-horarios.component";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
     selector: 'app-horarios-aluno',
@@ -51,6 +53,22 @@ export class HorariosAlunoComponent {
     ngOnInit() {
         this.service.buscarDropdownProfessor().subscribe(value => this.professorOptions = value);
         this.service.buscarDropdownTurmas().subscribe(value => this.turmaOptions = value);
+    }
+
+    public downloadPDF(elementId: string): void {
+        const data = document.getElementById(elementId); // Aqui você coloca o ID do elemento que deseja capturar
+        html2canvas(data!, {scale: 2}).then(canvas => {
+            const imgWidth = 208;
+            const pageHeight = 295;
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+            const heightLeft = imgHeight;
+
+            const contentDataURL = canvas.toDataURL('image/png');
+            let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
+            const position = 0;
+            pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+            pdf.save('relatorio.pdf'); // Nome do arquivo PDF gerado
+        });
     }
 
     buscarHorarios(tipoAtorBusca: TipoAtorBuscaEnum) {

@@ -15,11 +15,13 @@
             <div class="field col-6 flex align-items-center mt-4 ml-4">
                 <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2"
                           (onClick)="buscarHorarios(TipoAtorBuscaEnum.ALUNO)"></p-button>
-                <p-button label="Gerar Relatório" icon="pi pi-file" iconPos="right" styleClass="button-save-new"
+                <p-button label="Imprimir" icon="pi pi-file" iconPos="right" styleClass="button-save-new"
                           (onClick)="gerarRelatorioAulas()"></p-button>
+                <p-button label="PDF" icon="pi pi-file-pdf" iconPos="right" styleClass="button-save-new ml-2"
+                          (onClick)="downloadPDF('relatorio1')"></p-button>
             </div>
         </div>
-        <app-grid-horario *ngIf="tipoAtorGrid == TipoAtorBuscaEnum.ALUNO" [horarios]="horarios1"> </app-grid-horario>
+        <app-grid-horario id="relatorio1" *ngIf="tipoAtorGrid == TipoAtorBuscaEnum.ALUNO" [horarios]="horarios1"> </app-grid-horario>
     </p-tabPanel>
     <p-tabPanel header="Professor">
         <div class="col-12 flex align-content-start align-items-center">
@@ -36,11 +38,13 @@
             <div class="field col-6 flex align-items-center mt-4 ml-4">
                 <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2"
                           (onClick)="buscarHorarios(TipoAtorBuscaEnum.PROFESSOR)"></p-button>
-                <p-button label="Gerar Relatório" icon="pi pi-file" iconPos="right" styleClass="button-save-new"
+                <p-button label="Imprimir" icon="pi pi-file" iconPos="right" styleClass="button-save-new"
                           (onClick)="gerarRelatorioAulas()"></p-button>
+                <p-button label="PDF" icon="pi pi-file-pdf" iconPos="right" styleClass="button-save-new ml-2"
+                          (onClick)="downloadPDF('relatorio2')"></p-button>
             </div>
         </div>
-        <app-grid-horario *ngIf="tipoAtorGrid == TipoAtorBuscaEnum.PROFESSOR" [horarios]="horarios1"> </app-grid-horario>
+        <app-grid-horario id="relatorio2"  *ngIf="tipoAtorGrid == TipoAtorBuscaEnum.PROFESSOR" [horarios]="horarios1"> </app-grid-horario>
     </p-tabPanel>
     <p-tabPanel header="Turma">
         <div class="col-12 flex align-content-start align-items-center">
@@ -53,11 +57,13 @@
             <div class="field col-6 flex align-items-center mt-4 ml-4">
                 <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2"
                           (onClick)="buscarHorarios(TipoAtorBuscaEnum.TURMA)"></p-button>
-                <p-button label="Gerar Relatório" icon="pi pi-file" iconPos="right" styleClass="button-save-new"
+                <p-button label="Imprimir" icon="pi pi-file" iconPos="right" styleClass="button-save-new"
                           (onClick)="gerarRelatorioAulas()"></p-button>
+                <p-button label="PDF" icon="pi pi-file-pdf" iconPos="right" styleClass="button-save-new ml-2"
+                          (onClick)="downloadPDF('relatorio3')"></p-button>
             </div>
         </div>
-        <app-grid-horario *ngIf="tipoAtorGrid == TipoAtorBuscaEnum.TURMA" [horarios]="horarios1"> </app-grid-horario>
+        <app-grid-horario id="relatorio3" *ngIf="tipoAtorGrid == TipoAtorBuscaEnum.TURMA" [horarios]="horarios1"> </app-grid-horario>
     </p-tabPanel>
 </p-tabView>
 
