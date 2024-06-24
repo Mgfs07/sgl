@@ -7,6 +7,7 @@ import { GridHorarioComponent } from './components/grid-horario/grid-horario.com
 import {AulaNoGridComponent} from "./components/grid-horario/aula-no-grid.component";
 import { ImpressaoRelatorioHorariosComponent } from './components/impressao-relatorio-horarios/impressao-relatorio-horarios.component';
 import { FormatarHoraPipe } from './pipes/formatar-hora.pipe';
+import { FormatarDataPipe } from './pipes/formatar-data.pipe';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { FormatarHoraPipe } from './pipes/formatar-hora.pipe';
         AulaNoGridComponent,
         ImpressaoRelatorioHorariosComponent,
         FormatarHoraPipe,
+        FormatarDataPipe,
     ],
     imports: [
         PRIMENG_IMPORTS,
@@ -32,7 +34,8 @@ import { FormatarHoraPipe } from './pipes/formatar-hora.pipe';
         StatusPipe,
         ReactiveFormsModule,
         GridHorarioComponent,
-        ImpressaoRelatorioHorariosComponent
+        ImpressaoRelatorioHorariosComponent,
+        FormatarDataPipe
     ]
 })
 export class SharedModule { }
