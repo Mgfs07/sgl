@@ -2,6 +2,8 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { AppLayoutComponent } from "./layout/app.layout.component";
 import {LoginComponent} from "./pages/login/login/login.component";
+import {AlocacaoComponent} from "./pages/alocacao/alocacao/alocacao.component";
+import {AlunoComponent} from "./pages/aluno/aluno/aluno.component";
 
 @NgModule({
     imports: [
@@ -11,6 +13,20 @@ import {LoginComponent} from "./pages/login/login/login.component";
                 component: AppLayoutComponent,
                 children: [
                     {path: '', loadChildren: () => import('./pages/local/local.module').then(m => m.LocalModule)},
+                ]
+            },
+            {
+                path: 'alocacao',
+                component: AlocacaoComponent,
+                children: [
+                    {path: '', loadChildren: () => import('./pages/alocacao/alocacao.module').then(m => m.AlocacaoModule)},
+                ]
+            },
+            {
+                path: 'alunos',
+                component: AlunoComponent,
+                children: [
+                    {path: '', loadChildren: () => import('./pages/aluno/aluno.module').then(m => m.AlunoModule)},
                 ]
             },
             {

@@ -48,7 +48,7 @@ export class AppMenuComponent implements OnInit {
                     {
                         label: 'Alunos',
                         icon: 'pi pi-fw pi-caret-right',
-                        routerLink: ['/local/alunos']
+                        routerLink: ['/alunos']
                     },
                     {
                         label: 'Períodos',
@@ -63,7 +63,7 @@ export class AppMenuComponent implements OnInit {
                     {
                         label: 'Alocacao',
                         icon: 'pi pi-fw pi-caret-right',
-                        routerLink: ['/local/alocacao']
+                        routerLink: ['/alocacao']
                     },
                     {
                         label: 'Professores',

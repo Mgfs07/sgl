@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import {EquipamentoComponent} from "./equipamento/equipamento.component";
 import {DisciplinaComponent} from "./disciplina/disciplina.component";
 import {CoordenadoriaComponent} from "./coordenadoria/coordenadoria.component";
-import {AlunoComponent} from "./aluno/aluno.component";
+import {AlunoComponent} from "../aluno/aluno/aluno.component";
 import {PeriodoComponent} from "./periodo/periodo.component";
 import {LocalComponent} from "./local/local.component";
 import {ProfessorComponent} from "./professor/professor.component";
 import {CoordenadorComponent} from "../coordenador/coordenador.component";
 import {EventoComponent} from "./evento/evento.component";
 import {HorariosAlunoComponent} from "./horarios-aluno/horarios-aluno.component";
-import {AlocacaoComponent} from "./alocacao/alocacao.component";
+import {AlocacaoComponent} from "../alocacao/alocacao/alocacao.component";
 import {AuditoriaEventoComponent} from "./auditoria-evento/auditoria-evento.component";
 import {LoginComponent} from "../login/login/login.component";
 
@@ -20,12 +20,10 @@ const routes: Routes = [
     {path: 'disciplinas', component: DisciplinaComponent},
     {path: 'coordenadorias', component: CoordenadoriaComponent},
     {path: 'coordenadores', component: CoordenadorComponent},
-    {path: 'alunos', component: AlunoComponent},
     {path: 'periodos', component: PeriodoComponent},
     {path: 'professores', component: ProfessorComponent},
     {path: 'eventos', component: EventoComponent},
     {path: 'horarios-aluno', component: HorariosAlunoComponent},
-    {path: 'alocacao', component: AlocacaoComponent},
     {path: 'horarios-aluno', component: HorariosAlunoComponent},
     {path: 'auditoria-evento', component: AuditoriaEventoComponent}]
 

@@ -15,8 +15,8 @@ import {DisciplinaComponent} from './disciplina/disciplina.component';
 import {DisciplinaFormComponent} from './disciplina/disciplina-form/disciplina-form.component';
 import {CoordenadoriaComponent} from './coordenadoria/coordenadoria.component';
 import {CoordenadoriaFormComponent} from './coordenadoria/coordenadoria-form/coordenadoria-form.component';
-import {AlunoComponent} from './aluno/aluno.component';
-import {AlunoFormComponent} from './aluno/aluno-form/aluno-form.component';
+import {AlunoComponent} from '../aluno/aluno/aluno.component';
+import {AlunoFormComponent} from '../aluno/aluno/aluno-form/aluno-form.component';
 import {PeriodoComponent} from './periodo/periodo.component';
 import {PeriodoFormComponent} from './periodo/periodo-form/periodo-form.component';
 import {SharedModule} from "../../shared/shared.module";
@@ -31,8 +31,6 @@ import { EventoFormComponent } from './evento/evento-form/evento-form.component'
 import { HorariosAlunoComponent } from './horarios-aluno/horarios-aluno.component';
 import { AuditoriaEventoComponent } from './auditoria-evento/auditoria-evento.component';
 import { AuditoriaEventoModalComponent } from './auditoria-evento/auditoria-evento-modal/auditoria-evento-modal.component';
-import { AlocacaoComponent } from './alocacao/alocacao.component';
-import { AlocacaoFormComponent } from './alocacao/alocacao-form/alocacao-form.component';
 
 
 @NgModule({
@@ -43,8 +41,6 @@ import { AlocacaoFormComponent } from './alocacao/alocacao-form/alocacao-form.co
         DisciplinaFormComponent,
         CoordenadoriaComponent,
         CoordenadoriaFormComponent,
-        AlunoComponent,
-        AlunoFormComponent,
         PeriodoComponent,
         PeriodoFormComponent,
         LocalComponent,
@@ -57,8 +53,6 @@ import { AlocacaoFormComponent } from './alocacao/alocacao-form/alocacao-form.co
         EventoComponent,
         EventoFormComponent,
         HorariosAlunoComponent,
-        AlocacaoComponent,
-        AlocacaoFormComponent,
         HorariosAlunoComponent,
         AuditoriaEventoComponent,
         AuditoriaEventoModalComponent
