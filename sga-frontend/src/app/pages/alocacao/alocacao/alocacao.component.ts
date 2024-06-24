@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Column} from "../../../shared/models/colum.model";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {ConfirmationService, MessageService, SelectItem} from "primeng/api";
-import {EventoFormComponent} from "../evento/evento-form/evento-form.component";
+import {EventoFormComponent} from "../../evento/evento/evento-form/evento-form.component";
 import {AulaService} from "../../../shared/services/aula.service";
 import {AulaAlocacaoListModel} from "../../../shared/models/aula-alocacao-list.model";
 import {AlocacaoFormComponent} from "./alocacao-form/alocacao-form.component";

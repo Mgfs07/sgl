@@ -3,7 +3,7 @@ import {Column} from "../../../shared/models/colum.model";
 import {AuditoriaEventoModel} from "../../../shared/models/auditoria-evento.model";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {AuditoriaService} from "../../../shared/services/auditoria.service";
-import {EventoFormComponent} from "../evento/evento-form/evento-form.component";
+import {EventoFormComponent} from "../../evento/evento/evento-form/evento-form.component";
 import {AuditoriaEventoModalComponent} from "./auditoria-evento-modal/auditoria-evento-modal.component";
 
 @Component({
