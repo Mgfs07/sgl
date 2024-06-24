@@ -77,6 +77,10 @@ export class LocalFormComponent implements OnInit {
         }
         if (this.dialogConfig.data.acao == 'editar') {
             this.form.enable();
+            this.localEquipamentoService.buscarEquipamentosListagemByIdLocal(this.dialogConfig.data.local.id)
+                .subscribe(value => {
+                    this.equipamentosList = value;
+                })
             this.isEdit = true;
         }
         this.renderizarDadosLocal();

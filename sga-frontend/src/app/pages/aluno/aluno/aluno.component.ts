@@ -34,7 +34,6 @@ export class AlunoComponent implements OnInit{
         this.cols = [
             {field: 'nome', header: 'Nome', text: true},
             {field: 'matricula', header: 'Matrícula', text: true},
-            {field: 'codigoBarra', header: 'Código de Barras', text: true},
             {field: 'acoes', header: 'Ações'}
         ];
     }
