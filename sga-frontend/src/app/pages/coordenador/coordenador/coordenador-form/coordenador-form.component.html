@@ -2,18 +2,16 @@
     <form [formGroup]="form">
         <div class="formgrid grid">
 
-            <div class="col-12 flex">
-                <div class="field col-8">
-                    <label for="matricula" class="block">Matricula*</label>
-                    <input id="matricula" type="text" pInputText class="w-full" formControlName="matricula"/>
-                </div>
-
-                <div class="field col-2">
-                    <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4"
-                    (onClick)="buscarCoordenadorPorMatricula()" ></p-button>
-                </div>
-
+            <div class="field col-8">
+                <label for="matricula" class="block">Matricula*</label>
+                <input id="matricula" type="text" pInputText class="w-full" formControlName="matricula"/>
             </div>
+
+            <div class="field col-4">
+                <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4"
+                          (onClick)="buscarCoordenadorPorMatricula()"></p-button>
+            </div>
+
 
             <div class="field col-12">
                 <label for="nome" class="block">Nome*</label>

@@ -48,8 +48,8 @@ export class ProfessorComponent implements OnInit {
     novoProfessor() {
         this.ref = this.dialogService.open(ProfessorFormComponent,
             {
-                header: 'Novo Período',
-                width: '30%',
+                header: 'Novo Professor',
+                width: '35%',
                 data: {acao: 'novo'}
             });
         this.ref.onClose.subscribe((professor) => {

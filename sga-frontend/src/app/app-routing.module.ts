@@ -13,13 +13,14 @@ import {EventoComponent} from "./pages/evento/evento/evento.component";
 import {HorariosAlunoComponent} from "./pages/horarios-aluno/horarios-aluno/horarios-aluno.component";
 import {PeriodoComponent} from "./pages/periodo/periodo/periodo.component";
 import {ProfessorComponent} from "./pages/professor/professor/professor.component";
+import {LocalComponent} from "./pages/local/local/local.component";
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
             {
                 path: 'local',
-                component: AppLayoutComponent,
+                component: LocalComponent,
                 children: [
                     {path: '', loadChildren: () => import('./pages/local/local.module').then(m => m.LocalModule)},
                 ]
@@ -40,7 +41,7 @@ import {ProfessorComponent} from "./pages/professor/professor/professor.componen
             },
             {
                 path: 'coordenadorias',
-                component: AlunoComponent,
+                component: CoordenadoriaComponent,
                 children: [
                     {path: '', loadChildren: () => import('./pages/coordenadoria/coordenadoria.module').then(m => m.CoordenadoriaModule)},
                 ]

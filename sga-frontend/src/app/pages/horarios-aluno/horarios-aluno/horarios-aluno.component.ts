@@ -10,7 +10,6 @@ import {ProfessorService} from "../../../shared/services/professor.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {HorarioFiltroModel} from "../../../shared/models/horario-filtro.model";
 import {TipoAtorBuscaEnum} from "../../../shared/enums/tipo-ator-busca.enum";
-import {EquipamentoFormComponent} from "../equipamento/equipamento-form/equipamento-form.component";
 import {
     ImpressaoRelatorioHorariosComponent
 } from "../../../shared/components/impressao-relatorio-horarios/impressao-relatorio-horarios.component";
