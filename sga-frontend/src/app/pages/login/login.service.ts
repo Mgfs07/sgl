@@ -38,7 +38,7 @@ export class LoginService {
                         localStorage.setItem('nome', JSON.stringify(response.nome));
                         localStorage.setItem('roles', JSON.stringify(response.roles));
                         this.mostrarMenuEmitter.emit(true);
-                        this.router.navigate(['/local'])
+                        this.router.navigate(['/'])
                     },
                     error: () => {
                         this.usuarioAutenticado = false;

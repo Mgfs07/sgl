@@ -10,19 +10,27 @@ export class AppMenuComponent implements OnInit {
 
     model: any[] = [];
 
+    modelUsuarioLogado: any[] = [];
+    modelUsuarioNaoLogado: any[] = [];
+
     constructor(public layoutService: LayoutService) {
     }
 
     ngOnInit() {
-        this.model = [
+        this.modelUsuarioLogado = [
             {
                 label: 'Home',
                 items: [
-                    {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']}
+                    // {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']},
+                    {
+                        label: 'Horários de Aula',
+                        icon: 'pi pi-fw pi-caret-right',
+                        routerLink: ['/horarios-aluno']
+                    },
                 ]
             },
             {
-                label: 'Salas/Labs',
+                label: 'Opções',
                 icon: 'pi pi-fw pi-briefcase',
                 items: [
                     {
@@ -76,11 +84,6 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/eventos']
                     },
                     {
-                        label: 'Horários Aluno',
-                        icon: 'pi pi-fw pi-caret-right',
-                        routerLink: ['/horarios-aluno']
-                    },
-                    {
                         label: 'Auditoria de Eventos',
                         icon: 'pi pi-fw pi-caret-right',
                         routerLink: ['/auditoria-evento']
@@ -89,5 +92,27 @@ export class AppMenuComponent implements OnInit {
             }
 
         ];
+
+        this.modelUsuarioNaoLogado = [
+            {
+                label: 'Home',
+                items: [
+                    // {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']},
+                    {
+                        label: 'Horários de Aula',
+                        icon: 'pi pi-fw pi-caret-right',
+                        routerLink: ['/horarios-aluno']
+                    },
+                ]
+            },
+        ];
+
+
+        if(localStorage.getItem("token")){
+            this.model = this.modelUsuarioLogado
+        }else {
+            this.model = this.modelUsuarioNaoLogado
+        }
+
     }
 }

@@ -46,7 +46,7 @@ export class HorariosAlunoService extends AbstractService<HorariosAlunoModel, Ho
         if (filtro.idTurma) {
             params = params.set('idTurma', filtro.idTurma)
         }
-        return this.http.get<HorarioModel[]>('/api/horarios/horario', {params});
+        return this.http.get<HorarioModel[]>('/api/horarios/public/horario', {params});
     }
 
     buscarDropdownProfessor(): Observable<SelectItem[]> {

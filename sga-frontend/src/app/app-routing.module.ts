@@ -1,6 +1,5 @@
-import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { AppLayoutComponent } from "./layout/app.layout.component";
+import {RouterModule} from '@angular/router';
+import {NgModule} from '@angular/core';
 import {LoginComponent} from "./pages/login/login/login.component";
 import {AlocacaoComponent} from "./pages/alocacao/alocacao/alocacao.component";
 import {AlunoComponent} from "./pages/aluno/aluno/aluno.component";
@@ -89,7 +88,7 @@ import {LocalComponent} from "./pages/local/local/local.component";
                 ]
             },
             {
-                path: 'horarios-aluno',
+                path: '',
                 component: HorariosAlunoComponent,
                 children: [
                     {path: '', loadChildren: () => import('./pages/horarios-aluno/horarios-aluno.module').then(m => m.HorariosAlunoModule)},
@@ -110,7 +109,7 @@ import {LocalComponent} from "./pages/local/local/local.component";
                 ]
             },
             {
-                path: '',
+                path: 'login',
                 component: LoginComponent,
                 children: [
                     {path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)},
