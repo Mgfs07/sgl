@@ -9,16 +9,13 @@
         <div class="col-12 flex align-content-start align-items-center">
             <div class="field col-3">
                 <label class="block" for="matriculaAluno">Matrícula</label>
-                <input type="text" pInputText id="matriculaAluno" formControlName="matricula"/>
+                <input class="w-full" type="text" pInputText id="matriculaAluno" formControlName="matricula"/>
             </div>
 
-            <div class="field col-2">
-                <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mt-4"
+            <div class="field col-6 flex align-items-center mt-4 ml-4">
+                <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2"
                           (onClick)="buscarHorarios(TipoAtorBuscaEnum.ALUNO)"></p-button>
-
-            </div>
-            <div class="field col-3">
-                <p-button label="Gerar Relatório" icon="pi pi-file" iconPos="right" styleClass="button-save-new mt-4"
+                <p-button label="Gerar Relatório" icon="pi pi-file" iconPos="right" styleClass="button-save-new"
                           (onClick)="gerarRelatorioAulas()"></p-button>
             </div>
         </div>
@@ -28,7 +25,7 @@
         <div class="col-12 flex align-content-start align-items-center">
             <div class="field col-3">
                 <label class="block" for="rfId">RFID</label>
-                <input type="text" pInputText id="rfId" formControlName="rfId" />
+                <input class= "w-full" type="text" pInputText id="rfId" formControlName="rfId" />
             </div>
             <div class="field col-3">
                 <label class="block" for="dropProfessor">Professores</label>
@@ -36,13 +33,10 @@
                             appendTo="body" styleClass="w-full">
                 </p-dropdown>
             </div>
-            <div class="field col-2">
-                <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4"
+            <div class="field col-6 flex align-items-center mt-4 ml-4">
+                <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2"
                           (onClick)="buscarHorarios(TipoAtorBuscaEnum.PROFESSOR)"></p-button>
-
-            </div>
-            <div class="field col-3">
-                <p-button label="Gerar Relatório" styleClass="button-save-new mt-4"
+                <p-button label="Gerar Relatório" icon="pi pi-file" iconPos="right" styleClass="button-save-new"
                           (onClick)="gerarRelatorioAulas()"></p-button>
             </div>
         </div>
@@ -56,12 +50,10 @@
                             appendTo="body" styleClass="w-full">
                 </p-dropdown>
             </div>
-            <div class="field col-2">
-                <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4"
+            <div class="field col-6 flex align-items-center mt-4 ml-4">
+                <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2"
                           (onClick)="buscarHorarios(TipoAtorBuscaEnum.TURMA)"></p-button>
-            </div>
-            <div class="field col-4">
-                <p-button label="Gerar Relatório" icon="pi pi-search" iconPos="right" styleClass="button-save-new mt-4"
+                <p-button label="Gerar Relatório" icon="pi pi-file" iconPos="right" styleClass="button-save-new"
                           (onClick)="gerarRelatorioAulas()"></p-button>
             </div>
         </div>
