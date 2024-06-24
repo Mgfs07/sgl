@@ -17,7 +17,7 @@ export class HorariosAlunoService extends AbstractService<HorariosAlunoModel, Ho
     }
 
     override getEntity(): string {
-        return "horarios";
+        return "horarios/public";
     }
 
     buscarHorariosPorMatricula(matricula: string): Observable<HorarioModel[]> {
@@ -47,6 +47,10 @@ export class HorariosAlunoService extends AbstractService<HorariosAlunoModel, Ho
             params = params.set('idTurma', filtro.idTurma)
         }
         return this.http.get<HorarioModel[]>('/api/horarios/horario', {params});
+    }
+
+    buscarDropdownProfessor(): Observable<SelectItem[]> {
+        return this.http.get<SelectItem[]>(this.resourceUrl + '/dropdown/professor');
     }
 
 }

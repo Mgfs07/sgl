@@ -17,9 +17,14 @@ public class HorariosService {
     
     private final TurmaService turmaService;
     private final AulaService aulaService;
+    private final ProfessorService professorService;
 
     public List<DropdownDTO> buscarDropdownTurma() {
         return turmaService.buscarDropdown();
+    }
+
+    public List<DropdownProfessorDTO> buscarDropdownProfessor() {
+        return professorService.buscarDropdown();
     }
 
     public List<HorariosAula2> buscarHorariosAulaAluno2(String matricula) {

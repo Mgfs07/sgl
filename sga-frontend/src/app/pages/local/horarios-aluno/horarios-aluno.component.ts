@@ -43,7 +43,7 @@ export class HorariosAlunoComponent {
     }
 
     ngOnInit() {
-        this.professorService.buscarDropdown().subscribe(value => this.professorOptions = value);
+        this.service.buscarDropdownProfessor().subscribe(value => this.professorOptions = value);
         this.service.buscarDropdownTurmas().subscribe(value => this.turmaOptions = value);
     }
 

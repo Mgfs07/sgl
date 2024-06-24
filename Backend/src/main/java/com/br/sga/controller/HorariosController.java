@@ -2,10 +2,7 @@ package com.br.sga.controller;
 
 import com.br.sga.domain.enums.TipoAtorBuscaEnum;
 import com.br.sga.service.HorariosService;
-import com.br.sga.service.dto.DropdownDTO;
-import com.br.sga.service.dto.HorarioDTO;
-import com.br.sga.service.dto.HorarioFiltroDTO;
-import com.br.sga.service.dto.HorariosAula2;
+import com.br.sga.service.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,17 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/horarios")
+@RequestMapping("/api/horarios/public")
 @RequiredArgsConstructor
 public class HorariosController {
 
     private final HorariosService service;
-
-//    @GetMapping
-//    public ResponseEntity<List<AlunoDTO>> buscarTodos() {
-//        List<AlunoDTO> listagem = service.buscarTodos();
-//        return new ResponseEntity<>(listagem, HttpStatus.OK);
-//    }
 
     @GetMapping("/{matricula}")
     public ResponseEntity<List<HorariosAula2>> buscarTodosAulas(@PathVariable String matricula) {
@@ -53,6 +44,12 @@ public class HorariosController {
         HorarioFiltroDTO horarioFiltroDTO = new HorarioFiltroDTO(tipoAtorBusca, rfId, matricula, idTurma);
         List<HorarioDTO> listagem = service.buscarHorarios(horarioFiltroDTO);
         return new ResponseEntity<>(listagem, HttpStatus.OK);
+    }
+
+    @GetMapping("/dropdown/professor")
+    public ResponseEntity<List<DropdownProfessorDTO>> buscarDropdownProfessor() {
+        List<DropdownProfessorDTO> dropdownDTOS = service.buscarDropdownProfessor();
+        return new ResponseEntity<>(dropdownDTOS, HttpStatus.OK);
     }
 
 }
