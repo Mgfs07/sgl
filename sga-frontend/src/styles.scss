@@ -33,8 +33,20 @@ td {
 .centralizado {
     text-align: center !important;
 }
+.centralizado2 {
+    display: flex;
+    justify-content: center;
+}
 
 
 .logo-ifes {
     width: 75%;
 }
+
+.receipt-content {
+    width: 80mm;
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1.5;
+}
+

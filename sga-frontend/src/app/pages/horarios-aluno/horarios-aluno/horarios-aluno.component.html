@@ -6,21 +6,26 @@
 
 <p-tabView [formGroup]="form" [(activeIndex)]="indexAbas" (onChange)="limparAbas()">
     <p-tabPanel header="Aluno">
-        <div class="col-8 flex align-content-start align-items-center">
+        <div class="col-12 flex align-content-start align-items-center">
             <div class="field col-3">
                 <label class="block" for="matriculaAluno">Matrícula</label>
                 <input type="text" pInputText id="matriculaAluno" formControlName="matricula"/>
             </div>
 
-            <div class="field col-3">
-                <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4"
+            <div class="field col-2">
+                <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mt-4"
                           (onClick)="buscarHorarios(TipoAtorBuscaEnum.ALUNO)"></p-button>
+
+            </div>
+            <div class="field col-3">
+                <p-button label="Gerar Relatório" icon="pi pi-file" iconPos="right" styleClass="button-save-new mt-4"
+                          (onClick)="gerarRelatorioAulas()"></p-button>
             </div>
         </div>
         <app-grid-horario *ngIf="tipoAtorGrid == TipoAtorBuscaEnum.ALUNO" [horarios]="horarios1"> </app-grid-horario>
     </p-tabPanel>
     <p-tabPanel header="Professor">
-        <div class="col-8 flex align-content-start align-items-center">
+        <div class="col-12 flex align-content-start align-items-center">
             <div class="field col-3">
                 <label class="block" for="rfId">RFID</label>
                 <input type="text" pInputText id="rfId" formControlName="rfId" />
@@ -31,26 +36,38 @@
                             appendTo="body" styleClass="w-full">
                 </p-dropdown>
             </div>
-            <div class="field col-3">
+            <div class="field col-2">
                 <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4"
                           (onClick)="buscarHorarios(TipoAtorBuscaEnum.PROFESSOR)"></p-button>
+
+            </div>
+            <div class="field col-3">
+                <p-button label="Gerar Relatório" styleClass="button-save-new mt-4"
+                          (onClick)="gerarRelatorioAulas()"></p-button>
             </div>
         </div>
         <app-grid-horario *ngIf="tipoAtorGrid == TipoAtorBuscaEnum.PROFESSOR" [horarios]="horarios1"> </app-grid-horario>
     </p-tabPanel>
     <p-tabPanel header="Turma">
-        <div class="col-8 flex align-content-start align-items-center">
+        <div class="col-12 flex align-content-start align-items-center">
             <div class="field col-3">
                 <label class="block" for="dropProfessor">Turmas</label>
                 <p-dropdown formControlName="idTurma" id="turma" [filter]="true" optionValue="value" optionLabel="label" [options]="turmaOptions" placeholder="Selecione"
                             appendTo="body" styleClass="w-full">
                 </p-dropdown>
             </div>
-            <div class="field col-3">
+            <div class="field col-2">
                 <p-button label="Pesquisar" icon="pi pi-search" iconPos="right" styleClass="button-save-new mr-2 mt-4"
                           (onClick)="buscarHorarios(TipoAtorBuscaEnum.TURMA)"></p-button>
+            </div>
+            <div class="field col-4">
+                <p-button label="Gerar Relatório" icon="pi pi-search" iconPos="right" styleClass="button-save-new mt-4"
+                          (onClick)="gerarRelatorioAulas()"></p-button>
             </div>
         </div>
         <app-grid-horario *ngIf="tipoAtorGrid == TipoAtorBuscaEnum.TURMA" [horarios]="horarios1"> </app-grid-horario>
     </p-tabPanel>
 </p-tabView>
+
+
+<app-impressao-relatorio-horarios *ngIf="horarioRelatorio" [horarios1]="horarios1"></app-impressao-relatorio-horarios>

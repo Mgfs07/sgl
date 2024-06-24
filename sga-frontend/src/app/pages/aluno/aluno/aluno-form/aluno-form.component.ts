@@ -63,9 +63,8 @@ export class AlunoFormComponent implements OnInit{
     private definirFormulario() {
         this.form = this.fb.group({
             id: [null],
-            matricula: [null, [Validators.required]],
-            nome: [null, [Validators.required]],
-            codigoBarra: [null, [Validators.required]]
+            matricula: [null],
+            nome: [null, [Validators.required]]
         });
     }
 

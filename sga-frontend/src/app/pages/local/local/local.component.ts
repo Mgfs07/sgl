@@ -49,7 +49,7 @@ export class LocalComponent implements OnInit {
         this.ref = this.dialogService.open(LocalFormComponent,
             {
                 header: 'Novo Local',
-                width: '40%',
+                width: '55%',
                 data: {acao: ''}
             });
         this.ref.onClose.subscribe((local) => {

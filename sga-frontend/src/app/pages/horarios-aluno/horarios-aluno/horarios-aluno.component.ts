@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Column} from "../../../shared/models/colum.model";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
-import {MessageService, SelectItem} from "primeng/api";
+import {ConfirmationService, MessageService, SelectItem} from "primeng/api";
 import {HorariosAlunoService} from "../../../shared/services/horarios-aluno.service";
 import {BlockUI, NgBlockUI} from 'ng-block-ui';
 import {HorarioModel} from '../../../shared/components/grid-horario/horario.model';
@@ -10,15 +10,20 @@ import {ProfessorService} from "../../../shared/services/professor.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {HorarioFiltroModel} from "../../../shared/models/horario-filtro.model";
 import {TipoAtorBuscaEnum} from "../../../shared/enums/tipo-ator-busca.enum";
+import {
+    ImpressaoRelatorioHorariosComponent
+} from "../../../shared/components/impressao-relatorio-horarios/impressao-relatorio-horarios.component";
 
 @Component({
-  selector: 'app-horarios-aluno',
-  templateUrl: './horarios-aluno.component.html',
-  styleUrls: ['./horarios-aluno.component.scss']
+    selector: 'app-horarios-aluno',
+    templateUrl: './horarios-aluno.component.html',
+    styleUrls: ['./horarios-aluno.component.scss'],
+    providers: [DialogService, ConfirmationService, MessageService]
 })
 export class HorariosAlunoComponent {
 
     @BlockUI() blockUI: NgBlockUI;
+    @ViewChild(ImpressaoRelatorioHorariosComponent) impressaoRelatorio: ImpressaoRelatorioHorariosComponent;
     cols!: Column[];
     horario: HorarioModel[];
     ref: DynamicDialogRef | undefined;
@@ -32,6 +37,7 @@ export class HorariosAlunoComponent {
     indexAbas: number = 0;
     turmaOptions: SelectItem[];
     horarioFiltroModel: HorarioFiltroModel = new HorarioFiltroModel();
+    horarioRelatorio: boolean = false;
 
 
     constructor(public dialogService: DialogService,
@@ -58,6 +64,7 @@ export class HorariosAlunoComponent {
             });
             this.horarios1 = horarios;
             this.tipoAtorGrid = tipoAtorBusca;
+            this.horarioRelatorio = true;
         });
     }
 
@@ -65,9 +72,9 @@ export class HorariosAlunoComponent {
         this.horarioFiltroModel.tipoAtorBusca = tipoAtorBusca;
         this.horarioFiltroModel.matricula = this.form.get('matricula').value;
         this.horarioFiltroModel.rfId = this.form.get('rfId').value;
-        if (tipoAtorBusca == TipoAtorBuscaEnum.ALUNO || tipoAtorBusca == TipoAtorBuscaEnum.PROFESSOR){
+        if (tipoAtorBusca == TipoAtorBuscaEnum.ALUNO || tipoAtorBusca == TipoAtorBuscaEnum.PROFESSOR) {
             this.horarioFiltroModel.idTurma = 0;
-        }else {
+        } else {
             this.horarioFiltroModel.idTurma = this.form.get('idTurma').value;
         }
     }
@@ -92,4 +99,20 @@ export class HorariosAlunoComponent {
     resetRfId() {
         this.form.get('rfId').reset();
     }
+
+    gerarRelatorioAulas() {
+        this.printReceipt();
+    }
+
+    printReceipt() {
+        const printContent = document.getElementById('content-relatorio')?.innerHTML;
+        const printWindow = window.open('', '', 'height=400,width=800');
+        printWindow?.document.write('<html><head><title>Recibo</title>');
+        printWindow?.document.write('</head><body>');
+        printWindow?.document.write(printContent || '');
+        printWindow?.document.write('</body></html>');
+        printWindow?.document.close();
+        printWindow?.print();
+    }
+
 }
