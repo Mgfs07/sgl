@@ -28,9 +28,12 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
-//                .authorizeHttpRequests(auth -> auth.requestMatchers("api/public/horarios").permitAll())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("api/horarios/public/**").permitAll().requestMatchers("api/auth/**").permitAll().requestMatchers("api/**").authenticated())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("api/auth/**").permitAll())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("api/horarios/public/**").permitAll()
+                        .requestMatchers("api/auth/**").permitAll()
+                        .requestMatchers("api/aulas/proxima-aula/**").permitAll() // Certifique-se de que não há uma barra (/) no final
+                        .requestMatchers("api/**").authenticated()
+                )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

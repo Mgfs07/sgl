@@ -25,8 +25,8 @@ public class TerminalIntegration {
     @PostConstruct
     public void initialize() {
         try {
-            InetAddress inetAddress = InetAddress.getByName("172.16.42.242"); // IP Address server
-            int port = 3332;
+            InetAddress inetAddress = InetAddress.getByName("192.168.1.100"); // IP Address server
+            int port = 1025;
             serverSocket = new ServerSocket(port, 50, inetAddress);
             this.serverIp = inetAddress.getHostAddress();
             System.out.println("Server started on port " + serverSocket.getLocalPort() + "...");
